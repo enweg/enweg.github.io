@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "Enrico Wegner"
+  site-url: https://github.com/enweg
+  description: This is the private website of Enrico Wegner. I blog about what I learn.
+  navbar:
+    right:
+      - text: About
+        href: about.qmd
+      - icon: github
+        href: https://github.com/enweg
+  cookie-consent: true
+format:
+  html:
+    theme: flatly
+    css: styles.css
+
+
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://github.com/engweg/posts/example-post/index.html</loc>
+    <lastmod>2023-02-15T19:54:33.829Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/enweg/posts/example-post/index.html</loc>
+    <lastmod>2023-02-15T20:06:24.406Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/enweg/about.html</loc>
+    <lastmod>2023-02-15T20:27:09.680Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/enweg/index.html</loc>
+    <lastmod>2023-02-15T20:27:17.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/enweg/posts/post-with-code/index.html</loc>
+    <lastmod>2023-02-15T20:07:36.512Z</lastmod>
+  </url>
+</urlset>

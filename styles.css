@@ -1,0 +1,18 @@
+/* css styles */
+
+/* styling the about text */
+.about-info {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.3rem;
+}
+
+/* hiding the seperator in the about page  */
+.about-sep {
+    display: none;
+}
+
+div.quarto-about-jolla .about-link {
+    border: none;
+    font-size: 1.3rem;
+}
