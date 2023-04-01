@@ -1,15 +1,18 @@
 ---
-title: "Blog"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  fields: [date, title, reading-time, description, categories]
-page-layout: article
-title-block-banner: true
+title: "Hi 👋🏻"
+image: assets/profile-img.jpeg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
+    - icon: github
+      href: https://github.com/enweg
+
 ---
 
+::: {.about-info}
 
+I'm Enrico. I am a PhD candiate at the School of Business and Economics Maastricht. I am interested in causal and Bayesian macro-econometrics. 
+
+:::

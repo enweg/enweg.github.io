@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://github.com/enweg/posts/example-post/index.html</loc>
-    <lastmod>2023-02-15T20:06:24.406Z</lastmod>
+    <lastmod>2023-02-15T20:46:06.057Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/enweg/about.html</loc>
@@ -14,10 +14,14 @@
   </url>
   <url>
     <loc>https://github.com/enweg/index.html</loc>
-    <lastmod>2023-02-15T20:27:17.701Z</lastmod>
+    <lastmod>2023-02-15T21:00:02.507Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/enweg/posts/post-with-code/index.html</loc>
     <lastmod>2023-02-15T20:07:36.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/enweg/blog.html</loc>
+    <lastmod>2023-02-15T20:46:02.038Z</lastmod>
   </url>
 </urlset>

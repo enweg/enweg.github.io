@@ -13,5 +13,8 @@
   },
   "posts/example-post/index.qmd": {
     "index.html": "d98e45cc"
+  },
+  "blog.qmd": {
+    "blog.html": "b31c27b4"
   }
 }

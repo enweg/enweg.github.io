@@ -5,12 +5,19 @@ website:
   title: "Enrico Wegner"
   site-url: https://github.com/enweg
   description: This is the private website of Enrico Wegner. I blog about what I learn.
+  page-footer: "Made with ❤️ in Maastricht, Copyright 2023, Enrico Wegner"
   navbar:
+    title: false
+    left: 
+      - text: Home
+        href: index.qmd
     right:
-      - text: About
-        href: about.qmd
+      - text: Blog
+        href: blog.qmd
       - icon: github
         href: https://github.com/enweg
+      - icon: linkedin
+        href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
   cookie-consent: true
 format:
   html:
