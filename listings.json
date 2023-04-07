@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/software.html",
+    "items": [
+      "/software/TinyGibbs/index.html",
+      "/software/BayesFluxJulia/index.html",
+      "/software/SnT/index.html"
+    ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": []
+  }
+]
