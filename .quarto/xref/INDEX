@@ -31,5 +31,8 @@
   },
   "software/SnT/index.qmd": {
     "index.html": "a18df77f"
+  },
+  "posts/drafts/first_post/post.qmd": {
+    "post.html": "68a08153"
   }
 }
