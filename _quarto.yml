@@ -6,7 +6,7 @@ execute:
 
 website:
   title: "Enrico Wegner"
-  site-url: https://github.com/enweg
+  site-url: https://enweg.github.io
   description: This is the private website of Enrico Wegner. I blog about what I learn.
   page-footer: "Made with ❤️ in Maastricht, Copyright 2023, Enrico Wegner"
   navbar:
