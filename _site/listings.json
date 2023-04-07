@@ -1,10 +1,10 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/software.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html",
-      "/posts/example-post/index.html"
+      "/software/TinyGibbs/index.html",
+      "/software/BayesFluxJulia/index.html",
+      "/software/SnT/index.html"
     ]
   },
   {

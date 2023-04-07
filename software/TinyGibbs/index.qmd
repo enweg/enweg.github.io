@@ -1,0 +1,17 @@
+---
+title: 'TinyGibbs.jl'
+date: '2023-04-07'
+categories: ['Software']
+description: '`TinyGibbs` is a small Gibbs sampler that makes use of the `AbstractMCMC` interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, `TinyGibbs` can collect samples in two ways: (1) as a dictionary of tensors where each tensor or (2) as a `MCMCChains.Chains` type. Therefore, all the funcionality of `MCMCChains` can be exploited with `TinyGibbs`.'
+---
+
+While learning more about VAR models, I noticed that many of the BayesianEstimation methods rely on Gibbs sampling. Although Julia has many Bayesian libraries, I could not find a Gibbs sampling library that I quite liked. What I wanted was a library that allows one to write a sampler just like one would dicsuss on in a paper. That is, I wanted a sampler that abstract away all the actual computational work and lets me focus on the actual conditional distributions. What I wanted was a sampler that lets me translate a statement like 
+
+1. Sample $\alpha$ from $p(\alpha | y, x, \Sigma)$
+2. Sample $\Sigma$ from $p(\Sigma | y, x, \alpha)$
+
+into a valid sampler. 
+
+TinyGibbs is my answer to this need. TinyGibbs introduced a single macro, `@tiny_gibbs` which transforms a statement that is as close as possible to actual pseudo code in papers into a valid sampler. Additionally, by exploiting the functionality provided in [AbstractMCMC](https://github.com/TuringLang/AbstractMCMC.jl) and [MCMCChains](https://github.com/TuringLang/MCMCChains.jl), TinyGibbs is able to sample in parallel and to diagnose the resulting MCMC chains. 
+
+For more information and to try it out, check out the [GitHub repo](https://github.com/enweg/TinyGibbs.jl). Any feedback is greatly appreciated. 

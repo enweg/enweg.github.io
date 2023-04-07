@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Welcome to my blog. Posts here should not be mistaken with journal grade publications. What I write here is mostly what I learn myself and can therefore contain mistakes. Some blog posts are also just there so that I can structure my thoughts a bit. I publish these posts as a way to motivate myself to keep learning and as a way for others to learn alongside me. If you find any mistakes or have feedback, please leave a comment or get in contact with me.">
+<meta name="author" content="Enrico Wegner">
+<meta name="dcterms.date" content="2023-03-07">
+<meta name="description" content="BayesFlux.jl is a small but flexible Baysian Neural Network library. It is work that came out of my Master Thesis and Reseach Assitance. Both were supervised by Nalan Basturk.">
 
-<title>Enrico Wegner - Blog</title>
+<title>Enrico Wegner - BayesFlux.jl and BayesFluxR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,35 +63,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
@@ -109,12 +80,11 @@ cookieconsent.run({
 </script> 
   
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -126,17 +96,17 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="../../index.html">
  <span class="menu-text">Enrico Wegner</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page">
+    <a class="nav-link" href="../../blog.html">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./software.html">
+    <a class="nav-link" href="../../software.html">
  <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item compact">
@@ -159,19 +129,34 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Blog</h1>
+      <h1 class="title">BayesFlux.jl and BayesFluxR</h1>
                   <div>
         <div class="description">
-          Welcome to my blog. Posts here should not be mistaken with journal grade publications. What I write here is mostly what I learn myself and can therefore contain mistakes. Some blog posts are also just there so that I can structure my thoughts a bit. I publish these posts as a way to motivate myself to keep learning and as a way for others to learn alongside me. If you find any mistakes or have feedback, please leave a comment or get in contact with me.
+          <code>BayesFlux.jl</code> is a small but flexible Baysian Neural Network library. It is work that came out of my Master Thesis and Reseach Assitance. Both were supervised by Nalan Basturk.
         </div>
       </div>
-                </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Software</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Enrico Wegner </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 7, 2023</p>
+      </div>
+    </div>
     
       
     </div>
@@ -180,59 +165,22 @@ cookieconsent.run({
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<p><code>BayesFlux.jl</code> extends the famous <a href="https://fluxml.ai"><code>Flux.jl</code></a> machine learning library in Julia to Bayesian Neural Networks (BNNs). It is not meant to be suitable for production, but instead is meant to allows easy research on BNNs. As such, I tried to keep all parts flexible and extensible. <code>BayesFlux.jl</code> is used in my master thesis investigating the potential usefulness of Bayesian LSTM networks for financial risk forecasting. It is also currently part of other Master thesis work.</p>
+<p>For more information, please check out the <a href="https://github.com/enweg/BayesFlux.jl">GitHub repository</a>. Any feedback is appreciated.</p>
+<p>To make <code>BayesFlux.jl</code> accessible to users that do not know Julia, I also developed an interface to R, called <code>BayesFluxR</code> which can be found <a href="https://github.com/enweg/BayesFluxR">here</a>. Both <code>BayesFlux.jl</code> and <code>BayesFluxR</code> are also available on the official Julia repository and CRAN respectively.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="123,Second Tag" data-listing-date-sort="1654034400000" data-listing-file-modified-sort="1680377081544" data-listing-reading-time-sort="3.005">
-<div class="body">
-<a href="./posts/first_post/post.html">
-<h3 class="no-anchor listing-title">
-This is a dummy blog posts
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('123'); return false;">
-123
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Second Tag'); return false;">
-Second Tag
-</div>
-</div>
-<a href="./posts/first_post/post.html">
-<div class="listing-description">
-<p>This is a test post. In this post, I try out different functionalities</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/first_post/post.html">
-<div class="listing-date">
-Jun 1, 2022
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,0 +1,12 @@
+---
+title: 'SnT_BigTime, SnT_VARS, and BigTime'
+date: '2021-07-07'
+categories: ['Software']
+description: 'Interactive notebooks introducing VAR models and the `BigTime` R library.'
+---
+
+As part of my student assistantship to Ines Wilms, I got the chance to develop a set of interactive notebooks introducing VAR models and the `BigTime` library to which I got to contribute minor parts. These notebooks can be checked out on their respective GitHub repositories. 
+
+- [Introduction to VARs](https://github.com/enweg/SnT_VARS)
+- [Introduction to BigTime](https://github.com/enweg/SnT_BigTime)
+- [`BigTime` library](https://github.com/ineswilms/bigtime)

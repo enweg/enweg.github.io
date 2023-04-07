@@ -1,0 +1,12 @@
+---
+title: 'BayesFlux.jl and BayesFluxR'
+date: '2023-03-07'
+categories: ['Software']
+description: '`BayesFlux.jl` is a small but flexible Baysian Neural Network library. It is work that came out of my Master Thesis and Reseach Assitance. Both were supervised by Nalan Basturk.'
+---
+
+`BayesFlux.jl` extends the famous [`Flux.jl`](https://fluxml.ai) machine learning library in Julia to Bayesian Neural Networks (BNNs). It is not meant to be suitable for production, but instead is meant to allows easy research on BNNs. As such, I tried to keep all parts flexible and extensible. `BayesFlux.jl` is used in my master thesis investigating the potential usefulness of Bayesian LSTM networks for financial risk forecasting. It is also currently part of other Master thesis work. 
+
+For more information, please check out the [GitHub repository](https://github.com/enweg/BayesFlux.jl). Any feedback is appreciated. 
+
+To make `BayesFlux.jl` accessible to users that do not know Julia, I also developed an interface to R, called `BayesFluxR` which can be found [here](https://github.com/enweg/BayesFluxR). Both `BayesFlux.jl` and `BayesFluxR` are also available on the official Julia repository and CRAN respectively. 

@@ -32,9 +32,25 @@ div.quarto-about-jolla .about-link {
     margin-top: 1em;
 }
 
+.description code {
+    background-color: transparent;
+    color: #98ceff;
+}
+
 div.quarto-about-jolla .about-links {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
     width: fit-content;
 }
+
+#listing-software th:first-child,
+#listing-software td:first-child {
+  width: 30%;
+}
+
+#listing-software th:nth-child(2),
+#listing-software td:nth-child(2) {
+  width: 70%;
+}
+

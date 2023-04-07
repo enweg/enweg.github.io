@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Enrico Wegner">
+<meta name="dcterms.date" content="2023-04-07">
+<meta name="description" content="TinyGibbs is a small Gibbs sampler that makes use of the AbstractMCMC interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, TinyGibbs can collect samples in two ways: (1) as a dictionary of tensors where each tensor or (2) as a MCMCChains.Chains type. Therefore, all the funcionality of MCMCChains can be exploited with TinyGibbs.">
 
-<title>Enrico Wegner - Hi 👋🏻</title>
+<title>Enrico Wegner - TinyGibbs.jl</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,32 +80,43 @@ cookieconsent.run({
 </script> 
   
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Enrico Wegner</span>
-    </a>
-  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Enrico Wegner</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software.html">
+ <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/enweg"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/enrico-wegner-2bb8a717b/"><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -112,40 +127,66 @@ cookieconsent.run({
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">TinyGibbs.jl</h1>
+                  <div>
+        <div class="description">
+          <code>TinyGibbs</code> is a small Gibbs sampler that makes use of the <code>AbstractMCMC</code> interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, <code>TinyGibbs</code> can collect samples in two ways: (1) as a dictionary of tensors where each tensor or (2) as a <code>MCMCChains.Chains</code> type. Therefore, all the funcionality of <code>MCMCChains</code> can be exploited with <code>TinyGibbs</code>.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Software</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Enrico Wegner </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 7, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="assets/profile-img.jpeg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Hi 👋🏻</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header><main class="content" id="quarto-document-content">
-<div class="about-info">
-<p>I’m Enrico. I am a PhD candiate at the School of Business and Economics Maastricht. I am interested in causal and Bayesian macro-econometrics.</p>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://www.linkedin.com/in/enrico-wegner-2bb8a717b/" class="about-link">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text"></span>
-  </a>
-  <a href="https://github.com/enweg" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text"></span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+
+
+<p>While learning more about VAR models, I noticed that many of the BayesianEstimation methods rely on Gibbs sampling. Although Julia has many Bayesian libraries, I could not find a Gibbs sampling library that I quite liked. What I wanted was a library that allows one to write a sampler just like one would dicsuss on in a paper. That is, I wanted a sampler that abstract away all the actual computational work and lets me focus on the actual conditional distributions. What I wanted was a sampler that lets me translate a statement like</p>
+<ol type="1">
+<li>Sample <span class="math inline">\(\alpha\)</span> from <span class="math inline">\(p(\alpha | y, x, \Sigma)\)</span></li>
+<li>Sample <span class="math inline">\(\Sigma\)</span> from <span class="math inline">\(p(\Sigma | y, x, \alpha)\)</span></li>
+</ol>
+<p>into a valid sampler.</p>
+<p>TinyGibbs is my answer to this need. TinyGibbs introduced a single macro, <code>@tiny_gibbs</code> which transforms a statement that is as close as possible to actual pseudo code in papers into a valid sampler. Additionally, by exploiting the functionality provided in <a href="https://github.com/TuringLang/AbstractMCMC.jl">AbstractMCMC</a> and <a href="https://github.com/TuringLang/MCMCChains.jl">MCMCChains</a>, TinyGibbs is able to sample in parallel and to diagnose the resulting MCMC chains.</p>
+<p>For more information and to try it out, check out the <a href="https://github.com/enweg/TinyGibbs.jl">GitHub repo</a>. Any feedback is greatly appreciated.</p>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -166,6 +207,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
@@ -275,7 +323,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+      <div class="nav-footer-center">Made with ❤️ in Maastricht, Copyright 2023, Enrico Wegner<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
 
