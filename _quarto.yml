@@ -9,7 +9,7 @@ website:
   navbar:
     title: false
     left: 
-      - text: Home
+      - text: Enrico Wegner
         href: index.qmd
     right:
       - text: Blog

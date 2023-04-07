@@ -1,7 +1,6 @@
 ---
 title: 'This is a dummy blog posts'
 date: '2022-06-01'
-author: Enrico Wegner
 categories: ['123', 'Second Tag']
 description: 'This is a test post. In this post, I try out different functionalities'
 execute: 
@@ -9,7 +8,6 @@ execute:
   warning: false
 editor_options: 
   chunk_output_type: console
-citation: true
 ---
 
 # Heading 1

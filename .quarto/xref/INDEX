@@ -16,5 +16,8 @@
   },
   "blog.qmd": {
     "blog.html": "b31c27b4"
+  },
+  "posts/first_post/post.qmd": {
+    "post.html": "4e23de70"
   }
 }
