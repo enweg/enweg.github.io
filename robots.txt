@@ -1,1 +1,1 @@
-Sitemap: https://github.com/enweg/sitemap.xml
+Sitemap: https://enweg.github.io/sitemap.xml
