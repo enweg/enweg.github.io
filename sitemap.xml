@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://enweg.github.io/index.html</loc>
-    <lastmod>2023-04-07T15:22:24.643Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/software/SnT/index.html</loc>
-    <lastmod>2023-04-07T15:22:24.955Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/software/BayesFluxJulia/index.html</loc>
-    <lastmod>2023-04-07T15:22:25.254Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/software/TinyGibbs/index.html</loc>
-    <lastmod>2023-04-07T15:22:25.567Z</lastmod>
+    <lastmod>2023-04-07T15:25:55.979Z</lastmod>
   </url>
   <url>
     <loc>https://enweg.github.io/software.html</loc>
-    <lastmod>2023-04-07T15:22:25.945Z</lastmod>
+    <lastmod>2023-04-07T15:25:56.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/software/BayesFluxJulia/index.html</loc>
+    <lastmod>2023-04-07T15:25:57.055Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/software/SnT/index.html</loc>
+    <lastmod>2023-04-07T15:25:57.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/software/TinyGibbs/index.html</loc>
+    <lastmod>2023-04-07T15:25:57.735Z</lastmod>
   </url>
   <url>
     <loc>https://enweg.github.io/blog.html</loc>
-    <lastmod>2023-04-07T15:22:26.245Z</lastmod>
+    <lastmod>2023-04-07T15:25:58.047Z</lastmod>
   </url>
 </urlset>
