@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Enrico Wegner">
+<meta name="dcterms.date" content="2023-05-07">
+<meta name="description" content="(Bayesian) VARs form the backbone of modern macroeconometrics, but deriving the likelihood of a VAR in a form that is useful for Baysian calculations is not necessarily the most straighforward task. In this blog post I show how the VAR likelihood can be written in a form that is useful for Bayesian calculations.">
+
+<title>Enrico Wegner - Bayesian VARs - The Likelihood Function</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Enrico Wegner</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software.html" rel="" target="">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/enweg" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/enrico-wegner-2bb8a717b/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Bayesian VARs - The Likelihood Function</h1>
+                  <div>
+        <div class="description">
+          (Bayesian) VARs form the backbone of modern macroeconometrics, but deriving the likelihood of a VAR in a form that is useful for Baysian calculations is not necessarily the most straighforward task. In this blog post I show how the VAR likelihood can be written in a form that is useful for Bayesian calculations.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Enrico Wegner </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 7, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><span class="math display">\[
+\newcommand{\bm}{\mathbf}
+\newcommand{\bA}{\bm A}
+\newcommand{\ba}{\bm a}
+\newcommand{\bB}{\bm B}
+\newcommand{\bb}{\bm b}
+\newcommand{\bC}{\bm C}
+\newcommand{\bc}{\bm c}
+\newcommand{\bD}{\bm D}
+\newcommand{\bd}{\bm d}
+\newcommand{\bE}{\bm E}
+\newcommand{\be}{\bm e}
+\newcommand{\bF}{\bm F}
+\newcommand{\bof}{\bm f}
+\newcommand{\bG}{\bm G}
+\newcommand{\bg}{\bm g}
+\newcommand{\bH}{\bm H}
+\newcommand{\bh}{\bm h}
+\newcommand{\bI}{\bm I}
+\newcommand{\bi}{\bm i}
+\newcommand{\bJ}{\bm J}
+\newcommand{\bj}{\bm j}
+\newcommand{\bK}{\bm K}
+\newcommand{\bk}{\bm k}
+\newcommand{\bL}{\bm L}
+\newcommand{\bl}{\bm l}
+\newcommand{\bM}{\bm M}
+\newcommand{\bom}{\bm m}
+\newcommand{\bN}{\bm N}
+\newcommand{\bn}{\bm n}
+\newcommand{\bO}{\bm O}
+\newcommand{\bo}{\bm o}
+\newcommand{\bP}{\bm P}
+\newcommand{\bp}{\bm p}
+\newcommand{\bQ}{\bm Q}
+\newcommand{\bq}{\bm q}
+\newcommand{\bR}{\bm R}
+\newcommand{\br}{\bm r}
+\newcommand{\bS}{\bm S}
+\newcommand{\bs}{\bm s}
+\newcommand{\bT}{\bm T}
+\newcommand{\bt}{\bm t}
+\newcommand{\bU}{\bm U}
+\newcommand{\bu}{\bm u}
+\newcommand{\bV}{\bm V}
+\newcommand{\bv}{\bm v}
+\newcommand{\bW}{\bm W}
+\newcommand{\bw}{\bm w}
+\newcommand{\bX}{\bm X}
+\newcommand{\bx}{\bm x}
+\newcommand{\bY}{\bm Y}
+\newcommand{\by}{\bm y}
+\newcommand{\bZ}{\bm Z}
+\newcommand{\bz}{\bm z}
+% bold Greek lowercase letters for vectors
+\newcommand{\balpha}{\bm \alpha}
+\newcommand{\bbeta}{\bm \beta}
+\newcommand{\bgamma}{\bm \gamma}
+\newcommand{\bdelta}{\bm \delta}
+\newcommand{\bepsilon}{\bm \epsilon}
+\newcommand{\bvarepsilon}{\bm \varepsilon}
+\newcommand{\bzeta}{\bm \zeta}
+\newcommand{\boeta}{\bm \eta}
+\newcommand{\btheta}{\bm \theta}
+\newcommand{\biota}{\bm \iota}
+\newcommand{\bkappa}{\bm \kappa}
+\newcommand{\blambda}{\bm \lambda}
+\newcommand{\bmu}{\bm \mu}
+\newcommand{\bnu}{\bm \nu}
+\newcommand{\bxi}{\bm \xi}
+\newcommand{\bpi}{\bm \pi}
+\newcommand{\brho}{\bm \rho}
+\newcommand{\bsigma}{\bm \sigma}
+\newcommand{\btau}{\bm \tau}
+\newcommand{\bupsilon}{\bm \upsilon}
+\newcommand{\bphi}{\bm \phi}
+\newcommand{\bchi}{\bm \chi}
+\newcommand{\bpsi}{\bm \psi}
+\newcommand{\bomega}{\bm \omega}
+\]</span></p>
+<p>A standard Baysian Vector AutoRegression (VAR) takes the form</p>
+<p><span class="math display">\[
+\mathbf{y}_t = C\bar{\mathbf{y}}_t + \sum_{i=1}^p A_i \mathbf{y}_{t-i} + \mathbf{\varepsilon}_t
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{y}_t\)</span> is a <span class="math inline">\(m \times 1\)</span> vector of endogenous time series, <span class="math inline">\(\bar{\mathbf{y}}_t\)</span> is a <span class="math inline">\(m_c \times 1\)</span> vector of constants and other deterministic trends, and <span class="math inline">\(A_i\)</span> for <span class="math inline">\(i=1, ..., p\)</span> and <span class="math inline">\(C\)</span> are coefficient matrices. In total, there are <span class="math inline">\(k\equiv mp + m_c\)</span> coefficients in each equation, resulting in a total of <span class="math inline">\(mk\)</span> coefficients in the model.</p>
+<p>Without further specifying the distribution for the error terms, <span class="math inline">\(\mathbf{\varepsilon}_t\)</span>, no likelihood can be derived. The most common choice is to assume that the errors follow a multivariate Normal distribution with mean zero and covariance matrix <span class="math inline">\(\Sigma\)</span>. That is, most commonly we assume that <span class="math inline">\(\mathbf{\varepsilon}_t \sim N(\mathbf{0}, \Sigma)\)</span>. This then implies that</p>
+<p><span class="math display">\[
+\mathbf{y}_t | C, A_1, ..., A_p, \Sigma, \mathbf{y}_{t-1}, ..., \mathbf{y}_{t-p} \sim N(C\bar{\mathbf{y}}_t + \sum_{i=1}^p A_i \mathbf{y}_{t-i}, \Sigma)
+\]</span></p>
+<p>which is then used to derive the for of the likelihood that is classically used. For the Bayesian setting, it turns out, that there is a more convenient form of the likelihood. While both are functionally equivalent, the way Baysians write down the likelihood allows them to easily calculate the posterior given a prior on all parameters.</p>
+<p>To derive the more convenient form, define <span class="math inline">\(A = [c \quad A_1 \quad ... \quad A_p]'\)</span> and <span class="math inline">\(\mathbf{x}_t = [\bar{\mathbf{y}}_t', \mathbf{y}_{t-1}', ..., \mathbf{y}_{t-p}']\)</span> where the former is of dimenions <span class="math inline">\(k \times m\)</span> and the latter is a row vector of dimensions <span class="math inline">\(1\times k\)</span>. Using these definitions, we can write the VAR as</p>
+<p><span class="math display">\[
+\mathbf{y}_t = A'\mathbf{x}_t' + \mathbf{\varepsilon}_t \Rightarrow \mathbf{y}_t' = \mathbf{x}_t A + \mathbf{\varepsilon}_t'
+\]</span></p>
+<p>This form is convenient, because it allows us to define</p>
+<p><span class="math display">\[
+\begin{array}{ccc}
+Y = \begin{bmatrix}\mathbf{y}_1' \\ \vdots \\ \mathbf{y}_T'\end{bmatrix} &amp;
+X = \begin{bmatrix}\mathbf{x}_1 \\ \vdots \\ \mathbf{x}_T\end{bmatrix} &amp;
+E = \begin{bmatrix}\mathbf{\varepsilon}_1 \\ \vdots \\ \mathbf{\varepsilon}_T\end{bmatrix}
+\end{array}
+\]</span></p>
+<p>We can then write the VAR in matrix notation as</p>
+<p><span class="math display">\[
+\DeclareMathOperator{\vect}{vec}
+\DeclareMathOperator{\cov}{cov}
+Y = XA + E \Rightarrow \mathbf{y} = (I_m \otimes X)\mathbf{\alpha} + \mathbf{\varepsilon}
+\]</span></p>
+<p>where <span class="math inline">\(y = \vect(Y)\)</span>, <span class="math inline">\(\mathbf{\alpha} = vec(A)\)</span> and <span class="math inline">\(\mathbf{\varepsilon} = \vect(E)\)</span>. The vectorised form follows directly from the rules of the <span class="math inline">\(\vect\)</span> operator which can be found in e.g.&nbsp;the <a href="https://www2.imm.dtu.dk/pubdb/pubs/3274-full.html">matrix cookbook</a>.</p>
+<p>What are the distributions of <span class="math inline">\(E\)</span> and <span class="math inline">\(\mathbf{\varepsilon}\)</span> though? I will pospone the discussion of the distribution of <span class="math inline">\(E\)</span> to another post, since it is of Matrix Normal form and not many seem to know of the Matrix Normal distributions. Instead, I will focus on the distribution of <span class="math inline">\(\mathbf{\varepsilon}\)</span> which is Multivariate Normal which is directly inhereted form the Multivarite Normal distribution of <span class="math inline">\(\mathbf{\varepsilon}_t\)</span>. To fully describe the distributions, we need its mean and covariance. The mean is easy; since every <span class="math inline">\(\varepsilon_{it}\)</span> has mean <span class="math inline">\(\mathbf{0}\)</span>, we must have that <span class="math inline">\(\mathbf{\varepsilon}\)</span> has mean <span class="math inline">\(\mathbf{0}\)</span>. The covariance is a bit more tricky, and it helps to consider a small example case.</p>
+<p>Lets suppose for a minute that <span class="math inline">\(T=2\)</span> and <span class="math inline">\(m=2\)</span>. Then, <span class="math inline">\(\mathbf{\varepsilon} = [\varepsilon_{11}, \varepsilon_{12}, \varepsilon_{21}, \varepsilon_{22}]'\)</span>. Since errors are uncorrelated over time, we have in general that <span class="math inline">\(\cov(\varepsilon_{it}, \varepsilon_{jt'})=0\)</span> for all <span class="math inline">\(i,j \in \{1, ...., m\}\)</span> and all <span class="math inline">\(t\neq t'\)</span>. We also know the covariance of any two errors at the same point in time: <span class="math inline">\(\cov(\varepsilon_{it}, \varepsilon_{jt})=\sigma_{ij}=[\Sigma]_{ij}\)</span> - the <span class="math inline">\(ij\)</span> element of the covariance matrix <span class="math inline">\(\Sigma\)</span>. Thus, in our small example, the covariance structure of <span class="math inline">\(\mathbf{\varepsilon}\)</span> must take the form</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\sigma_{11} &amp; 0 &amp; \sigma_{12} &amp; 0 \\
+0 &amp; \sigma_{11} &amp; 0 &amp; \sigma_{12} \\
+\sigma_{21} &amp; 0 &amp; \sigma_{22} &amp; 0 \\
+0 &amp; \sigma_{21} &amp; 0 &amp; \sigma_{22}
+\end{bmatrix} = \Sigma \otimes I_T
+\]</span></p>
+<p>A careful look at the form above reveals that it is equal to <span class="math inline">\(\Sigma \otimes I_T\)</span>. This generally holds, implying that <span class="math inline">\(\mathbf{\varepsilon} \sim N(\mathbf{0}, \Sigma \otimes I_T)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A small useful trick
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Before we continue out derivation of the likelihood, it is useful to first derive a small algebraic trick. The general problem is, that we are given a quadratic form</p>
+<p><span class="math display">\[
+(\by - X\bbeta)'\Sigma^{-1}(\by - X\bbeta)
+\]</span></p>
+<p>and we want to rewrite the above into a quadratic form in <span class="math inline">\(\bbeta\)</span> and <span class="math inline">\(\by\)</span>. We thus first write</p>
+<p><span class="math display">\[
+\begin{split}
+&amp;(\by - X\bbeta)'\Sigma^{-1}(\by - X\bbeta) \\
+=&amp; (\by - X\hat\bbeta + X\hat\bbeta X\bbeta)'\Sigma^{-1}(\by - X\hat\bbeta + X\hat\bbeta X\bbeta) \\  
+=&amp; (\by - X\hat\bbeta)'\Sigma^{-1}(\by - X\hat\bbeta) + (\bbeta - \hat\bbeta)X'\Sigma^{-1}X(\bbeta - \hat\bbeta) + 2(\by - X\hat\bbeta)'\Sigma^{-1}(X\hat\bbeta - X\bbeta)
+\end{split}
+\]</span></p>
+<p>We would like to get rid of the last term by choosing a smart <span class="math inline">\(\hat\bbeta\neq \bbeta\)</span>. For the last term to be zero, it is sufficient to find a <span class="math inline">\(\hat\bbeta\)</span> that sets <span class="math inline">\(\by - X\hat\bbeta = 0\)</span>.</p>
+<p><span class="math display">\[
+\begin{split}
+&amp;\by - X\hat\bbeta = 0 \\
+\Leftrightarrow &amp; \by = X\hat\bbeta \\
+\Leftrightarrow &amp; X'\by = X'X\hat\bbeta \\
+\Rightarrow &amp; \hat\bbeta = (X'X)^{-1}X'\by
+\end{split}
+\]</span></p>
+<p>Thus, by choosing <span class="math inline">\(\hat\bbeta\)</span> to be the standard OLS estimate, we can rewrite the quadratic involving both <span class="math inline">\(\by\)</span> and <span class="math inline">\(\bbeta\)</span> into two quadratic forms, each involving only one of <span class="math inline">\(\by\)</span> and <span class="math inline">\(\bbeta\)</span>. That is, for <span class="math inline">\(\hat\bbeta = (X'X)^{-1}X'\by\)</span> we have</p>
+<p><span class="math display">\[
+(\by - X\bbeta)'\Sigma^{-1}(\by - X\bbeta) = (\by - X\hat\bbeta)'\Sigma^{-1}(\by - X\hat\bbeta) + (\bbeta - \hat\bbeta)'X'\Sigma^{-1}X(\bbeta - \hat\bbeta)
+\]</span></p>
+</div>
+</div>
+</div>
+<p>So we know that <span class="math inline">\(\by = (I_m \otimes X)\balpha + \bvarepsilon\)</span> with <span class="math inline">\(\bvarepsilon \sim N(\bm 0, \Sigma \otimes I_T)\)</span>. Thus, we also know <span class="math inline">\(\by \sim N((I_m \otimes X)\balpha, \Sigma \otimes I_T)\)</span>. Looking up the density of the multivariate Normal on, for example, <a href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution">wikipedia</a> reveals that the likelihood can be proportially by written as</p>
+<p><span class="math display">\[
+\mathcal{L}(\balpha, \Sigma) \propto |\Sigma \otimes I_T|^{-1/2}\exp\{-\frac{1}{2}(\by - (I_m \times X)\balpha)'(\Sigma \otimes I_T)^{-1}(\by - (I_m \otimes X)\balpha)\}
+\]</span></p>
+<p>Using the small trick above, we can rewrite this as</p>
+<p><span class="math display">\[
+\begin{split}
+\mathcal{L}(\balpha, \Sigma) &amp;\propto |\Sigma \otimes I_T|^{-1/2}\exp\{-\frac{1}{2}(\by - (I_m \otimes X)\hat\balpha)'(\Sigma \times I_T)^{-1}(\by - (I_m \otimes X)\hat\balpha)\} \\
+&amp;\times \exp\{-\frac{1}{2}(\balpha - \hat\balpha)'(I_m\otimes X)'(\Sigma \otimes I_T)(I_m \otimes X)(\balpha - \hat\balpha)\}
+\end{split}
+\]</span></p>
+<p>where <span class="math inline">\(\hat\balpha = (I_m \otimes (X'X)^{-1}X')\by\)</span>. This can be massively simplified by making the following observations (see for example the <a href="https://www2.imm.dtu.dk/pubdb/pubs/3274-full.html">matrix cookbook</a>)</p>
+<ol type="1">
+<li><span class="math inline">\(|A \otimes B| = |A|^{rank(B)}|B|^{rank(A)}\)</span> and thus <span class="math inline">\(|\Sigma \otimes I_T| = |\Sigma|^T\)</span></li>
+<li><span class="math inline">\((A \otimes B)' = A' \otimes B'\)</span> and thus <span class="math inline">\((I_m \otimes X)' = I_m \otimes X'\)</span></li>
+<li><span class="math inline">\((A \otimes B)^{-1} = A^{-1}\otimes B^{-1}\)</span> if the inverses exist. Thus <span class="math inline">\((\Sigma \otimes I_T)^{-1} = \Sigma^{-1}\otimes I_T\)</span></li>
+<li>If all matrices are comformable, then <span class="math inline">\((A\otimes B)(C\otimes D) = AD\otimes BC\)</span> and thus</li>
+</ol>
+<p><span class="math display">\[
+(I_m\otimes X)'(\Sigma\otimes I_T)^{-1}(I_m \otimes X) = (\Sigma \otimes (X'X)^{-1})^{-1}
+\]</span></p>
+<p>Using all of this in the likelihood, we can write</p>
+<p><span class="math display">\[
+\begin{split}
+\mathcal{L}(\balpha, \Sigma) &amp;\propto |\Sigma|^{-T/2}\exp\{\frac{1}{2}(\by - (I_m \otimes X)\hat\balpha)'(\Sigma^{-1}\otimes I_T)(\by - (I_m \otimes X)\hat\balpha)\} \\
+&amp;\times \exp\{-\frac{1}{2}(\balpha - \hat\balpha)'(\Sigma \otimes (X'X)^{-1})^{-1}(\balpha - \hat\balpha)\}
+\end{split}
+\]</span></p>
+<p>Before we can come to the conclusion of this derivation, we need to rewrite one more part. For this, consider the first exponent term and write</p>
+<p><span class="math display">\[
+\begin{split}
+&amp;(\by - (I_m \otimes X)\hat\balpha)'(\Sigma^{-1}\otimes I_T)(\by - (I_m\otimes X)\hat\balpha)\\
+= &amp;[(\Sigma^{-1/2}\otimes I_T)(\by - (I_m \otimes X)\hat\balpha)]'[(\Sigma^{-1/2}\otimes I_T)(\by - (I_m \otimes X)\hat\balpha)]
+\end{split}
+\]</span></p>
+<p>Carefully looking at some of the kronecker product and <span class="math inline">\(\vect\)</span> operator properties, we can then recognise that</p>
+<p><span class="math display">\[
+(\Sigma^{-1/2}\otimes I_T)(\by - (I_m \otimes X)\hat\balpha) = \vect((Y - X\hat A)\Sigma^{-1/2})
+\]</span></p>
+<p>where <span class="math inline">\(\hat\balpha = \vect(\hat A)\)</span>. Thus, the term in the first exponent can be written as</p>
+<p><span class="math display">\[
+\begin{split}
+&amp; (\by - (I_m \otimes X)\hat\balpha)'(\Sigma^{-1}\otimes I_T)(\by - (I_m\otimes X)\hat\balpha) \\
+= &amp;\vect((Y - X\hat A)\Sigma^{-1/2})'\vect((Y - X\hat A)\Sigma^{-1/2})
+\end{split}
+\]</span></p>
+<p>By the properties of the trace, this equals</p>
+<p><span class="math display">\[
+\DeclareMathOperator{\tr}{tr}
+\begin{split}
+\vect((Y - X\hat A)\Sigma^{-1/2})'\vect((Y - X\hat A)\Sigma^{-1/2}) &amp;= \tr((\Sigma^{-1/2})'(Y-X\hat A)'(Y-X\hat A)\Sigma^{-1/2}) \\
+&amp;= \tr(\Sigma^{-1/2}(\Sigma^{-1/2})'(Y - X\hat A)'(Y-X \hat A)) \\
+&amp;= \tr(\Sigma^{-1}(Y - X\hat A)'(Y - X\hat A)) \\
+&amp;= \tr(\underbrace{(Y-X\hat A)'(Y - X\hat A)}_{S}\Sigma^{-1})
+\end{split}
+\]</span></p>
+<p>We then finally arrive at the result that we were heading for</p>
+<p><span class="math display">\[
+\begin{split}
+\mathcal{L}(\balpha, \Sigma) &amp;\propto |\Sigma|^{-T/2}\exp\{\frac{1}{2}\tr(S\Sigma^{-1})\} \\
+&amp;\times \exp\{-\frac{1}{2}(\balpha - \hat\balpha)'(\Sigma \otimes (X'X)^{-1})^{-1}(\balpha - \hat\balpha)\}
+\end{split}
+\]</span></p>
+<p>Why is this result so useful? Carefully looking at the expression above and comparing the forms to some known distributions, you might notice that the second exponential looks very much like a multivariate Normal distribution, while the first part looks very much like an Inverse-Wishart distribution. To actually get there, we still need to multiply and devide by <span class="math inline">\(|\Sigma \otimes (X'X)^{-1}|^{-1/2}\)</span> which by the rules of the kronecker product is the same as <span class="math inline">\(|\Sigma|^{-k/2}|(X'X)^{-1}|^{-m/2}\)</span>. Thus, after ignoring <span class="math inline">\(|(X'X)^{-1}|^{-m/2}\)</span> because it does not depend on <span class="math inline">\(\balpha\)</span> or <span class="math inline">\(\Sigma\)</span>, we can finally write the likelihood as</p>
+<p><span class="math display">\[
+\begin{split}
+\mathcal{L}(\balpha, \Sigma) &amp;\propto |\Sigma|^{-(T-k)/2}\exp\{\frac{1}{2}\tr(S\Sigma^{-1})\} \\
+&amp;\times |\Sigma \otimes (X'X)^{-1}|^{-1/2}\exp\{-\frac{1}{2}(\balpha - \hat\balpha)'(\Sigma \otimes (X'X)^{-1})^{-1}(\balpha - \hat\balpha)\} \\
+&amp;=p(\Sigma)p(\balpha|\Sigma)
+\end{split}
+\]</span></p>
+<p>In the last like above I have already indicated that this is proportional to the product of a marginal distribution for <span class="math inline">\(\Sigma\)</span> and a conditional distribution for <span class="math inline">\(\balpha\)</span>. From the functional forms we find that</p>
+<p><span class="math display">\[
+\begin{split}
+\Sigma &amp;\sim IW(S, T-k-m-1) \\
+\balpha | \Sigma &amp;\sim N(\hat\balpha, \Sigma \otimes (X'X)^{-1})
+\end{split}
+\]</span></p>
+<p>So again, why is this useful? Because it turns out that the likelihood is proportional to these two distributions. Why is that in turn useful? Because we know how to design smart priors for each part. That is, we know how to design a smart prior for the Inverse-Wishart part and we know how to design a smart prior for the conditional Normal part. With smart, I mean, among others, that we know conjugate priors for both parts. But even for non-conjugate priors, the form above is often more convenient to use than the classical form of the likelihood. I will show these benefits in future posts.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="enweg/enweg.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Made with ❤️ in Maastricht, Copyright 2023, Enrico Wegner<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
