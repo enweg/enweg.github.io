@@ -18,3 +18,11 @@ page-layout: article
 
 # Citation info at the end of the post
 # citation: true
+
+# blog comments 
+comments: 
+  utterances: 
+    repo:  enweg/enweg.github.io
+    label: post-comment
+    theme: github-light
+    issue-term: pathname
