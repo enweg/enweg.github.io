@@ -19,10 +19,24 @@ website:
         href: blog.qmd
       - text: Software
         href: software.qmd
-      - icon: github
-        href: https://github.com/enweg
-      - icon: linkedin
-        href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
+      # - icon: github
+      #   href: https://github.com/enweg
+      # - icon: linkedin
+      #   href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
+      - text: More
+        menu: 
+          - text: CV
+            icon: person
+            href: assets/CV_Enrico_Wegner.pdf
+          - text: GitHub
+            icon: github
+            href: https://github.com/enweg
+          - text: LinkedIn 
+            icon: linkedin
+            href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
+          - text: Publications
+            icon: book
+            href: https://scholar.google.com/citations?user=5vjXTtAAAAAJ&hl=en
   cookie-consent: true
 format:
   html:
