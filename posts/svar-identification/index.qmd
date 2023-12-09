@@ -1,0 +1,376 @@
+---
+title: "Notes: Structural Vector Autoregressions: Theory of Identification and Algorithms for Inference"
+bibliography: bibliography.bib
+date: 2023/12/02
+description: "Notes for @ramirezSVAR2010"
+format: html
+execute: 
+  output: true
+  eval: true
+jupyter: julia-ros-1.9
+---
+
+```{julia}
+#| include: false 
+macro display(ex)
+  return :(display($ex))
+end
+```
+
+
+I first read @ramirezSVAR2010 when I was taking a class on empirical macroeconomics during my masters. Although I already found the paper interesting back then, I cannot claim that I fully understood the importance of it; neither can I claim that I fully understood the theory. The latter I still cannot claim, but I think I have a much better understanding of its importance now. I would highly recommend it reading the paper. It will not be an easy read, and will probably require a few passes, but I think that the theory they provide is very intersting and should be part of every empirical macro class. 
+
+*Below are some of my notes on @ramirezSVAR2010. These notes are mostly written for myself, but I hope they can still be helpful for some others.*
+
+::: {.callout-note}
+## The paper in three bullet points 
+
+- The commonly used order condition stating that at least $n(n-1)/2$ restrictions are needed for a SVAR to be identified is only necessary. Thus, two models can both satisfy this criterion, with one of them not actually being identified. @ramirezSVAR2010 give an example of such a case in the introduction. The goal of the paper is to provide necessary and sufficient conditions for when a SVAR is identified. Secondary goal is to provide an easy to check condition. 
+- The paper allows putting linear restrictions on any non-linear combination of SVAR parameters. However, the restrictions must satisfy certain criteria. These criteria are all satisfied for restrictions on IRFs, including the infinite IRF in the stationary SVAR case. The criteria are also satisfied for linear restrictions on the SVAR structural matrices themselves. Thus, commonly restricted functions of the structural parameters satisfy the criteria. 
+- **Main result**: A SVAR is exactly identified if and only if the last shock has zero restrictions, the second to last shock has one restriction, etc., up to the first shock which has $n-1$ restrictions. Therefore, it is recommended to order shocks such that the last has the least restrictions and the first has the most restrictions.
+:::
+
+## Notes
+
+Although commonly used, the order condition stating that at least $n(n-1)/2$ restrictions need to be imposed in order for a SVAR to be identified, is only necessary. Thus, even if a set of restriction satisfies this criterion, the model might still not be identified. @ramirezSVAR2010 show this on an elegant example, but we can discuss it on an example with less realistic restrictions. 
+
+Suppose that we are interested in identifying a SVAR with three variables: prices, real quantities, and the interest rate. We therefore would like to identify a supply, demand, and monetary policy shock. Various researchers might come up with various restrictions to impose. Suppose, three research groups came up with the following restrictions: 
+
+**First group**:
+
+1. Due to sticky prices, a demand shock has no contemporaneous impact on prices. Additionally, due to a lag in official statistics, a demand shock has no contemporaneous impact on interest rates. 
+2. Again, due to sticky prices, a monetary policy shock has no contemporaneous impact on prices. However, we might be able to argue that because a lot of purchases are made by credit cards, and because interest on credit cards changes whenever the short-term rates change, monetary policy can have a contemporaneous impact on quantities. 
+3. A supply shock is unrestricted. 
+
+**Second group**:
+
+1. Due to a lag in official statistics, a supply shock has no contemporaneous impact on interest rates. However, a supply shock does contemporaneously affect prices and quantities. 
+2. Also do to a lag in official statistics, a demand shock has no contemporaneous impact on interest rates. However, although prices are sticky, the observation period is long enough for some companies to be able to adjust prices. Thus, a demand shock has a contemporaneous impact on prices and on quantities. 
+3. By the same credit card argument as above, a monetary policy shock has a contemporaneous impact on quantities. However, it does not have a contemporaneous impact on prices, because firms' production costs are less likely to be highly dependent on interest rates in the short-run. 
+
+**Third group**:
+
+1. Due to sticky prices, a monetary policy shock cannot contemporaneously affect prices. However, because a lot of spending is done using credit cards, monetary policy can have an immediate impact on quantities. 
+2. Because of a lag in official statistics, a supply shock has no immediate impact on interest rates. Additionally, the aggregate supply equation (determining the supply shock) is only a function of prices and quantities. Thus, the coefficient on interest rates is restricted to be zero. 
+3. No restrictions are imposed on a demand shock. 
+
+The first two research groups therefore impose restrictions only on the impact matrix, while the third group of researchers imposes some restrictions on the impact matrix, and additional restrictions on the contemporaneous coefficient matrix. However, counting the number of restrictions for all groups, we each time arrive at three. Thus, all three groups satisfy the order restrictions. The methodology developed in @ramirezSVAR2010, however, can be used to show that only the SVAR of the first and third group is exactly identified. 
+
+Before discussing how the results in @ramirezSVAR2010 can be used to show that the second SVAR is not exactly identified, it is helpful to first discuss what is meant with exact identification. @ramirezSVAR2010 define exact identification as the case when for almost all reduced form parameter points, there exists a unique structural parameter point that satisfies the restrictions. Exact identification is therefore extremely desirable, because it states that no-matter what our reduced form estimates are, we will always be able to obtain a unique structural representation. Thus, we obtain identification results before we know what the reduced form estimates are. 
+
+Why is this not always the case? Following @ramirezSVAR2010 we can parameterise a SVAR as 
+$$
+y_t'A_0 = \sum_{l=1}^p y_{t-l}'A_l + \varepsilon_t',
+$$ {#eq-svar}
+where $y_t$ is a $n\times 1$ vector of variables, and where the white noise vector $\varepsilon_t$ is a $n\times 1$ vector of structural shocks, such that $\mathbb{E}[\varepsilon_t]=\mathbf{0}$, $\mathbb{E}[\varepsilon_{i,t}\varepsilon_{j,t}]=\delta_{i,j}$ with $\delta_{i,j}$ being the Kronecker delta. Writing, $A_+' = [A_1' \dots A_p']$, $x_t = [y_t', \dots y_{t-p+1}']'$, @eq-svar can be written as 
+$$
+y_t'A_0 = x_t'A_+ + \varepsilon_t'.
+$$ {#eq-svar-aplus}
+@ramirezSVAR2010 call $(A_0, A_+)$ a structural parameter point. 
+
+Assuming that $A_0$ is invertible, @eq-svar-aplus can also be written as 
+$$
+y_t' = x_t'B_+ + u_t,
+$$ {#eq-svar-reduced}
+where $B_+ = A_+A_0^{-1}$ and $u_t' = \varepsilon_tA_0^{-1}$ with $\mathbb{E}(u_tu_t') = (A_0A_0')^{-1} = \Sigma$. @ramirezSVAR2010 call $(B_+, \Sigma)$ a reduced form parameter point, and @eq-svar-reduced is called the reduced form system. 
+
+Now, to understand why exact identification is such a unique result, we can have a look at a standard identification result in the SVAR literature. Consider two structural parameter points $(A_0, A_+)$ and $(\tilde A_0, \tilde A_+)$. If $\tilde A_0 = A_0P$ and $\tilde A_+ = A_+P$ with $P$ being some invertible matrix, then $B_+ = A_+A_0^{-1} = A_+PP^{-1}A_0^{-1} = \tilde A_+\tilde A_0^{-1}$. Thus, the two parameter points result in the same reduced-form coefficient matrix $B_+$. If in addition $P^{-1}=P'$, which is the case whenever $P$ is a rotation matrix, then $\Sigma = (A_0A_0')^{-1} = (A_0PP'A_0')^{-1} = (\tilde A_0 \tilde A_0')^{-1}$, and thus also the reduced-form error-covariance matrix is the same. The two points $(A_0, A_+)$ and $(\tilde A_0, \tilde A_+)$ are then called **observationally equivalent**. @ramirezSVAR2010 show that if two structural parameter points are observationally equivalent, then one is the rotation of another. If the two points are not just observationally equivalent but also both satisfy the imposed restrictions, then there exists no way to obtain a unique structural representation from the reduced form estimation. Exact identification is therefore the unique case in which the restrictions are just tight enough to rule out all except one structural representation for almost all reduced form points. 
+
+Exact identification is also related too global identification. A structural parameter point is **globally identified** if and only if there is no observationally equivalent other structural parameter point. Similarly, a structural parameter point is said to be **locally identified** if and only if there exists no other observationally equivalent structural parameter point within a neighbourhood. Exact identification is therefore global identification reduced to the subset of structural parameter points that satisfy the imposed restrictions. 
+
+The definition of exact identification requires a set of restrictions. This raises the question what these restrictions can be. @ramirezSVAR2010 are rather general with regard to this. They allow for linear restrictions on $f(A_0, A_+)$ where $f(A_0, A_+)$ is a transformation with domain $U$ that maps the structural parameter point $(A_0, A_+)$ to a set of $k \times n$ matrices where the columns correspond to the structural shocks in the system. Restrictions are then set on $f(A_0, A_+)$ by requiring that 
+$$
+Q_jf(A_0, A_+)e_j = 0,
+$$
+with $Q_j$ being some $k \times k$ matrix representing linear restrictions and being of rank $q_j$ (some rows might be all zero), and $e_j$ being the $j$th unit vector. Although not necessary, a convenient ordering of the shocks is that that $q_1 \geq q_2 \geq \dots \geq q_n$, such that the first shock has the most restrictions and the last shock has the least restrictions.
+
+Examples for $f(A_0, A_+)$ include 
+
+1. $f(A_0, A_+) = [A_0; A_+']$: restrictions on the SVAR coefficient matrices. 
+2. $f(A_0, A_+) = [\Phi_i]$ with $0\leq i \leq \infty$ and $\Phi$ being the IRF matrix (not infinite IRF is included). 
+3. A combination of the two above. 
+
+The examples above are commonly restricted elements in the SVAR literature, with restriction on $\Phi_0$ being short-run restrictions, and restrictions on $\Phi_\infty$ being long-run restrictions. One common property of all the restrictions above is that for any rotation matrix $P$, it holds that $f(A_0P, A_+P) = f(A_0, A_+)P$. @ramirezSVAR2010 call this property **admissible** and require it to be true for any restrictions. For some results they also require **regularity** and **strong regularity**, both I will not define here, but they show that both hold for restrictions of the kind above. 
+
+In my opinion one of the most important results in @ramirezSVAR2010 is that of Theorem 7.
+
+::: {.callout-important}
+
+## Theorem 7: Necessary and Sufficient Condition for Global Identification
+
+**In words**: The SVAR is exactly identified if and only if the last shock has zero restrictions, the second to last has one restriction, etc. when the shocks are ordered in such a way that the last has the fewest restrictions, the second to last has the second to fewest restrictions etc. Conditions on restrictions are satisfied when putting restrictions on IRFs or structural matrices. 
+
+
+**Statement**: Consider a SVAR with admissible and strongly regular restrictions represented by $R$. The SVAR is exactly identified if and only if $q_j = n-j$ for $1\leq j \leq n$
+
+:::
+
+Theorem 7 gives a condition that is as easy check as the original order condition. To see the power of this result, consider the examples from the beginning, where we put restrictions on $\Phi_0$, and $A_0$. 
+
+**First group**:
+
+For the first research group, $f(A_0, A_+)=\Phi_0$ with variables ordered as $p_t, q_t, r_t$, and shocks ordered as $\varepsilon_t^s, \varepsilon_t^d, \varepsilon_t^r$, the restriction matrix thus has the following pattern
+$$
+f(A_0, A_+) = 
+\begin{bmatrix}
+* & 0 & 0 \\ 
+* & * & * \\ 
+* & 0 & *
+\end{bmatrix},
+$$
+where an asterisk denotes an unrestricted element. Since the demand shock has the most restrictions, the monetary policy shock the second most, and the supply shock the least, we can reorder the shocks in this order to obtain 
+$$
+\begin{bmatrix}
+0 & 0 & * \\ 
+* & * & * \\ 
+0 & * & * \\
+\end{bmatrix}.
+$$
+There therefore exists two restrictions on the first column, one on the second, and zero on the last. By Theorem 7, this SVAR is exactly identified. In this special case, we could have also seen this by additionally ordering the variables as $q_t, r_t, p_t$ resulting in  
+$$
+\begin{bmatrix}
+* & * & * \\ 
+0 & * & * \\
+0 & 0 & * \\ 
+\end{bmatrix}.
+$$
+This is an upper-triangular system and can thus be found using a standard Cholesky identification scheme. However, as seen here, it sometimes is not immediately clear whether a system is triangular or not. The method of @ramirezSVAR2010 is general enough to discover exact identification even if the research group does not realise that their system is triangular. 
+
+**Second group**:
+
+For the second research group $f(A_0, A_+)=\Phi_0$, similar to the first group. However, different to the first group, the second group puts one restriction on each structural shock. Thus, $q_j = 1$ for all $1 \leq j \leq 3$. Theorem 7 can therefore never be satisfied, and thus the SVAR of the second research group is not exactly identified. 
+
+**Third group**:
+
+For the third research group $f(A_0, A_+)=[A_0; \Phi_0]$. With variables ordered as $q_t, p_t, r_t$, and shocks ordered as $\varepsilon_t^s, \varepsilon_t^r, \varepsilon_t^d$,
+$$
+f(A_0, A_+) = 
+\begin{bmatrix}
+* & * & * \\ 
+* & * & * \\ 
+0 & * & * \\ 
+* & * & * \\ 
+* & 0 & * \\ 
+0 & * & *
+\end{bmatrix}.
+$$
+Thus, there are two restrictions on the first shock, one restriction on the second shock, and zero restrictions on the last shock. Although restrictions are mixed over $A_0$ and $\Phi_0$, Theorem 7 implies that this SVAR is still exactly identified. 
+
+
+Theorem 7 gives an easy way to check whether restrictions are sufficient to achieve exact identification. However, Theorem 7 does not provide a way to obtain the unique structural parameter point from the reduced form estimates. To this end, @ramirezSVAR2010 proof another useful result: Theorem 5.
+
+::: {.callout-important}
+
+## Theorem 5: Just rotate the Cholesky Identification
+
+**In words**: If the SVAR is exactly identified, then the exactly identified structural parameter point is a rotation of some structural parameter point that does not satisfy all restrictions.
+
+**Statement**: Consider an SVAR with restrictions represented by $R$. The SVAR is exactly identified if and only if, for almost every structural parameter point $(A_0, A_+)\in U$, there exists a unique matrix $P\in O(n)$ such that $(A_0P, A_+P)\in R$
+
+:::
+
+Theorem 5 can be combined with Theorem 7 to obtain an efficient algorithm. First, use Theorem 7 to check whether the SVAR is exactly identified. If this is the case, then Theorem 5 implies that the unique structural parameter point satisfying the restrictions is a rotation of a parameter point that does not satisfy the restrictions. Finding a structural parameter point that potentially does not satisfy the restrictions is easy: Just use an arbitrary Cholesky scheme. Thus, if we could find the rotation matrix needed to satisfy the restrictions, then we can also find the unique structural parameter point. 
+
+## The Algorithm
+
+How do we find the rotation matrix of Theorem 5? The first step is to start with some arbitrary structural point $(A_0, A_+)\in U$. For this point, there exists some $1 \leq j \leq n$ such that 
+$$
+Q_jf(A_0, A_+)e_j \neq 0.
+$$
+
+@ramirezSVAR2010 propose the following algorithm to find the appropriate rotation matrix (here implemented in Julia). 
+
+```{julia}
+#| output: false
+using LinearAlgebra
+using Random
+
+"""
+Helper function used to remove rows of zeros from Qj.
+"""
+function remove_zero_rows(Qj::Matrix)
+  non_zero_row = map(x -> any(x .!= 0), eachrow(Qj))
+  return Qj[non_zero_row, :]
+end
+
+"""
+Normalise the vector to have unit length. 
+"""
+make_unit_length(x::Vector) = x ./ norm(x)
+
+nullspace_vec(Q::Matrix) = qr(Q').Q[:, end]
+
+"""
+Find the structural parameter point that satisfies the restrictions. 
+"""
+function find_rotation_matrix(
+  A0::Matrix{T}, 
+  Aplus::Matrix{T}, 
+  f::Function,  # takes as arguments A0, Aplus and return f(A0, Aplus)
+  Qjs::Vector{Matrix{T}}, 
+  normalise::Function  # takes as arguments A0, Aplus, P and return normalised P
+) where {T}
+
+  n = size(A0, 1)
+  P = similar(A0)
+  F = f(A0, Aplus)
+
+  # First iteration of step 2 of Algorithm 1
+  p1 = nullspace_vec(remove_zero_rows(Qjs[1])*F)
+  P[:, 1] = p1
+
+  # Remaining iterations in step 2 of Algorithm 2
+  for i=2:n
+    Q_tilde = vcat(remove_zero_rows(Qjs[i])*F, P[:, 1:i-1]')
+    pi = nullspace_vec(Q_tilde)
+    P[:, i] = pi
+  end
+
+  # Apply normalising rule
+  return normalise(A0, Aplus, P)
+end
+```
+We can test whether this algorithm works, by applying it to the third set of restrictions with the shocks in order of $\varepsilon_t^s, \varepsilon_t^r, \varepsilon_t^d$. The restrictions for the third research group are then given by 
+
+
+```{julia}
+#| output: false
+# k = 6
+f(A0, Aplus) = [A0; inv(A0')]
+
+Qjs = [zeros(6, 6) for _ in 1:3]
+# restrictions for supply shock 
+# variables are ordered as q, r, p
+Qjs[1][1, 2] = 1  # interest rate coefficient is zero 
+Qjs[1][2, 5] = 1  # no contemporaneous impact on interest rates
+# restrictions for monetary policy shock 
+Qjs[2][1, 6] = 1;  # no contemporaneous impact on prices
+```
+
+Next to restrictions, we also need to impose a normalisation. A normalisation is needed, because if $(A_0, A_+)$ satisfies the restrictions, then so does $(A_0D, A_+D)$ with $D$ being a diagonal matrix with only plus/minus one on the diagonal. To see this, note that $D$ is a rotation matrix, and that if $(A_0, A_+)$ satisfies the restrictions, then 
+$$
+Q_jf(A_0D, A_+D) = Q_jf(A_0, A_+)De_j = \pm Q_jf(A_0, A_+)e_j = 0 \; \forall 1 \leq j \leq n.
+$$
+We therefore need to define a normalisation scheme. @ramirezSVAR2010 define this formally. Since $PD$ is another rotation matrix, we can simply normalise the rotation matrix that would solve the restrictions such that also the normalisation scheme is satisfied. The function below does exactly this and specifies our normalisation such that the supply shock has a positive impact on prices (a contractionary supply shock), the monetary policy shock has a positive impact on interest rates (monetary contraction), and the demand shock has a positive impact on quantities (expansionary demand shock). 
+
+```{julia}
+#| output: false
+function normalise_P(A0_init, Aplus_init, P)
+  A0 = A0_init * P
+  Phi0 = inv(A0')
+  n = size(A0, 1)
+  D = diagm(ones(n))
+  for i = 1:n
+    if Phi0[i, i] < 0
+      D[i, i] = -1
+    end
+  end
+  return P*D
+end
+```
+
+Given the restrictions and the normalisation, we are ready to test the algorithm on some artificial data. Here I will use a completely randomly created reduced-form error covariance matrix. Our initial guess for a structural point can then be as simple as the one obtained using a Cholesky identification scheme. Note that because of the parameterisation chosen by @ramirezSVAR2010, the correct Cholesky part is now the upper-triangular part. 
+ 
+```{julia}
+Random.seed!(1234)
+Sigma = randn(3, 3)
+Sigma = Symmetric(Sigma * Sigma')
+
+A0_init = inv(cholesky(Sigma).U)
+A0_init = Matrix(A0_init)
+@display A0_init
+```
+
+It is very unlikely that this initial guess satisfies all the restrictions, but it is nonetheless good to check it. Unsurprisingly, it does not satisfy the restrictions. 
+
+```{julia}
+function is_satisfying_restrictions(A0, Aplus, f, Qjs)
+  F = f(A0, Aplus)
+  for j = 1:lastindex(Qjs)
+    all(isapprox.(Qjs[j]*F[:, j], 0; atol = sqrt(eps()))) || return false
+  end
+  return true
+end
+
+@show is_satisfying_restrictions(A0_init, A0_init, f, Qjs);
+```
+
+We can then simply plug in the initial guess and the restrictions into the algorithm to obtain a rotation matrix. This rotation matrix can then be used to rotate the initial guess. The obtained point satisfies all restrictions, as promised by the algorithm. 
+
+```{julia}
+P = find_rotation_matrix(A0_init, A0_init, f, Qjs, normalise_P)
+A0 = A0_init * P
+
+@show is_satisfying_restrictions(A0, A0, f, Qjs);
+```
+
+Even though the new point satisfies all restrictions, it is still good to check the actual restriction matrix obtained. At the obtained parameter point, zeros do not just exist at the imposed positions in $f$, but additional zeros were also introduced. In the identified SVAR, the interest rate coefficient is also zero for the equation specifying the demand shock. Additionally, a monetary policy shock has not just no contemporaneous impact on prices, but also not on quantities. 
+
+```{julia}
+@display round.(f(A0, A0); digits = 2)
+```
+
+
+## How does the algorithm work? 
+
+So the algorithm works. But how does it work? It all comes down to the combination of Theorem 5 and Theorem 7. Theorem 7 tells us whether a SVAR is exactly identified. Theorem 5 tells us that if this is the case, then there exists a rotation matrix $P$ such that $(A_0, A_+)=(\tilde A_0P, \tilde A_+P)$ where $(A_0, A_+)$ satisfies the restrictions, but $(\tilde A_0, \tilde A_+)$ does not. To find $P$, note that $P$ must satisfy 
+$$
+Q_jf(\tilde A_0, \tilde A_+)Pe_j = Q_jf(\tilde A_0, \tilde A_+)P_{\cdot, j} = 0.
+$$
+Thus, each $P_{\cdot, j}$ is an element in the nullspace of $Q_jf(\tilde A_0, \tilde A_+)$ normalised to unit length. Focusing on $j=1$, we can easily obtain $P_{\cdot, 1}$ by simply obtaining a vector within the nullspace of $Q_1f(\tilde A_0, \tilde A_+)$ and normalising it to unit length. This is the first step of the algorithm. 
+
+To obtain the other columns, we need to be a bit more careful. We do not just need $P_{\cdot, j}$ to be in the nullspace of $Q_jf(\tilde A_0, \tilde A_+)$, but we also need the resulting $P$ to be a rotation matrix. We therefore need that $P_{\cdot, j}'P_{\cdot, k}=0$ for all $j \neq k$. This can be achieved by also imposing that $P_{\cdot, j}$ is orthogonal to $P_{\cdot, j-k}$ for all $k=1, ... k-1$. To get such a $P_{\cdot, j}$ we simply find a vector in the nullspace of 
+$$
+\tilde Q_j = 
+\begin{bmatrix}
+Q_jf(\tilde A_0, \tilde A_+) \\ 
+P_{\cdot, 1}' \\ 
+\vdots \\ 
+P_{\cdot, j-1}' 
+\end{bmatrix}.
+$$
+Since the resulting $P_{\cdot, j}$ satisfies $\tilde Q_j P_{\cdot, j} = 0$, we have 
+$$
+\begin{split}
+Q_jf(\tilde A_0, \tilde A_+)P_{\cdot, j} &= 0 \\ 
+P_{\cdot, k}'P_{\cdot, j} &= 0 \;\; \forall 1 \leq k \leq j.
+\end{split}
+$$
+Thus, the resulting $P_{\cdot, j}$ satisfies all criteria and the $P$ obtained in this way will be a rotation matrix such that $(\tilde A_0P, \tilde A_+P) = (A_0, A_+)$; the unique structural parameter point satisfying all restrictions. 
+
+## Partial Identification
+
+So far I have only discussed the results of @ramirezSVAR2010 regarding exact identification. Exact identification implies that all shocks are identified. In actual empirical work, we rarely manage to find enough plausible restrictions to identify all shocks. Instead, we often only identify a subset of shocks. @ramirezSVAR2010 also have results applying to partial identification. According to them, a structural parameter point $(A_0, A_+) \in R$ is partially identified if and only if there does not exist another observationally equivalent parameter point $(\tilde A_0, \tilde A_+) \in R$ such that $A_0e_j \neq \tilde A_0e_j$ or $A_+e_j \neq \tilde A_+e_j$ with $e_j$ being the $j$th unit vector. 
+
+::: {.callout-important}
+
+Consider an SVAR with admissible restrictions represented by $R$. For $(A_0, A_+) \in R$, if $M_i(f(A_0, A_+))$ is of rank $n$ for $1 \leq i \leq j$, then the $j$th equation is globally identified at the paramter point $(A_0, A_+)$. 
+
+Note: Order shocks such that $q_1 \geq q_2 \geq \dots \geq q_n$.
+:::
+
+Since the $j$th equation being identified also implies that the $j$th shock is identified, Theorem 2 can be used to check whether an SVAR is partially identified. Theorem 2 relies on the $M_i(X)$ matrix though, where $X$ is a $k\times n$ matrix. This matrix is defined as 
+$$
+\underbrace{M_i(X)}_{(k+i)\times n} = \begin{bmatrix}
+Q_iX \\ 
+\begin{bmatrix}
+I_{j\times j} & O_{j \times (n-j)}
+\end{bmatrix}
+\end{bmatrix}.
+$$
+A nice example of a partially identified SVAR, and how to apply Thoerem 2, is given in section 5.3 of @ramirezSVAR2010. 
+
+Theorem 2 can be used to check whether a specific equation in a SVAR is identified. However, it does not tell us how to find the partially identified SVAR from reduced form estimates. I could not find an explicit discussion of this in the paper. The algorithm above, however, can still be used to find a rotation matrix, that, upon post-multiplying it with the initial point, returns a structural parameter point that satisfies the restrictions. If the manual check implied that Theorem 2 holds for almost all structural parameter points, then the obtained parameter point uniquely identifies the $j$th equation and therefore the $j$th shock. 
+
+**Remark**: Since the SVAR is only partially identified, the rotation matrix obtained is unlikely to be the only rotation matrix that can be used to obtain a structural parameter point that satisfies the restrictions. However, no matter which rotation matrix is returned, if the $j$th equation is identified at almost all structural parameter points, then all admissible rotation matrices will identify the exact same $j$th shock. 
+
+## Remaining Questions 
+
+Below are some of the questions that I still have and some initial thoughts on these questions if they exist. 
+
+1. Is there some way to automate the check for partial identification? 
+2. Given multiple rotation matrices are feasible when the SVAR is only partially identified, is the above algorithm still efficient, or does there exist a more efficient algorithm? Do we maybe not need to find the entire rotation matrix? 
+  - I do not think that we need to find the entire rotation matrix. In the partial identification case we are only interested in the $j$th equation. This can be obtained by finding the $j$th column of the rotation matrix. Thus, the algorithm could be stopped early in the partial identification case. However, for small SVARs, early stopping is unlikely to make a large time difference. It might be helpful in a Bayesian setting though, in which the rotation matrix must be found thousands of times. 
+3. What is the best way to find the nullspace? 
+  - @ramirezSVAR2010 propose to use the LU or QR decomposition, with the latter being used in the implementation above. However, Julia has a `nullspace` function which uses the SVD decomposition. Would it maybe be better to find the nullspace using the official function? I checked this and it seemed to work, but did not seem to make a large timing difference. I can imagine though that it makes a numerical accuracy difference. 
+
