@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Enrico Wegner">
+<meta name="dcterms.date" content="2023-12-02">
+<meta name="description" content="Notes for Rubio-Ramirez, Waggoner, and Zha (2010)">
+
+<title>Enrico Wegner - Notes: Structural Vector Autoregressions: Theory of Identification and Algorithms for Inference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Enrico Wegner</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software.html" rel="" target="">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/enweg" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/enrico-wegner-2bb8a717b/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Notes: Structural Vector Autoregressions: Theory of Identification and Algorithms for Inference</h1>
+                  <div>
+        <div class="description">
+          Notes for <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Enrico Wegner </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 2, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#the-algorithm" id="toc-the-algorithm" class="nav-link" data-scroll-target="#the-algorithm">The Algorithm</a></li>
+  <li><a href="#how-does-the-algorithm-work" id="toc-how-does-the-algorithm-work" class="nav-link" data-scroll-target="#how-does-the-algorithm-work">How does the algorithm work?</a></li>
+  <li><a href="#partial-identification" id="toc-partial-identification" class="nav-link" data-scroll-target="#partial-identification">Partial Identification</a></li>
+  <li><a href="#remaining-questions" id="toc-remaining-questions" class="nav-link" data-scroll-target="#remaining-questions">Remaining Questions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>I first read <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> when I was taking a class on empirical macroeconomics during my masters. Although I already found the paper interesting back then, I cannot claim that I fully understood the importance of it; neither can I claim that I fully understood the theory. The latter I still cannot claim, but I think I have a much better understanding of its importance now. I would highly recommend it reading the paper. It will not be an easy read, and will probably require a few passes, but I think that the theory they provide is very intersting and should be part of every empirical macro class.</p>
+<p><em>Below are some of my notes on <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span>. These notes are mostly written for myself, but I hope they can still be helpful for some others.</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The paper in three bullet points
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The commonly used order condition stating that at least <span class="math inline">\(n(n-1)/2\)</span> restrictions are needed for a SVAR to be identified is only necessary. Thus, two models can both satisfy this criterion, with one of them not actually being identified. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> give an example of such a case in the introduction. The goal of the paper is to provide necessary and sufficient conditions for when a SVAR is identified. Secondary goal is to provide an easy to check condition.</li>
+<li>The paper allows putting linear restrictions on any non-linear combination of SVAR parameters. However, the restrictions must satisfy certain criteria. These criteria are all satisfied for restrictions on IRFs, including the infinite IRF in the stationary SVAR case. The criteria are also satisfied for linear restrictions on the SVAR structural matrices themselves. Thus, commonly restricted functions of the structural parameters satisfy the criteria.</li>
+<li><strong>Main result</strong>: A SVAR is exactly identified if and only if the last shock has zero restrictions, the second to last shock has one restriction, etc., up to the first shock which has <span class="math inline">\(n-1\)</span> restrictions. Therefore, it is recommended to order shocks such that the last has the least restrictions and the first has the most restrictions.</li>
+</ul>
+</div>
+</div>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>Although commonly used, the order condition stating that at least <span class="math inline">\(n(n-1)/2\)</span> restrictions need to be imposed in order for a SVAR to be identified, is only necessary. Thus, even if a set of restriction satisfies this criterion, the model might still not be identified. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> show this on an elegant example, but we can discuss it on an example with less realistic restrictions.</p>
+<p>Suppose that we are interested in identifying a SVAR with three variables: prices, real quantities, and the interest rate. We therefore would like to identify a supply, demand, and monetary policy shock. Various researchers might come up with various restrictions to impose. Suppose, three research groups came up with the following restrictions:</p>
+<p><strong>First group</strong>:</p>
+<ol type="1">
+<li>Due to sticky prices, a demand shock has no contemporaneous impact on prices. Additionally, due to a lag in official statistics, a demand shock has no contemporaneous impact on interest rates.</li>
+<li>Again, due to sticky prices, a monetary policy shock has no contemporaneous impact on prices. However, we might be able to argue that because a lot of purchases are made by credit cards, and because interest on credit cards changes whenever the short-term rates change, monetary policy can have a contemporaneous impact on quantities.</li>
+<li>A supply shock is unrestricted.</li>
+</ol>
+<p><strong>Second group</strong>:</p>
+<ol type="1">
+<li>Due to a lag in official statistics, a supply shock has no contemporaneous impact on interest rates. However, a supply shock does contemporaneously affect prices and quantities.</li>
+<li>Also do to a lag in official statistics, a demand shock has no contemporaneous impact on interest rates. However, although prices are sticky, the observation period is long enough for some companies to be able to adjust prices. Thus, a demand shock has a contemporaneous impact on prices and on quantities.</li>
+<li>By the same credit card argument as above, a monetary policy shock has a contemporaneous impact on quantities. However, it does not have a contemporaneous impact on prices, because firms’ production costs are less likely to be highly dependent on interest rates in the short-run.</li>
+</ol>
+<p><strong>Third group</strong>:</p>
+<ol type="1">
+<li>Due to sticky prices, a monetary policy shock cannot contemporaneously affect prices. However, because a lot of spending is done using credit cards, monetary policy can have an immediate impact on quantities.</li>
+<li>Because of a lag in official statistics, a supply shock has no immediate impact on interest rates. Additionally, the aggregate supply equation (determining the supply shock) is only a function of prices and quantities. Thus, the coefficient on interest rates is restricted to be zero.</li>
+<li>No restrictions are imposed on a demand shock.</li>
+</ol>
+<p>The first two research groups therefore impose restrictions only on the impact matrix, while the third group of researchers imposes some restrictions on the impact matrix, and additional restrictions on the contemporaneous coefficient matrix. However, counting the number of restrictions for all groups, we each time arrive at three. Thus, all three groups satisfy the order restrictions. The methodology developed in <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span>, however, can be used to show that only the SVAR of the first and third group is exactly identified.</p>
+<p>Before discussing how the results in <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> can be used to show that the second SVAR is not exactly identified, it is helpful to first discuss what is meant with exact identification. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> define exact identification as the case when for almost all reduced form parameter points, there exists a unique structural parameter point that satisfies the restrictions. Exact identification is therefore extremely desirable, because it states that no-matter what our reduced form estimates are, we will always be able to obtain a unique structural representation. Thus, we obtain identification results before we know what the reduced form estimates are.</p>
+<p>Why is this not always the case? Following <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> we can parameterise a SVAR as <span id="eq-svar"><span class="math display">\[
+y_t'A_0 = \sum_{l=1}^p y_{t-l}'A_l + \varepsilon_t',
+\tag{1}\]</span></span> where <span class="math inline">\(y_t\)</span> is a <span class="math inline">\(n\times 1\)</span> vector of variables, and where the white noise vector <span class="math inline">\(\varepsilon_t\)</span> is a <span class="math inline">\(n\times 1\)</span> vector of structural shocks, such that <span class="math inline">\(\mathbb{E}[\varepsilon_t]=\mathbf{0}\)</span>, <span class="math inline">\(\mathbb{E}[\varepsilon_{i,t}\varepsilon_{j,t}]=\delta_{i,j}\)</span> with <span class="math inline">\(\delta_{i,j}\)</span> being the Kronecker delta. Writing, <span class="math inline">\(A_+' = [A_1' \dots A_p']\)</span>, <span class="math inline">\(x_t = [y_t', \dots y_{t-p+1}']'\)</span>, <a href="#eq-svar">Equation&nbsp;1</a> can be written as <span id="eq-svar-aplus"><span class="math display">\[
+y_t'A_0 = x_t'A_+ + \varepsilon_t'.
+\tag{2}\]</span></span> <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> call <span class="math inline">\((A_0, A_+)\)</span> a structural parameter point.</p>
+<p>Assuming that <span class="math inline">\(A_0\)</span> is invertible, <a href="#eq-svar-aplus">Equation&nbsp;2</a> can also be written as <span id="eq-svar-reduced"><span class="math display">\[
+y_t' = x_t'B_+ + u_t,
+\tag{3}\]</span></span> where <span class="math inline">\(B_+ = A_+A_0^{-1}\)</span> and <span class="math inline">\(u_t' = \varepsilon_tA_0^{-1}\)</span> with <span class="math inline">\(\mathbb{E}(u_tu_t') = (A_0A_0')^{-1} = \Sigma\)</span>. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> call <span class="math inline">\((B_+, \Sigma)\)</span> a reduced form parameter point, and <a href="#eq-svar-reduced">Equation&nbsp;3</a> is called the reduced form system.</p>
+<p>Now, to understand why exact identification is such a unique result, we can have a look at a standard identification result in the SVAR literature. Consider two structural parameter points <span class="math inline">\((A_0, A_+)\)</span> and <span class="math inline">\((\tilde A_0, \tilde A_+)\)</span>. If <span class="math inline">\(\tilde A_0 = A_0P\)</span> and <span class="math inline">\(\tilde A_+ = A_+P\)</span> with <span class="math inline">\(P\)</span> being some invertible matrix, then <span class="math inline">\(B_+ = A_+A_0^{-1} = A_+PP^{-1}A_0^{-1} = \tilde A_+\tilde A_0^{-1}\)</span>. Thus, the two parameter points result in the same reduced-form coefficient matrix <span class="math inline">\(B_+\)</span>. If in addition <span class="math inline">\(P^{-1}=P'\)</span>, which is the case whenever <span class="math inline">\(P\)</span> is a rotation matrix, then <span class="math inline">\(\Sigma = (A_0A_0')^{-1} = (A_0PP'A_0')^{-1} = (\tilde A_0 \tilde A_0')^{-1}\)</span>, and thus also the reduced-form error-covariance matrix is the same. The two points <span class="math inline">\((A_0, A_+)\)</span> and <span class="math inline">\((\tilde A_0, \tilde A_+)\)</span> are then called <strong>observationally equivalent</strong>. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> show that if two structural parameter points are observationally equivalent, then one is the rotation of another. If the two points are not just observationally equivalent but also both satisfy the imposed restrictions, then there exists no way to obtain a unique structural representation from the reduced form estimation. Exact identification is therefore the unique case in which the restrictions are just tight enough to rule out all except one structural representation for almost all reduced form points.</p>
+<p>Exact identification is also related too global identification. A structural parameter point is <strong>globally identified</strong> if and only if there is no observationally equivalent other structural parameter point. Similarly, a structural parameter point is said to be <strong>locally identified</strong> if and only if there exists no other observationally equivalent structural parameter point within a neighbourhood. Exact identification is therefore global identification reduced to the subset of structural parameter points that satisfy the imposed restrictions.</p>
+<p>The definition of exact identification requires a set of restrictions. This raises the question what these restrictions can be. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> are rather general with regard to this. They allow for linear restrictions on <span class="math inline">\(f(A_0, A_+)\)</span> where <span class="math inline">\(f(A_0, A_+)\)</span> is a transformation with domain <span class="math inline">\(U\)</span> that maps the structural parameter point <span class="math inline">\((A_0, A_+)\)</span> to a set of <span class="math inline">\(k \times n\)</span> matrices where the columns correspond to the structural shocks in the system. Restrictions are then set on <span class="math inline">\(f(A_0, A_+)\)</span> by requiring that <span class="math display">\[
+Q_jf(A_0, A_+)e_j = 0,
+\]</span> with <span class="math inline">\(Q_j\)</span> being some <span class="math inline">\(k \times k\)</span> matrix representing linear restrictions and being of rank <span class="math inline">\(q_j\)</span> (some rows might be all zero), and <span class="math inline">\(e_j\)</span> being the <span class="math inline">\(j\)</span>th unit vector. Although not necessary, a convenient ordering of the shocks is that that <span class="math inline">\(q_1 \geq q_2 \geq \dots \geq q_n\)</span>, such that the first shock has the most restrictions and the last shock has the least restrictions.</p>
+<p>Examples for <span class="math inline">\(f(A_0, A_+)\)</span> include</p>
+<ol type="1">
+<li><span class="math inline">\(f(A_0, A_+) = [A_0; A_+']\)</span>: restrictions on the SVAR coefficient matrices.</li>
+<li><span class="math inline">\(f(A_0, A_+) = [\Phi_i]\)</span> with <span class="math inline">\(0\leq i \leq \infty\)</span> and <span class="math inline">\(\Phi\)</span> being the IRF matrix (not infinite IRF is included).</li>
+<li>A combination of the two above.</li>
+</ol>
+<p>The examples above are commonly restricted elements in the SVAR literature, with restriction on <span class="math inline">\(\Phi_0\)</span> being short-run restrictions, and restrictions on <span class="math inline">\(\Phi_\infty\)</span> being long-run restrictions. One common property of all the restrictions above is that for any rotation matrix <span class="math inline">\(P\)</span>, it holds that <span class="math inline">\(f(A_0P, A_+P) = f(A_0, A_+)P\)</span>. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> call this property <strong>admissible</strong> and require it to be true for any restrictions. For some results they also require <strong>regularity</strong> and <strong>strong regularity</strong>, both I will not define here, but they show that both hold for restrictions of the kind above.</p>
+<p>In my opinion one of the most important results in <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> is that of Theorem 7.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Theorem 7: Necessary and Sufficient Condition for Global Identification
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>In words</strong>: The SVAR is exactly identified if and only if the last shock has zero restrictions, the second to last has one restriction, etc. when the shocks are ordered in such a way that the last has the fewest restrictions, the second to last has the second to fewest restrictions etc. Conditions on restrictions are satisfied when putting restrictions on IRFs or structural matrices.</p>
+<p><strong>Statement</strong>: Consider a SVAR with admissible and strongly regular restrictions represented by <span class="math inline">\(R\)</span>. The SVAR is exactly identified if and only if <span class="math inline">\(q_j = n-j\)</span> for <span class="math inline">\(1\leq j \leq n\)</span></p>
+</div>
+</div>
+<p>Theorem 7 gives a condition that is as easy check as the original order condition. To see the power of this result, consider the examples from the beginning, where we put restrictions on <span class="math inline">\(\Phi_0\)</span>, and <span class="math inline">\(A_0\)</span>.</p>
+<p><strong>First group</strong>:</p>
+<p>For the first research group, <span class="math inline">\(f(A_0, A_+)=\Phi_0\)</span> with variables ordered as <span class="math inline">\(p_t, q_t, r_t\)</span>, and shocks ordered as <span class="math inline">\(\varepsilon_t^s, \varepsilon_t^d, \varepsilon_t^r\)</span>, the restriction matrix thus has the following pattern <span class="math display">\[
+f(A_0, A_+) =
+\begin{bmatrix}
+* &amp; 0 &amp; 0 \\
+* &amp; * &amp; * \\
+* &amp; 0 &amp; *
+\end{bmatrix},
+\]</span> where an asterisk denotes an unrestricted element. Since the demand shock has the most restrictions, the monetary policy shock the second most, and the supply shock the least, we can reorder the shocks in this order to obtain <span class="math display">\[
+\begin{bmatrix}
+0 &amp; 0 &amp; * \\
+* &amp; * &amp; * \\
+0 &amp; * &amp; * \\
+\end{bmatrix}.
+\]</span> There therefore exists two restrictions on the first column, one on the second, and zero on the last. By Theorem 7, this SVAR is exactly identified. In this special case, we could have also seen this by additionally ordering the variables as <span class="math inline">\(q_t, r_t, p_t\)</span> resulting in<br>
+<span class="math display">\[
+\begin{bmatrix}
+* &amp; * &amp; * \\
+0 &amp; * &amp; * \\
+0 &amp; 0 &amp; * \\
+\end{bmatrix}.
+\]</span> This is an upper-triangular system and can thus be found using a standard Cholesky identification scheme. However, as seen here, it sometimes is not immediately clear whether a system is triangular or not. The method of <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> is general enough to discover exact identification even if the research group does not realise that their system is triangular.</p>
+<p><strong>Second group</strong>:</p>
+<p>For the second research group <span class="math inline">\(f(A_0, A_+)=\Phi_0\)</span>, similar to the first group. However, different to the first group, the second group puts one restriction on each structural shock. Thus, <span class="math inline">\(q_j = 1\)</span> for all <span class="math inline">\(1 \leq j \leq 3\)</span>. Theorem 7 can therefore never be satisfied, and thus the SVAR of the second research group is not exactly identified.</p>
+<p><strong>Third group</strong>:</p>
+<p>For the third research group <span class="math inline">\(f(A_0, A_+)=[A_0; \Phi_0]\)</span>. With variables ordered as <span class="math inline">\(q_t, p_t, r_t\)</span>, and shocks ordered as <span class="math inline">\(\varepsilon_t^s, \varepsilon_t^r, \varepsilon_t^d\)</span>, <span class="math display">\[
+f(A_0, A_+) =
+\begin{bmatrix}
+* &amp; * &amp; * \\
+* &amp; * &amp; * \\
+0 &amp; * &amp; * \\
+* &amp; * &amp; * \\
+* &amp; 0 &amp; * \\
+0 &amp; * &amp; *
+\end{bmatrix}.
+\]</span> Thus, there are two restrictions on the first shock, one restriction on the second shock, and zero restrictions on the last shock. Although restrictions are mixed over <span class="math inline">\(A_0\)</span> and <span class="math inline">\(\Phi_0\)</span>, Theorem 7 implies that this SVAR is still exactly identified.</p>
+<p>Theorem 7 gives an easy way to check whether restrictions are sufficient to achieve exact identification. However, Theorem 7 does not provide a way to obtain the unique structural parameter point from the reduced form estimates. To this end, <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> proof another useful result: Theorem 5.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Theorem 5: Just rotate the Cholesky Identification
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>In words</strong>: If the SVAR is exactly identified, then the exactly identified structural parameter point is a rotation of some structural parameter point that does not satisfy all restrictions.</p>
+<p><strong>Statement</strong>: Consider an SVAR with restrictions represented by <span class="math inline">\(R\)</span>. The SVAR is exactly identified if and only if, for almost every structural parameter point <span class="math inline">\((A_0, A_+)\in U\)</span>, there exists a unique matrix <span class="math inline">\(P\in O(n)\)</span> such that <span class="math inline">\((A_0P, A_+P)\in R\)</span></p>
+</div>
+</div>
+<p>Theorem 5 can be combined with Theorem 7 to obtain an efficient algorithm. First, use Theorem 7 to check whether the SVAR is exactly identified. If this is the case, then Theorem 5 implies that the unique structural parameter point satisfying the restrictions is a rotation of a parameter point that does not satisfy the restrictions. Finding a structural parameter point that potentially does not satisfy the restrictions is easy: Just use an arbitrary Cholesky scheme. Thus, if we could find the rotation matrix needed to satisfy the restrictions, then we can also find the unique structural parameter point.</p>
+</section>
+<section id="the-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="the-algorithm">The Algorithm</h2>
+<p>How do we find the rotation matrix of Theorem 5? The first step is to start with some arbitrary structural point <span class="math inline">\((A_0, A_+)\in U\)</span>. For this point, there exists some <span class="math inline">\(1 \leq j \leq n\)</span> such that <span class="math display">\[
+Q_jf(A_0, A_+)e_j \neq 0.
+\]</span></p>
+<p><span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> propose the following algorithm to find the appropriate rotation matrix (here implemented in Julia).</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">Helper function used to remove rows of zeros from Qj.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">remove_zero_rows</span>(Qj<span class="op">::</span><span class="dt">Matrix</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  non_zero_row <span class="op">=</span> <span class="fu">map</span>(x <span class="op">-&gt;</span> <span class="fu">any</span>(x <span class="op">.!=</span> <span class="fl">0</span>), <span class="fu">eachrow</span>(Qj))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Qj[non_zero_row, <span class="op">:</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">Normalise the vector to have unit length. </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">make_unit_length</span>(x<span class="op">::</span><span class="dt">Vector</span>) <span class="op">=</span> x <span class="op">./</span> <span class="fu">norm</span>(x)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">nullspace_vec</span>(Q<span class="op">::</span><span class="dt">Matrix</span>) <span class="op">=</span> <span class="fu">qr</span>(Q<span class="op">'</span>).Q[<span class="op">:</span>, <span class="kw">end</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">Find the structural parameter point that satisfies the restrictions. </span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">find_rotation_matrix</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  A0<span class="op">::</span><span class="dt">Matrix{T}</span>, </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  Aplus<span class="op">::</span><span class="dt">Matrix{T}</span>, </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  f<span class="op">::</span><span class="dt">Function</span>,  <span class="co"># takes as arguments A0, Aplus and return f(A0, Aplus)</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  Qjs<span class="op">::</span><span class="dt">Vector{Matrix{T}}</span>, </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  normalise<span class="op">::</span><span class="dt">Function  </span><span class="co"># takes as arguments A0, Aplus, P and return normalised P</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>) <span class="kw">where</span> {T}</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> <span class="fu">size</span>(A0, <span class="fl">1</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  P <span class="op">=</span> <span class="fu">similar</span>(A0)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  F <span class="op">=</span> <span class="fu">f</span>(A0, Aplus)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># First iteration of step 2 of Algorithm 1</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  p1 <span class="op">=</span> <span class="fu">nullspace_vec</span>(<span class="fu">remove_zero_rows</span>(Qjs[<span class="fl">1</span>])<span class="op">*</span>F)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  P[<span class="op">:</span>, <span class="fl">1</span>] <span class="op">=</span> p1</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remaining iterations in step 2 of Algorithm 2</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i<span class="op">=</span><span class="fl">2</span><span class="op">:</span>n</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    Q_tilde <span class="op">=</span> <span class="fu">vcat</span>(<span class="fu">remove_zero_rows</span>(Qjs[i])<span class="op">*</span>F, P[<span class="op">:</span>, <span class="fl">1</span><span class="op">:</span>i<span class="op">-</span><span class="fl">1</span>]<span class="ch">')</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cn">pi</span> <span class="op">=</span> <span class="fu">nullspace_vec</span>(Q_tilde)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    P[<span class="op">:</span>, i] <span class="op">=</span> <span class="cn">pi</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply normalising rule</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">normalise</span>(A0, Aplus, P)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can test whether this algorithm works, by applying it to the third set of restrictions with the shocks in order of <span class="math inline">\(\varepsilon_t^s, \varepsilon_t^r, \varepsilon_t^d\)</span>. The restrictions for the third research group are then given by</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># k = 6</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(A0, Aplus) <span class="op">=</span> [A0; <span class="fu">inv</span>(A0<span class="op">'</span>)]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Qjs <span class="op">=</span> [<span class="fu">zeros</span>(<span class="fl">6</span>, <span class="fl">6</span>) for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># restrictions for supply shock </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># variables are ordered as q, r, p</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Qjs[<span class="fl">1</span>][<span class="fl">1</span>, <span class="fl">2</span>] <span class="op">=</span> <span class="fl">1</span>  <span class="co"># interest rate coefficient is zero </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Qjs[<span class="fl">1</span>][<span class="fl">2</span>, <span class="fl">5</span>] <span class="op">=</span> <span class="fl">1</span>  <span class="co"># no contemporaneous impact on interest rates</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># restrictions for monetary policy shock </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Qjs[<span class="fl">2</span>][<span class="fl">1</span>, <span class="fl">6</span>] <span class="op">=</span> <span class="fl">1</span>;  <span class="co"># no contemporaneous impact on prices</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next to restrictions, we also need to impose a normalisation. A normalisation is needed, because if <span class="math inline">\((A_0, A_+)\)</span> satisfies the restrictions, then so does <span class="math inline">\((A_0D, A_+D)\)</span> with <span class="math inline">\(D\)</span> being a diagonal matrix with only plus/minus one on the diagonal. To see this, note that <span class="math inline">\(D\)</span> is a rotation matrix, and that if <span class="math inline">\((A_0, A_+)\)</span> satisfies the restrictions, then <span class="math display">\[
+Q_jf(A_0D, A_+D) = Q_jf(A_0, A_+)De_j = \pm Q_jf(A_0, A_+)e_j = 0 \; \forall 1 \leq j \leq n.
+\]</span> We therefore need to define a normalisation scheme. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> define this formally. Since <span class="math inline">\(PD\)</span> is another rotation matrix, we can simply normalise the rotation matrix that would solve the restrictions such that also the normalisation scheme is satisfied. The function below does exactly this and specifies our normalisation such that the supply shock has a positive impact on prices (a contractionary supply shock), the monetary policy shock has a positive impact on interest rates (monetary contraction), and the demand shock has a positive impact on quantities (expansionary demand shock).</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">normalise_P</span>(A0_init, Aplus_init, P)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  A0 <span class="op">=</span> A0_init <span class="op">*</span> P</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  Phi0 <span class="op">=</span> <span class="fu">inv</span>(A0<span class="op">'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> <span class="fu">size</span>(A0, <span class="fl">1</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  D <span class="op">=</span> <span class="fu">diagm</span>(<span class="fu">ones</span>(n))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> Phi0[i, i] <span class="op">&lt;</span> <span class="fl">0</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      D[i, i] <span class="op">=</span> <span class="op">-</span><span class="fl">1</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> P<span class="op">*</span>D</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Given the restrictions and the normalisation, we are ready to test the algorithm on some artificial data. Here I will use a completely randomly created reduced-form error covariance matrix. Our initial guess for a structural point can then be as simple as the one obtained using a Cholesky identification scheme. Note that because of the parameterisation chosen by <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span>, the correct Cholesky part is now the upper-triangular part.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1234</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Sigma <span class="op">=</span> <span class="fu">randn</span>(<span class="fl">3</span>, <span class="fl">3</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Sigma <span class="op">=</span> <span class="fu">Symmetric</span>(Sigma <span class="op">*</span> Sigma<span class="op">'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>A0_init <span class="op">=</span> <span class="fu">inv</span>(<span class="fu">cholesky</span>(Sigma).U)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>A0_init <span class="op">=</span> <span class="fu">Matrix</span>(A0_init)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="pp">@display</span> A0_init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3×3 Matrix{Float64}:
+ 0.347663  -0.248945  -0.0710156
+ 0.0        0.644327   0.115805
+ 0.0        0.0        0.593772</code></pre>
+</div>
+</div>
+<p>It is very unlikely that this initial guess satisfies all the restrictions, but it is nonetheless good to check it. Unsurprisingly, it does not satisfy the restrictions.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">is_satisfying_restrictions</span>(A0, Aplus, f, Qjs)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  F <span class="op">=</span> <span class="fu">f</span>(A0, Aplus)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu">lastindex</span>(Qjs)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="fu">isapprox</span>.(Qjs[j]<span class="op">*</span>F[<span class="op">:</span>, j], <span class="fl">0</span>; atol <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">eps</span>()))) <span class="op">||</span> <span class="cf">return</span> <span class="cn">false</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="cn">true</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">is_satisfying_restrictions</span>(A0_init, A0_init, f, Qjs);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>is_satisfying_restrictions(A0_init, A0_init, f, Qjs) = false</code></pre>
+</div>
+</div>
+<p>We can then simply plug in the initial guess and the restrictions into the algorithm to obtain a rotation matrix. This rotation matrix can then be used to rotate the initial guess. The obtained point satisfies all restrictions, as promised by the algorithm.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> <span class="fu">find_rotation_matrix</span>(A0_init, A0_init, f, Qjs, normalise_P)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A0 <span class="op">=</span> A0_init <span class="op">*</span> P</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">is_satisfying_restrictions</span>(A0, A0, f, Qjs);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>is_satisfying_restrictions(A0, A0, f, Qjs) = true</code></pre>
+</div>
+</div>
+<p>Even though the new point satisfies all restrictions, it is still good to check the actual restriction matrix obtained. At the obtained parameter point, zeros do not just exist at the imposed positions in <span class="math inline">\(f\)</span>, but additional zeros were also introduced. In the identified SVAR, the interest rate coefficient is also zero for the equation specifying the demand shock. Additionally, a monetary policy shock has not just no contemporaneous impact on prices, but also not on quantities.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@display</span> <span class="fu">round</span>.(<span class="fu">f</span>(A0, A0); digits <span class="op">=</span> <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>6×3 Matrix{Float64}:
+  0.06  -0.26  -0.34
+ -0.0    0.65   0.0
+  0.57   0.11   0.14
+  0.69   0.0   -2.79
+  0.0    1.53  -1.14
+  1.69   0.0    0.29</code></pre>
+</div>
+</div>
+</section>
+<section id="how-does-the-algorithm-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-the-algorithm-work">How does the algorithm work?</h2>
+<p>So the algorithm works. But how does it work? It all comes down to the combination of Theorem 5 and Theorem 7. Theorem 7 tells us whether a SVAR is exactly identified. Theorem 5 tells us that if this is the case, then there exists a rotation matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\((A_0, A_+)=(\tilde A_0P, \tilde A_+P)\)</span> where <span class="math inline">\((A_0, A_+)\)</span> satisfies the restrictions, but <span class="math inline">\((\tilde A_0, \tilde A_+)\)</span> does not. To find <span class="math inline">\(P\)</span>, note that <span class="math inline">\(P\)</span> must satisfy <span class="math display">\[
+Q_jf(\tilde A_0, \tilde A_+)Pe_j = Q_jf(\tilde A_0, \tilde A_+)P_{\cdot, j} = 0.
+\]</span> Thus, each <span class="math inline">\(P_{\cdot, j}\)</span> is an element in the nullspace of <span class="math inline">\(Q_jf(\tilde A_0, \tilde A_+)\)</span> normalised to unit length. Focusing on <span class="math inline">\(j=1\)</span>, we can easily obtain <span class="math inline">\(P_{\cdot, 1}\)</span> by simply obtaining a vector within the nullspace of <span class="math inline">\(Q_1f(\tilde A_0, \tilde A_+)\)</span> and normalising it to unit length. This is the first step of the algorithm.</p>
+<p>To obtain the other columns, we need to be a bit more careful. We do not just need <span class="math inline">\(P_{\cdot, j}\)</span> to be in the nullspace of <span class="math inline">\(Q_jf(\tilde A_0, \tilde A_+)\)</span>, but we also need the resulting <span class="math inline">\(P\)</span> to be a rotation matrix. We therefore need that <span class="math inline">\(P_{\cdot, j}'P_{\cdot, k}=0\)</span> for all <span class="math inline">\(j \neq k\)</span>. This can be achieved by also imposing that <span class="math inline">\(P_{\cdot, j}\)</span> is orthogonal to <span class="math inline">\(P_{\cdot, j-k}\)</span> for all <span class="math inline">\(k=1, ... k-1\)</span>. To get such a <span class="math inline">\(P_{\cdot, j}\)</span> we simply find a vector in the nullspace of <span class="math display">\[
+\tilde Q_j =
+\begin{bmatrix}
+Q_jf(\tilde A_0, \tilde A_+) \\
+P_{\cdot, 1}' \\
+\vdots \\
+P_{\cdot, j-1}'
+\end{bmatrix}.
+\]</span> Since the resulting <span class="math inline">\(P_{\cdot, j}\)</span> satisfies <span class="math inline">\(\tilde Q_j P_{\cdot, j} = 0\)</span>, we have <span class="math display">\[
+\begin{split}
+Q_jf(\tilde A_0, \tilde A_+)P_{\cdot, j} &amp;= 0 \\
+P_{\cdot, k}'P_{\cdot, j} &amp;= 0 \;\; \forall 1 \leq k \leq j.
+\end{split}
+\]</span> Thus, the resulting <span class="math inline">\(P_{\cdot, j}\)</span> satisfies all criteria and the <span class="math inline">\(P\)</span> obtained in this way will be a rotation matrix such that <span class="math inline">\((\tilde A_0P, \tilde A_+P) = (A_0, A_+)\)</span>; the unique structural parameter point satisfying all restrictions.</p>
+</section>
+<section id="partial-identification" class="level2">
+<h2 class="anchored" data-anchor-id="partial-identification">Partial Identification</h2>
+<p>So far I have only discussed the results of <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> regarding exact identification. Exact identification implies that all shocks are identified. In actual empirical work, we rarely manage to find enough plausible restrictions to identify all shocks. Instead, we often only identify a subset of shocks. <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> also have results applying to partial identification. According to them, a structural parameter point <span class="math inline">\((A_0, A_+) \in R\)</span> is partially identified if and only if there does not exist another observationally equivalent parameter point <span class="math inline">\((\tilde A_0, \tilde A_+) \in R\)</span> such that <span class="math inline">\(A_0e_j \neq \tilde A_0e_j\)</span> or <span class="math inline">\(A_+e_j \neq \tilde A_+e_j\)</span> with <span class="math inline">\(e_j\)</span> being the <span class="math inline">\(j\)</span>th unit vector.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider an SVAR with admissible restrictions represented by <span class="math inline">\(R\)</span>. For <span class="math inline">\((A_0, A_+) \in R\)</span>, if <span class="math inline">\(M_i(f(A_0, A_+))\)</span> is of rank <span class="math inline">\(n\)</span> for <span class="math inline">\(1 \leq i \leq j\)</span>, then the <span class="math inline">\(j\)</span>th equation is globally identified at the paramter point <span class="math inline">\((A_0, A_+)\)</span>.</p>
+<p>Note: Order shocks such that <span class="math inline">\(q_1 \geq q_2 \geq \dots \geq q_n\)</span>.</p>
+</div>
+</div>
+<p>Since the <span class="math inline">\(j\)</span>th equation being identified also implies that the <span class="math inline">\(j\)</span>th shock is identified, Theorem 2 can be used to check whether an SVAR is partially identified. Theorem 2 relies on the <span class="math inline">\(M_i(X)\)</span> matrix though, where <span class="math inline">\(X\)</span> is a <span class="math inline">\(k\times n\)</span> matrix. This matrix is defined as <span class="math display">\[
+\underbrace{M_i(X)}_{(k+i)\times n} = \begin{bmatrix}
+Q_iX \\
+\begin{bmatrix}
+I_{j\times j} &amp; O_{j \times (n-j)}
+\end{bmatrix}
+\end{bmatrix}.
+\]</span> A nice example of a partially identified SVAR, and how to apply Thoerem 2, is given in section 5.3 of <span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span>.</p>
+<p>Theorem 2 can be used to check whether a specific equation in a SVAR is identified. However, it does not tell us how to find the partially identified SVAR from reduced form estimates. I could not find an explicit discussion of this in the paper. The algorithm above, however, can still be used to find a rotation matrix, that, upon post-multiplying it with the initial point, returns a structural parameter point that satisfies the restrictions. If the manual check implied that Theorem 2 holds for almost all structural parameter points, then the obtained parameter point uniquely identifies the <span class="math inline">\(j\)</span>th equation and therefore the <span class="math inline">\(j\)</span>th shock.</p>
+<p><strong>Remark</strong>: Since the SVAR is only partially identified, the rotation matrix obtained is unlikely to be the only rotation matrix that can be used to obtain a structural parameter point that satisfies the restrictions. However, no matter which rotation matrix is returned, if the <span class="math inline">\(j\)</span>th equation is identified at almost all structural parameter points, then all admissible rotation matrices will identify the exact same <span class="math inline">\(j\)</span>th shock.</p>
+</section>
+<section id="remaining-questions" class="level2">
+<h2 class="anchored" data-anchor-id="remaining-questions">Remaining Questions</h2>
+<p>Below are some of the questions that I still have and some initial thoughts on these questions if they exist.</p>
+<ol type="1">
+<li>Is there some way to automate the check for partial identification?</li>
+<li>Given multiple rotation matrices are feasible when the SVAR is only partially identified, is the above algorithm still efficient, or does there exist a more efficient algorithm? Do we maybe not need to find the entire rotation matrix?</li>
+</ol>
+<ul>
+<li>I do not think that we need to find the entire rotation matrix. In the partial identification case we are only interested in the <span class="math inline">\(j\)</span>th equation. This can be obtained by finding the <span class="math inline">\(j\)</span>th column of the rotation matrix. Thus, the algorithm could be stopped early in the partial identification case. However, for small SVARs, early stopping is unlikely to make a large time difference. It might be helpful in a Bayesian setting though, in which the rotation matrix must be found thousands of times.</li>
+</ul>
+<ol start="3" type="1">
+<li>What is the best way to find the nullspace?</li>
+</ol>
+<ul>
+<li><span class="citation" data-cites="ramirezSVAR2010">Rubio-Ramirez, Waggoner, and Zha (<a href="#ref-ramirezSVAR2010" role="doc-biblioref">2010</a>)</span> propose to use the LU or QR decomposition, with the latter being used in the implementation above. However, Julia has a <code>nullspace</code> function which uses the SVD decomposition. Would it maybe be better to find the nullspace using the official function? I checked this and it seemed to work, but did not seem to make a large timing difference. I can imagine though that it makes a numerical accuracy difference.</li>
+</ul>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ramirezSVAR2010" class="csl-entry" role="listitem">
+Rubio-Ramirez, Juan F, Daniel F. Waggoner, and Tao Zha. 2010. <span>“Structural Vector Autoregressions: Theory of Identification and Algorithms for Inference.”</span> <em>The Review of Economic Studies</em> 77 (2): 665–96. <a href="https://doi.org/10.2139/ssrn.1296848">https://doi.org/10.2139/ssrn.1296848</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="enweg/enweg.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Made with ❤️ in Maastricht, Copyright 2023, Enrico Wegner<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

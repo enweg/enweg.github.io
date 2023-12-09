@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://enweg.github.io/posts/var-likelihood/index.html</loc>
-    <lastmod>2023-05-07T20:36:02.902Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/index.html</loc>
-    <lastmod>2023-05-07T20:36:03.694Z</lastmod>
-  </url>
-  <url>
     <loc>https://enweg.github.io/blog.html</loc>
-    <lastmod>2023-05-07T20:36:04.218Z</lastmod>
+    <lastmod>2023-12-09T16:17:55.877Z</lastmod>
   </url>
   <url>
     <loc>https://enweg.github.io/software/TinyGibbs/index.html</loc>
-    <lastmod>2023-05-07T20:36:04.654Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/software/BayesFluxJulia/index.html</loc>
-    <lastmod>2023-05-07T20:36:05.035Z</lastmod>
+    <lastmod>2023-12-09T16:17:55.146Z</lastmod>
   </url>
   <url>
     <loc>https://enweg.github.io/software/SnT/index.html</loc>
-    <lastmod>2023-05-07T20:36:05.407Z</lastmod>
+    <lastmod>2023-12-09T16:17:54.547Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/posts/svar-identification/index.html</loc>
+    <lastmod>2023-12-09T16:17:54.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/posts/var-likelihood/index.html</loc>
+    <lastmod>2023-12-09T16:17:52.282Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/index.html</loc>
+    <lastmod>2023-12-09T16:17:54.288Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/software/BayesFluxJulia/index.html</loc>
+    <lastmod>2023-12-09T16:17:54.836Z</lastmod>
   </url>
   <url>
     <loc>https://enweg.github.io/software.html</loc>
-    <lastmod>2023-05-07T20:36:05.943Z</lastmod>
+    <lastmod>2023-12-09T16:17:55.507Z</lastmod>
   </url>
 </urlset>

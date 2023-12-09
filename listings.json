@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/svar-identification/index.html",
       "/posts/var-likelihood/index.html"
     ]
   },
