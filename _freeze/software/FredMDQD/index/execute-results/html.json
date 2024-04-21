@@ -1,0 +1,15 @@
+{
+  "hash": "cdbc49173137af4446053de02f48b138",
+  "result": {
+    "markdown": "---\ntitle: 'FredMDQD.jl'\ndate: '2024-21-04'\ncategories: ['Software']\ndescription: '`FredMDQD` is a small Julia library for the popular Fred MD and Fred QD datasets'\n---\n\n[Fred MD and Fred QD](https://research.stlouisfed.org/econ/mccracken/fred-databases/) are two popular pre-compiled datasets for macroeconomic analysis and forecasting. `FredMDQD` makes working with these datasets easy. It has three key features: \n\n1. Downloading the most recent datasets.\n2. Downloading a specific vintage.\n3. Automatic transformation of variables according to the recommended codes.\n4. Searching for the meaning of variables or searching for the abbreviation of variables. \n\n[More information can be found on the GitHub page.](https://github.com/enweg/FredMDQD.jl)\n\n\n## Downloading the most recent datasets\n\n::: {.cell execution_count=2}\n``` {.julia .cell-code}\nusing FredMDQD\nfmd = FredMD()  # download most recent Fred MD\nfqd = FredQD()  # download most recent Fred QD\n```\n:::\n\n\n## Downloading a specific vintage \n\n::: {.cell execution_count=3}\n``` {.julia .cell-code}\nusing FredMDQD\nusing Dates \n\nd = Date(\"2023/01\", dateformat\"yyyy/mm\")\nfmd = FredMD(d)  # download the January 2023 vintage of Fred MD\nfqd = FredQD(d)  # download the January 2024 vintage of Fred QD\n```\n:::\n\n\n## Automatic transformation of variables according to the recommended codes \n\n::: {.cell execution_count=4}\n``` {.julia .cell-code}\nusing FredMDQD\n\nfmd = FredMD()\nfmd.transformed  # transformed data \nfmd.original  # original data\nfmd.tcodes  # transformation codes\n```\n:::\n\n\n## Searching \n\n::: {.cell execution_count=5}\n``` {.julia .cell-code}\nusing FredMDQD\n\n# Searching for federal funds rate\nsearch_appendix(:MD, \"fed\")\n\n# Searching for consumption\nsearch_appendix(:QD, \"consumption\")\n```\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js\" integrity=\"sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js\" integrity=\"sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==\" crossorigin=\"anonymous\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+---
+title: 'FredMDQD.jl'
+date: '2024-21-04'
+categories: ['Software']
+description: '`FredMDQD` is a small Julia library for the popular Fred MD and Fred QD datasets'
+---
+
+[Fred MD and Fred QD](https://research.stlouisfed.org/econ/mccracken/fred-databases/) are two popular pre-compiled datasets for macroeconomic analysis and forecasting. `FredMDQD` makes working with these datasets easy. It has three key features: 
+
+1. Downloading the most recent datasets.
+2. Downloading a specific vintage.
+3. Automatic transformation of variables according to the recommended codes.
+4. Searching for the meaning of variables or searching for the abbreviation of variables. 
+
+[More information can be found on the GitHub page.](https://github.com/enweg/FredMDQD.jl)
+
+
+```{julia}
+#| include: false
+using Pkg; Pkg.add("FredMDQD")
+```
+
+## Downloading the most recent datasets
+
+
+```{julia}
+#| output: false
+using FredMDQD
+fmd = FredMD()  # download most recent Fred MD
+fqd = FredQD()  # download most recent Fred QD
+```
+
+## Downloading a specific vintage 
+
+
+```{julia}
+#| output: false
+using FredMDQD
+using Dates 
+
+d = Date("2023/01", dateformat"yyyy/mm")
+fmd = FredMD(d)  # download the January 2023 vintage of Fred MD
+fqd = FredQD(d)  # download the January 2024 vintage of Fred QD
+```
+
+## Automatic transformation of variables according to the recommended codes 
+
+
+```{julia}
+#| output: false
+using FredMDQD
+
+fmd = FredMD()
+fmd.transformed  # transformed data 
+fmd.original  # original data
+fmd.tcodes  # transformation codes
+```
+
+## Searching 
+
+
+```{julia}
+#| output: false
+using FredMDQD
+
+# Searching for federal funds rate
+search_appendix(:MD, "fed")
+
+# Searching for consumption
+search_appendix(:QD, "consumption")
+```
+
