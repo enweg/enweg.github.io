@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Below is a partial list of the software I worked on over the last few years. Clearly, this software is not perfect, but each of them taught me something new, and I like to think that I got better over time. Some of this software I developed with others together and for some of the software I was supervised by great people. I am grateful for these collaborators and supervisors. All GitHub repositories should make it easy to follow what parts I and others contributed. I wish to point out though, that although some supervisors did not contribute to the code itself and are therefore not visible on GitHub, these supervisors still contributed to the conceptualisation and other stages.  Feedback is greatly appreciated. If you find a bug, please open an issue in the relevant repository.  Feel free to visit my GitHub account for more projects not listed here.">
+<meta name="author" content="Enrico Wegner">
+<meta name="dcterms.date" content="2025-09-04">
+<meta name="description" content="FredMDQD is a small Julia library for the popular Fred MD and Fred QD datasets">
 
-<title>Enrico Wegner - Software</title>
+<title>Enrico Wegner - FredMDQD.jl</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,29 +23,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -64,35 +98,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-software .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-software'] = new List('listing-software', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
@@ -109,14 +114,15 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -129,17 +135,17 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Enrico Wegner</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html" rel="" target="">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./software.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../software.html" rel="" target="">
  <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -148,7 +154,7 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more">    
         <li>
-    <a class="dropdown-item" href="./assets/CV_Enrico_Wegner.pdf" rel="" target=""><i class="bi bi-person" role="img">
+    <a class="dropdown-item" href="../../assets/CV_Enrico_Wegner.pdf" rel="" target=""><i class="bi bi-person" role="img">
 </i> 
  <span class="dropdown-text">CV</span></a>
   </li>  
@@ -180,19 +186,34 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Software</h1>
+      <h1 class="title">FredMDQD.jl</h1>
                   <div>
         <div class="description">
-          Below is a partial list of the software I worked on over the last few years. Clearly, this software is not perfect, but each of them taught me something new, and I like to think that I got better over time. Some of this software I developed with others together and for some of the software I was supervised by great people. I am grateful for these collaborators and supervisors. All GitHub repositories should make it easy to follow what parts I and others contributed. I wish to point out though, that although some supervisors did not contribute to the code itself and are therefore not visible on GitHub, these supervisors still contributed to the conceptualisation and other stages.<br><br>Feedback is greatly appreciated. If you find a bug, please open an issue in the relevant repository.<br><br>Feel free to visit my <a href="https://github.com/enweg">GitHub account</a> for more projects not listed here.
+          <code>FredMDQD</code> is a small Julia library for the popular Fred MD and Fred QD datasets
         </div>
       </div>
-                </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Software</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Enrico Wegner </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 4, 2025</p>
+      </div>
+    </div>
     
       
     </div>
@@ -201,70 +222,78 @@ cookieconsent.run({
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#downloading-the-most-recent-datasets" id="toc-downloading-the-most-recent-datasets" class="nav-link active" data-scroll-target="#downloading-the-most-recent-datasets">Downloading the most recent datasets</a></li>
+  <li><a href="#downloading-a-specific-vintage" id="toc-downloading-a-specific-vintage" class="nav-link" data-scroll-target="#downloading-a-specific-vintage">Downloading a specific vintage</a></li>
+  <li><a href="#automatic-transformation-of-variables-according-to-the-recommended-codes" id="toc-automatic-transformation-of-variables-according-to-the-recommended-codes" class="nav-link" data-scroll-target="#automatic-transformation-of-variables-according-to-the-recommended-codes">Automatic transformation of variables according to the recommended codes</a></li>
+  <li><a href="#searching" id="toc-searching" class="nav-link" data-scroll-target="#searching">Searching</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-software">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Title
-</th>
-<th>
-Description
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="Software" data-listing-date-sort="1756936800000" data-listing-file-modified-sort="1713707281806" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="FredMDQD.jl" data-listing-filename-sort="index.qmd">
-<td>
-<a href="./software/FredMDQD/index.html" class="title listing-title">FredMDQD.jl</a>
-</td>
-<td>
-<span class="listing-description"><code>FredMDQD</code> is a small Julia library for the popular Fred MD and Fred QD datasets</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="Software" data-listing-date-sort="1680818400000" data-listing-file-modified-sort="1701511812341" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="TinyGibbs.jl" data-listing-filename-sort="index.qmd">
-<td>
-<a href="./software/TinyGibbs/index.html" class="title listing-title">TinyGibbs.jl</a>
-</td>
-<td>
-<span class="listing-description"><code>TinyGibbs</code> is a small Gibbs sampler that makes use of the <code>AbstractMCMC</code> interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, <code>TinyGibbs</code> can collect samples in two ways: (1) as a dictionary of tensors where each tensor or (2) as a <code>MCMCChains.Chains</code> type. Therefore, all the funcionality of <code>MCMCChains</code> can be exploited with <code>TinyGibbs</code>.</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="Software" data-listing-date-sort="1678143600000" data-listing-file-modified-sort="1701511812340" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="BayesFlux.jl and BayesFluxR" data-listing-filename-sort="index.qmd">
-<td>
-<a href="./software/BayesFluxJulia/index.html" class="title listing-title">BayesFlux.jl and BayesFluxR</a>
-</td>
-<td>
-<span class="listing-description"><code>BayesFlux.jl</code> is a small but flexible Baysian Neural Network library. It is work that came out of my Master Thesis and Reseach Assitance. Both were supervised by Nalan Basturk.</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="Software" data-listing-date-sort="1625608800000" data-listing-file-modified-sort="1701511812340" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="SnT_BigTime, SnT_VARS, and BigTime" data-listing-filename-sort="index.qmd">
-<td>
-<a href="./software/SnT/index.html" class="title listing-title">SnT_BigTime, SnT_VARS, and BigTime</a>
-</td>
-<td>
-<span class="listing-description">Interactive notebooks introducing VAR models and the <code>BigTime</code> R library.</span>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<p><a href="https://research.stlouisfed.org/econ/mccracken/fred-databases/">Fred MD and Fred QD</a> are two popular pre-compiled datasets for macroeconomic analysis and forecasting. <code>FredMDQD</code> makes working with these datasets easy. It has three key features:</p>
+<ol type="1">
+<li>Downloading the most recent datasets.</li>
+<li>Downloading a specific vintage.</li>
+<li>Automatic transformation of variables according to the recommended codes.</li>
+<li>Searching for the meaning of variables or searching for the abbreviation of variables.</li>
+</ol>
+<p><a href="https://github.com/enweg/FredMDQD.jl">More information can be found on the GitHub page.</a></p>
+<section id="downloading-the-most-recent-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-the-most-recent-datasets">Downloading the most recent datasets</h2>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">FredMDQD</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fmd <span class="op">=</span> <span class="fu">FredMD</span>()  <span class="co"># download most recent Fred MD</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fqd <span class="op">=</span> <span class="fu">FredQD</span>()  <span class="co"># download most recent Fred QD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></main> <!-- /main -->
+</section>
+<section id="downloading-a-specific-vintage" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-a-specific-vintage">Downloading a specific vintage</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">FredMDQD</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Dates </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fu">Date</span>(<span class="st">"2023/01"</span>, dateformat<span class="st">"yyyy/mm"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fmd <span class="op">=</span> <span class="fu">FredMD</span>(d)  <span class="co"># download the January 2023 vintage of Fred MD</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>fqd <span class="op">=</span> <span class="fu">FredQD</span>(d)  <span class="co"># download the January 2024 vintage of Fred QD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="automatic-transformation-of-variables-according-to-the-recommended-codes" class="level2">
+<h2 class="anchored" data-anchor-id="automatic-transformation-of-variables-according-to-the-recommended-codes">Automatic transformation of variables according to the recommended codes</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">FredMDQD</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>fmd <span class="op">=</span> <span class="fu">FredMD</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>fmd.transformed  <span class="co"># transformed data </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>fmd.original  <span class="co"># original data</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fmd.tcodes  <span class="co"># transformation codes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="searching" class="level2">
+<h2 class="anchored" data-anchor-id="searching">Searching</h2>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">FredMDQD</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Searching for federal funds rate</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">search_appendix</span>(<span class="op">:</span>MD, <span class="st">"fed"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Searching for consumption</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">search_appendix</span>(<span class="op">:</span>QD, <span class="st">"consumption"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
