@@ -15,8 +15,10 @@ website:
       - text: Enrico Wegner
         href: index.qmd
     right:
-      - text: Blog
-        href: blog.qmd
+      # - text: Blog
+      #   href: blog.qmd
+      - text: Research
+        href: research.qmd
       - text: Software
         href: software.qmd
       # - icon: github
@@ -34,9 +36,9 @@ website:
           - text: LinkedIn 
             icon: linkedin
             href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
-          - text: Publications
-            icon: book
-            href: https://scholar.google.com/citations?user=5vjXTtAAAAAJ&hl=en
+          # - text: Publications
+          #   icon: book
+          #   href: https://scholar.google.com/citations?user=5vjXTtAAAAAJ&hl=en
   cookie-consent: true
 format:
   html:

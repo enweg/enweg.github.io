@@ -11,7 +11,7 @@ listing:
   fields: [title, description]
 page-layout: article
 title-block-banner: true
-description: 'Below is a partial list of the software I worked on over the last few years. Clearly, this software is not perfect, but each of them taught me something new, and I like to think that I got better over time. Some of this software I developed with others together and for some of the software I was supervised by great people. I am grateful for these collaborators and supervisors. All GitHub repositories should make it easy to follow what parts I and others contributed. I wish to point out though, that although some supervisors did not contribute to the code itself and are therefore not visible on GitHub, these supervisors still contributed to the conceptualisation and other stages.<br><br>Feedback is greatly appreciated. If you find a bug, please open an issue in the relevant repository.<br><br>Feel free to visit my [GitHub account](https://github.com/enweg) for more projects not listed here.'
+description: 'Below is a partial list of the software I worked on over the last few years. Clearly, this software is not perfect, but each project taught me something new, and I like to think that I got better over time. Feedback is greatly appreciated. If you find a bug, please open an issue in the relevant repository.<br><br>Feel free to visit my [GitHub account](https://github.com/enweg) for more projects not listed here.'
 ---
 
 

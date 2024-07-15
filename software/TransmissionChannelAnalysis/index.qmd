@@ -1,0 +1,8 @@
+---
+title: 'TransmissionChannelAnalysis.jl'
+date: '2024-07-15'
+categories: ['Software']
+description: '`TransmissionChannelAnalysis.jl` implements the algorithms of ["Transmission Channel Analysis in Dynamic Models"](https://arxiv.org/abs/2405.18987)'
+---
+
+[TransmissionChannelAnalysis.jl](https://github.com/enweg/TransmissionChannelAnalysis.jl) implements all algorithms needed for the computation of transimssion effects in most linear dynamic models. Transmission effects can either be calculated using existing impulse responses, or using the structural coefficients of the dynamic system. For more information, check out the [GitHub repository](https://github.com/enweg/TransmissionChannelAnalysis.jl) and the [associated paper](https://arxiv.org/abs/2405.18987).

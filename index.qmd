@@ -13,6 +13,6 @@ about:
 
 ::: {.about-info}
 
-I'm Enrico. I am a PhD candiate at the School of Business and Economics Maastricht. I am interested in causal and Bayesian macro-econometrics. 
+I am Enrico. I am a PhD candiate at the School of Business and Economics Maastricht interested in causal and Bayesian macroeconometrics. 
 
 :::

@@ -1,0 +1,41 @@
+---
+title: Research
+title-block-banner: true
+description: "My PhD research focuses on <u>**macroeconometrics**</u> and <u>**time series econometrics**</u>. Working papers published during my PhD can be found under [<u>Working Papers</u>](#sec-working-papers). In 2022, I did some work for the OECD; related work can be found under [<u>OECD Working Papers</u>](#sec-oecd-working-papers)." 
+---
+
+::: {#sec-working-papers}
+## Working Papers
+
+### [Transmission Channel Analysis in Dynamic Models](https://arxiv.org/abs/2405.18987)
+
+**2024**
+
+We propose a framework for the analysis of transmission channels in a large class of dynamic models. To this end, we formulate our approach both using graph theory and potential outcomes, which we show to be equivalent. Our method, labelled Transmission Channel Analysis (TCA), allows for the decomposition of total effects captured by impulse response functions into the effects flowing along transmission channels, thereby providing a quantitative assessment of the strength of various transmission channels. We establish that this requires no additional identification assumptions beyond the identification of the structural shock whose effects the researcher wants to decompose. Additionally, we prove that impulse response functions are sufficient statistics for the computation of transmission effects. We demonstrate the empirical relevance of TCA for policy evaluation by decomposing the effects of policy shocks arising from a variety of popular macroeconomic models.
+
+- Paper: [arxiv](https://arxiv.org/abs/2405.18987)
+- Replication codes: [GitHub](https://github.com/enweg/tca-replication-material)
+- Related code: [TransmissionChannelAnalysis.jl](https://github.com/enweg/TransmissionChannelAnalysis.jl)
+
+:::
+
+::: {#sec-oecd-working-papers}
+## OECD Working Papers 
+
+### [Recent Trends in Transport and Insurance Costs and Estimates at Disaggregated Product Level](https://www.oecd-ilibrary.org/content/paper/b5dbab02-en)
+
+**2022**
+
+This paper updates the OECD International Transport and Insurance Cost (ITIC) of Merchandise Trade database, which covers more than 180 countries and partners, and over 1000 products from 1995 to 2020. Transport and insurance costs, also known as CIF-FOB margins, are estimated using a gravity model. A cross-validation procedure is used to evaluate model performance. In addition to describing the methodology, the paper highlights that transport and insurance costs are declining as a fraction of trade value, but this reduction has been flattening out in more recent years. However, an alternative measure, the explicit CIF-FOB margins per kilogramme imported, suggests that transport and insurance costs have been actually rising since 2002. Both CIF-FOB margins and cost per kilogramme imported show increases in 2020 when compared to 2019. This is robust to corrections for compositional changes. The methodology is used to produce the International Transport and Insurance Costs of Merchandise Trade data base and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.
+
+- Paper: [OECD iLibrary](https://www.oecd-ilibrary.org/content/paper/b5dbab02-en)
+
+### [Using Unit Value Indices as Proxies for International Merchandise Trade Prices](https://www.oecd-ilibrary.org/economics/using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices_27a5abd7-en)
+
+**2022**
+
+In light of the need for detailed and timely internationally comparable trade price indices, this paper describes a multi-tiered methodology to mitigate many of the empirical challenges associated with using customs data, to provide more robust estimates of unit value indices (UVIs) by country and product. UVIs are available for both exports and imports, by reporting country and the CPA 2-digit level of classification. Although the approach cannot capture changes in the quality of products nor compositional changes happening at a lower than HS 6-digit classification, the results indicate that at higher levels of aggregation (SITC 1-digit level), estimated UVIs closely follow price changes obtained from other sources. This is observed both for products with significant and rapid quality changes, such as hi-tech products, and for products with a low rate of quality changes, such as commodities, other primary and low-tech goods. Furthermore, products where little quality change occurs over time show similarity between UVIs and price changes from other sources at lower levels of disaggregation. The methodology is used to produce the Merchandise Trade Price Index and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.
+
+- Paper: [OECD iLibrary](https://www.oecd-ilibrary.org/economics/using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices_27a5abd7-en)
+
+:::
