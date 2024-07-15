@@ -2,38 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://enweg.github.io/blog.html</loc>
-    <lastmod>2024-04-21T13:51:16.070Z</lastmod>
+    <lastmod>2024-07-15T11:22:06.781Z</lastmod>
   </url>
   <url>
-    <loc>https://enweg.github.io/software/TinyGibbs/index.html</loc>
-    <lastmod>2024-04-21T13:51:14.749Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/software/SnT/index.html</loc>
-    <lastmod>2024-04-21T13:51:13.523Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/index.html</loc>
-    <lastmod>2024-04-21T13:51:12.329Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/posts/var-likelihood/index.html</loc>
-    <lastmod>2024-04-21T13:51:08.800Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/posts/svar-identification/index.html</loc>
-    <lastmod>2024-04-21T13:51:11.870Z</lastmod>
-  </url>
-  <url>
-    <loc>https://enweg.github.io/software/FredMDQD/index.html</loc>
-    <lastmod>2024-04-21T13:51:13.047Z</lastmod>
+    <loc>https://enweg.github.io/software/TransmissionChannelAnalysis/index.html</loc>
+    <lastmod>2024-07-15T12:04:38.681Z</lastmod>
   </url>
   <url>
     <loc>https://enweg.github.io/software/BayesFluxJulia/index.html</loc>
-    <lastmod>2024-04-21T13:51:14.130Z</lastmod>
+    <lastmod>2024-07-15T11:22:06.783Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/software/FredMDQD/index.html</loc>
+    <lastmod>2024-07-15T12:05:16.300Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/posts/svar-identification/index.html</loc>
+    <lastmod>2024-07-15T11:22:06.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/research.html</loc>
+    <lastmod>2024-07-15T12:14:48.560Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/posts/var-likelihood/index.html</loc>
+    <lastmod>2024-07-15T11:22:06.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/index.html</loc>
+    <lastmod>2024-07-15T12:13:48.753Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/software/SnT/index.html</loc>
+    <lastmod>2024-07-15T11:22:06.783Z</lastmod>
+  </url>
+  <url>
+    <loc>https://enweg.github.io/software/TinyGibbs/index.html</loc>
+    <lastmod>2024-07-15T12:05:22.442Z</lastmod>
   </url>
   <url>
     <loc>https://enweg.github.io/software.html</loc>
-    <lastmod>2024-04-21T13:51:15.422Z</lastmod>
+    <lastmod>2024-07-15T11:47:31.028Z</lastmod>
   </url>
 </urlset>

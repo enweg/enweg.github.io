@@ -9,6 +9,7 @@
   {
     "listing": "/software.html",
     "items": [
+      "/software/TransmissionChannelAnalysis/index.html",
       "/software/FredMDQD/index.html",
       "/software/TinyGibbs/index.html",
       "/software/BayesFluxJulia/index.html",

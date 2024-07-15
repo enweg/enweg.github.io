@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Welcome to my blog. Posts here should not be mistaken with journal grade publications. What I write here is mostly what I learn myself and can therefore contain mistakes. Some blog posts are also just there so that I can structure my thoughts a bit. I publish these posts as a way to motivate myself to keep learning and as a way for others to learn alongside me. If you find any mistakes or have feedback, please leave a comment or get in contact with me.  I am still working on this part of the website. Please come back later to see what I am thinking about.">
+<meta name="description" content="My PhD research focuses on macroeconometrics and time series econometrics. Working papers published during my PhD can be found under Working Papers. In 2022, I did some work for the OECD; related work can be found under OECD Working Papers.">
 
-<title>Blog – Enrico Wegner</title>
+<title>Research – Enrico Wegner</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -71,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
@@ -119,35 +88,6 @@ cookieconsent.run({
 </script> 
   
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -171,7 +111,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link active" href="./research.html" aria-current="page"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
@@ -211,10 +151,10 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Blog</h1>
+      <h1 class="title">Research</h1>
                   <div>
         <div class="description">
-          Welcome to my blog. Posts here should not be mistaken with journal grade publications. What I write here is mostly what I learn myself and can therefore contain mistakes. Some blog posts are also just there so that I can structure my thoughts a bit. I publish these posts as a way to motivate myself to keep learning and as a way for others to learn alongside me. If you find any mistakes or have feedback, please leave a comment or get in contact with me. <br><br><span style="color:#98ceff;">I am still working on this part of the website. Please come back later to see what I am thinking about.</span>
+          My PhD research focuses on <u><strong>macroeconometrics</strong></u> and <u><strong>time series econometrics</strong></u>. Working papers published during my PhD can be found under <a href="#sec-working-papers"><u>Working Papers</u></a>. In 2022, I did some work for the OECD; related work can be found under <a href="#sec-oecd-working-papers"><u>OECD Working Papers</u></a>.
         </div>
       </div>
                 </div>
@@ -240,63 +180,46 @@ window.Quarto = {
 
 
 
+<div id="sec-working-papers">
+<section id="working-papers" class="level2">
+<h2 class="anchored" data-anchor-id="working-papers">Working Papers</h2>
+<section id="transmission-channel-analysis-in-dynamic-models" class="level3">
+<h3 class="anchored" data-anchor-id="transmission-channel-analysis-in-dynamic-models"><a href="https://arxiv.org/abs/2405.18987">Transmission Channel Analysis in Dynamic Models</a></h3>
+<p><strong>2024</strong></p>
+<p>We propose a framework for the analysis of transmission channels in a large class of dynamic models. To this end, we formulate our approach both using graph theory and potential outcomes, which we show to be equivalent. Our method, labelled Transmission Channel Analysis (TCA), allows for the decomposition of total effects captured by impulse response functions into the effects flowing along transmission channels, thereby providing a quantitative assessment of the strength of various transmission channels. We establish that this requires no additional identification assumptions beyond the identification of the structural shock whose effects the researcher wants to decompose. Additionally, we prove that impulse response functions are sufficient statistics for the computation of transmission effects. We demonstrate the empirical relevance of TCA for policy evaluation by decomposing the effects of policy shocks arising from a variety of popular macroeconomic models.</p>
+<ul>
+<li>Paper: <a href="https://arxiv.org/abs/2405.18987">arxiv</a></li>
+<li>Replication codes: <a href="https://github.com/enweg/tca-replication-material">GitHub</a></li>
+<li>Related code: <a href="https://github.com/enweg/TransmissionChannelAnalysis.jl">TransmissionChannelAnalysis.jl</a></li>
+</ul>
+</section>
+</section>
+</div>
+<div id="sec-oecd-working-papers">
+<section id="oecd-working-papers" class="level2">
+<h2 class="anchored" data-anchor-id="oecd-working-papers">OECD Working Papers</h2>
+<section id="recent-trends-in-transport-and-insurance-costs-and-estimates-at-disaggregated-product-level" class="level3">
+<h3 class="anchored" data-anchor-id="recent-trends-in-transport-and-insurance-costs-and-estimates-at-disaggregated-product-level"><a href="https://www.oecd-ilibrary.org/content/paper/b5dbab02-en">Recent Trends in Transport and Insurance Costs and Estimates at Disaggregated Product Level</a></h3>
+<p><strong>2022</strong></p>
+<p>This paper updates the OECD International Transport and Insurance Cost (ITIC) of Merchandise Trade database, which covers more than 180 countries and partners, and over 1000 products from 1995 to 2020. Transport and insurance costs, also known as CIF-FOB margins, are estimated using a gravity model. A cross-validation procedure is used to evaluate model performance. In addition to describing the methodology, the paper highlights that transport and insurance costs are declining as a fraction of trade value, but this reduction has been flattening out in more recent years. However, an alternative measure, the explicit CIF-FOB margins per kilogramme imported, suggests that transport and insurance costs have been actually rising since 2002. Both CIF-FOB margins and cost per kilogramme imported show increases in 2020 when compared to 2019. This is robust to corrections for compositional changes. The methodology is used to produce the International Transport and Insurance Costs of Merchandise Trade data base and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.</p>
+<ul>
+<li>Paper: <a href="https://www.oecd-ilibrary.org/content/paper/b5dbab02-en">OECD iLibrary</a></li>
+</ul>
+</section>
+<section id="using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices" class="level3">
+<h3 class="anchored" data-anchor-id="using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices"><a href="https://www.oecd-ilibrary.org/economics/using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices_27a5abd7-en">Using Unit Value Indices as Proxies for International Merchandise Trade Prices</a></h3>
+<p><strong>2022</strong></p>
+<p>In light of the need for detailed and timely internationally comparable trade price indices, this paper describes a multi-tiered methodology to mitigate many of the empirical challenges associated with using customs data, to provide more robust estimates of unit value indices (UVIs) by country and product. UVIs are available for both exports and imports, by reporting country and the CPA 2-digit level of classification. Although the approach cannot capture changes in the quality of products nor compositional changes happening at a lower than HS 6-digit classification, the results indicate that at higher levels of aggregation (SITC 1-digit level), estimated UVIs closely follow price changes obtained from other sources. This is observed both for products with significant and rapid quality changes, such as hi-tech products, and for products with a low rate of quality changes, such as commodities, other primary and low-tech goods. Furthermore, products where little quality change occurs over time show similarity between UVIs and price changes from other sources at lower levels of disaggregation. The methodology is used to produce the Merchandise Trade Price Index and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.</p>
+<ul>
+<li>Paper: <a href="https://www.oecd-ilibrary.org/economics/using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices_27a5abd7-en">OECD iLibrary</a></li>
+</ul>
+</section>
+</section>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1701471600000" data-listing-file-modified-sort="1721042526782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4202">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/svar-identification/index.html" class="no-external">Notes: Structural Vector Autoregressions: Theory of Identification and Algorithms for Inference</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/svar-identification/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/svar-identification/index.html" class="no-external">Notes for <span class="citation" data-cites="ramirezSVAR2010">@ramirezSVAR2010</span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/svar-identification/index.html" class="no-external">
-<div class="listing-date">
-Dec 2, 2023
-</div>
-<div class="listing-reading-time">
-22 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1683410400000" data-listing-file-modified-sort="1721042526782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1531">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/var-likelihood/index.html" class="no-external">Bayesian VARs - The Likelihood Function</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/var-likelihood/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/var-likelihood/index.html" class="no-external">(Bayesian) VARs form the backbone of modern macroeconometrics, but deriving the likelihood of a VAR in a form that is useful for Baysian calculations is not necessarily the most straighforward task. In this blog post I show how the VAR likelihood can be written in a form that is useful for Bayesian calculations.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/var-likelihood/index.html" class="no-external">
-<div class="listing-date">
-May 7, 2023
-</div>
-<div class="listing-reading-time">
-8 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
