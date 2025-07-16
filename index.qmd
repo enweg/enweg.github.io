@@ -1,18 +1,27 @@
 ---
-title: "Hi 👋🏻"
+title: "Enrico Wegner"
+subtitle: "Econometrician | Macroeconomist"
 image: assets/profile-img.jpeg
 about:
-  template: jolla
+  template: trestles
   links:
     - icon: linkedin
+      text: Let's Connect
       href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
     - icon: github
+      text: Let's Collaborate
       href: https://github.com/enweg
-
 ---
 
-::: {.about-info}
+## About
 
-I am Enrico. I am a PhD candiate at the School of Business and Economics Maastricht interested in causal and Bayesian macroeconometrics. 
+I am a **PhD student at Maastricht University**, specialising in macroeconometrics and empirical macroeconomics. My research focuses on **causal inference** and the development of **macroeconometric methods** to better understand how macroeconomic policies are transmitted through the economy.
 
-:::
+Currently, I am also a **PhD intern at the Bank of England**, where I contribute to research on the transmission of monetary policy.
+
+Prior to my PhD, I interned and subsequently worked as an **external consultant at the OECD**, within the **Trade and Productivity Statistics Division**. During this time, I worked on the estimation of **international transport and insurance costs**, the construction of **merchandise trade price indices**, and contributed to the development of the **OECD AIS Vessel Tracking Dashboard**.
+
+I am open to **collaborations**, **research discussions**, and **opportunities** related to macroeconomic policy analysis and forecasting.
+Feel free to connect!
+
+[Download my full CV](assets/CV_Enrico_Wegner.pdf){.cv-btn}
