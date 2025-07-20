@@ -9,6 +9,7 @@ website:
   site-url: https://enweg.github.io
   description: This is the private website of Enrico Wegner.
   page-footer: "Copyright 2025, Enrico Wegner"
+  search: false
   navbar:
     title: false
     left:
@@ -19,6 +20,8 @@ website:
         href: research.qmd
       - text: Software
         href: software.qmd
+      - text: Blog
+        href: blog.qmd
       - text: More
         menu:
           - text: CV
