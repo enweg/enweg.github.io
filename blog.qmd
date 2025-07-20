@@ -1,5 +1,11 @@
 ---
 title: Blog
 title-block-banner: true
-description: "Describe the idea behind this blog. Posts can and likely do contain mistakes. This is mostly an outlet for me to actively learn. Posts will vary in quality, correctness, and sometimes also completeness. I only publish this to keep myself accountable to keep learning and in the slight hope that some things might be interesting to others."
+description: "Part of my job — and part of who I am — is that I like to learn something every day. Sometimes it’s not even something new, just something I forgot or never fully understood.
+<br>
+<br>
+This blog is my way of engaging with what I’m learning — I’ve been told that writing things down is the best way to really learn. That also means these posts are much less rigorous than my research and probably contain mistakes. If you spot any, please let me know so I can learn from them.
+<br>
+<br>
+Most of these posts are written for my future self rather than for people with different backgrounds. Still, I hope some of them might be useful to others too."
 ---
