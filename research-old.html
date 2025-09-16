@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Enrico Wegner">
-<meta name="dcterms.date" content="2023-04-07">
-<meta name="description" content="TinyGibbs is a small Gibbs sampler that makes use of the AbstractMCMC interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, TinyGibbs can collect samples in two ways: (1) as a dictionary of tensors or (2) as a MCMCChains.Chains type. Therefore, all the funcionality of MCMCChains can be exploited with TinyGibbs.">
+<meta name="description" content="My PhD research focuses on macroeconometrics and time series econometrics. Working papers published during my PhD can be found under Working Papers. In 2022, I did some work for the OECD; related work can be found under OECD Working Papers.">
 
-<title>TinyGibbs.jl – Enrico Wegner</title>
+<title>Research – Enrico Wegner</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,18 +24,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d1b12f2568ecbe55642fee6aa00bd082.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d1b12f2568ecbe55642fee6aa00bd082.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -54,40 +52,11 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -99,17 +68,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Enrico Wegner</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
+    <a class="nav-link" href="./research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../software.html"> 
+    <a class="nav-link" href="./software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -118,7 +87,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more">    
         <li>
-    <a class="dropdown-item" href="../../assets/CV_Enrico_Wegner.pdf"><i class="bi bi-person" role="img">
+    <a class="dropdown-item" href="./assets/CV_Enrico_Wegner.pdf"><i class="bi bi-person" role="img">
 </i> 
  <span class="dropdown-text">CV</span></a>
   </li>  
@@ -145,34 +114,19 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">TinyGibbs.jl</h1>
+      <h1 class="title">Research</h1>
                   <div>
         <div class="description">
-          <code>TinyGibbs</code> is a small Gibbs sampler that makes use of the <code>AbstractMCMC</code> interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, <code>TinyGibbs</code> can collect samples in two ways: (1) as a dictionary of tensors or (2) as a <code>MCMCChains.Chains</code> type. Therefore, all the funcionality of <code>MCMCChains</code> can be exploited with <code>TinyGibbs</code>.
+          My PhD research focuses on <u><strong>macroeconometrics</strong></u> and <u><strong>time series econometrics</strong></u>. Working papers published during my PhD can be found under <a href="#sec-working-papers"><u>Working Papers</u></a>. In 2022, I did some work for the OECD; related work can be found under <a href="#sec-oecd-working-papers"><u>OECD Working Papers</u></a>.
         </div>
       </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">Software</div>
-              </div>
-                  </div>
+                </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Enrico Wegner </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">April 7, 2023</p>
-      </div>
-    </div>
     
       
     </div>
@@ -181,9 +135,7 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -191,14 +143,42 @@ window.Quarto = {
 
 
 
-<p>While delving into VAR models, I observed that many Bayesian estimation methods depend heavily on Gibbs sampling. Despite the abundance of Bayesian libraries in Julia, I couldn’t find a Gibbs sampling library that met my preferences. What I was seeking was a library that allows one to design a sampler as described in academic papers. Specifically, I wanted a tool that abstracts away the computational complexities, enabling me to focus on the conditional distributions. Essentially, I desired a sampler that could translate a process like:</p>
-<ol type="1">
-<li>Sample <span class="math inline">\(\alpha\)</span> from <span class="math inline">\(p(\alpha | y, x, \Sigma)\)</span></li>
-<li>Sample <span class="math inline">\(\Sigma\)</span> from <span class="math inline">\(p(\Sigma | y, x, \alpha)\)</span></li>
-</ol>
-<p>into an operational sampler.</p>
-<p>TinyGibbs is the solution to this need. TinyGibbs introduces a single macro, <code>@tiny_gibbs</code>, which converts code resembling academic pseudocode into a functioning sampler. Moreover, by leveraging the features offered by <a href="https://github.com/TuringLang/AbstractMCMC.jl">AbstractMCMC</a> and <a href="https://github.com/TuringLang/MCMCChains.jl">MCMCChains</a>, TinyGibbs supports parallel sampling and the diagnosis of MCMC chains.</p>
-<p>For more details and to give it a try, visit the <a href="https://github.com/enweg/TinyGibbs.jl">GitHub repository</a>. Any feedback is greatly appreciated.</p>
+<div id="sec-working-papers">
+<section id="working-papers" class="level2">
+<h2 class="anchored" data-anchor-id="working-papers">Working Papers</h2>
+<section id="transmission-channel-analysis-in-dynamic-models" class="level3">
+<h3 class="anchored" data-anchor-id="transmission-channel-analysis-in-dynamic-models"><a href="https://arxiv.org/abs/2405.18987">Transmission Channel Analysis in Dynamic Models</a></h3>
+<p><strong>2024</strong></p>
+<p>We propose a framework for the analysis of transmission channels in a large class of dynamic models. To this end, we formulate our approach both using graph theory and potential outcomes, which we show to be equivalent. Our method, labelled Transmission Channel Analysis (TCA), allows for the decomposition of total effects captured by impulse response functions into the effects flowing along transmission channels, thereby providing a quantitative assessment of the strength of various transmission channels. We establish that this requires no additional identification assumptions beyond the identification of the structural shock whose effects the researcher wants to decompose. Additionally, we prove that impulse response functions are sufficient statistics for the computation of transmission effects. We demonstrate the empirical relevance of TCA for policy evaluation by decomposing the effects of policy shocks arising from a variety of popular macroeconomic models.</p>
+<ul>
+<li>Paper: <a href="https://arxiv.org/abs/2405.18987">arxiv</a></li>
+<li>Replication codes: <a href="https://github.com/enweg/tca-replication-material">GitHub</a></li>
+<li>Related code: <a href="https://github.com/enweg/TransmissionChannelAnalysis.jl">TransmissionChannelAnalysis.jl</a></li>
+</ul>
+</section>
+</section>
+</div>
+<div id="sec-oecd-working-papers">
+<section id="oecd-working-papers" class="level2">
+<h2 class="anchored" data-anchor-id="oecd-working-papers">OECD Working Papers</h2>
+<section id="recent-trends-in-transport-and-insurance-costs-and-estimates-at-disaggregated-product-level" class="level3">
+<h3 class="anchored" data-anchor-id="recent-trends-in-transport-and-insurance-costs-and-estimates-at-disaggregated-product-level"><a href="https://www.oecd-ilibrary.org/content/paper/b5dbab02-en">Recent Trends in Transport and Insurance Costs and Estimates at Disaggregated Product Level</a></h3>
+<p><strong>2022</strong></p>
+<p>This paper updates the OECD International Transport and Insurance Cost (ITIC) of Merchandise Trade database, which covers more than 180 countries and partners, and over 1000 products from 1995 to 2020. Transport and insurance costs, also known as CIF-FOB margins, are estimated using a gravity model. A cross-validation procedure is used to evaluate model performance. In addition to describing the methodology, the paper highlights that transport and insurance costs are declining as a fraction of trade value, but this reduction has been flattening out in more recent years. However, an alternative measure, the explicit CIF-FOB margins per kilogramme imported, suggests that transport and insurance costs have been actually rising since 2002. Both CIF-FOB margins and cost per kilogramme imported show increases in 2020 when compared to 2019. This is robust to corrections for compositional changes. The methodology is used to produce the International Transport and Insurance Costs of Merchandise Trade data base and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.</p>
+<ul>
+<li>Paper: <a href="https://www.oecd-ilibrary.org/content/paper/b5dbab02-en">OECD iLibrary</a></li>
+</ul>
+</section>
+<section id="using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices" class="level3">
+<h3 class="anchored" data-anchor-id="using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices"><a href="https://www.oecd-ilibrary.org/economics/using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices_27a5abd7-en">Using Unit Value Indices as Proxies for International Merchandise Trade Prices</a></h3>
+<p><strong>2022</strong></p>
+<p>In light of the need for detailed and timely internationally comparable trade price indices, this paper describes a multi-tiered methodology to mitigate many of the empirical challenges associated with using customs data, to provide more robust estimates of unit value indices (UVIs) by country and product. UVIs are available for both exports and imports, by reporting country and the CPA 2-digit level of classification. Although the approach cannot capture changes in the quality of products nor compositional changes happening at a lower than HS 6-digit classification, the results indicate that at higher levels of aggregation (SITC 1-digit level), estimated UVIs closely follow price changes obtained from other sources. This is observed both for products with significant and rapid quality changes, such as hi-tech products, and for products with a low rate of quality changes, such as commodities, other primary and low-tech goods. Furthermore, products where little quality change occurs over time show similarity between UVIs and price changes from other sources at lower levels of disaggregation. The methodology is used to produce the Merchandise Trade Price Index and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.</p>
+<ul>
+<li>Paper: <a href="https://www.oecd-ilibrary.org/economics/using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices_27a5abd7-en">OECD iLibrary</a></li>
+</ul>
+</section>
+</section>
+</div>
 
 
 

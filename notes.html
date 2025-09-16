@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Enrico Wegner">
-<meta name="dcterms.date" content="2023-04-07">
-<meta name="description" content="TinyGibbs is a small Gibbs sampler that makes use of the AbstractMCMC interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, TinyGibbs can collect samples in two ways: (1) as a dictionary of tensors or (2) as a MCMCChains.Chains type. Therefore, all the funcionality of MCMCChains can be exploited with TinyGibbs.">
+<meta name="description" content="Describe the idea behind this blog. Posts can and likely do contain mistakes. This is mostly an outlet for me to actively learn. Posts will vary in quality, correctness, and sometimes also completeness. I only publish this to keep myself accountable to keep learning and in the slight hope that some things might be interesting to others.">
 
-<title>TinyGibbs.jl – Enrico Wegner</title>
+<title>Blog – Enrico Wegner</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,19 +24,35 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d1b12f2568ecbe55642fee6aa00bd082.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d1b12f2568ecbe55642fee6aa00bd082.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -54,63 +68,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Enrico Wegner</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
+    <a class="nav-link" href="./research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../software.html"> 
+    <a class="nav-link" href="./software.html"> 
 <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -118,7 +108,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more">    
         <li>
-    <a class="dropdown-item" href="../../assets/CV_Enrico_Wegner.pdf"><i class="bi bi-person" role="img">
+    <a class="dropdown-item" href="./assets/CV_Enrico_Wegner.pdf"><i class="bi bi-person" role="img">
 </i> 
  <span class="dropdown-text">CV</span></a>
   </li>  
@@ -145,34 +135,19 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">TinyGibbs.jl</h1>
+      <h1 class="title">Blog</h1>
                   <div>
         <div class="description">
-          <code>TinyGibbs</code> is a small Gibbs sampler that makes use of the <code>AbstractMCMC</code> interface. It therefore allows for efficient Gibbs sampling including parallel sampling of multiple chains. Additionally, <code>TinyGibbs</code> can collect samples in two ways: (1) as a dictionary of tensors or (2) as a <code>MCMCChains.Chains</code> type. Therefore, all the funcionality of <code>MCMCChains</code> can be exploited with <code>TinyGibbs</code>.
+          Describe the idea behind this blog. Posts can and likely do contain mistakes. This is mostly an outlet for me to actively learn. Posts will vary in quality, correctness, and sometimes also completeness. I only publish this to keep myself accountable to keep learning and in the slight hope that some things might be interesting to others.
         </div>
       </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">Software</div>
-              </div>
-                  </div>
+                </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Enrico Wegner </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">April 7, 2023</p>
-      </div>
-    </div>
     
       
     </div>
@@ -181,9 +156,7 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -191,14 +164,6 @@ window.Quarto = {
 
 
 
-<p>While delving into VAR models, I observed that many Bayesian estimation methods depend heavily on Gibbs sampling. Despite the abundance of Bayesian libraries in Julia, I couldn’t find a Gibbs sampling library that met my preferences. What I was seeking was a library that allows one to design a sampler as described in academic papers. Specifically, I wanted a tool that abstracts away the computational complexities, enabling me to focus on the conditional distributions. Essentially, I desired a sampler that could translate a process like:</p>
-<ol type="1">
-<li>Sample <span class="math inline">\(\alpha\)</span> from <span class="math inline">\(p(\alpha | y, x, \Sigma)\)</span></li>
-<li>Sample <span class="math inline">\(\Sigma\)</span> from <span class="math inline">\(p(\Sigma | y, x, \alpha)\)</span></li>
-</ol>
-<p>into an operational sampler.</p>
-<p>TinyGibbs is the solution to this need. TinyGibbs introduces a single macro, <code>@tiny_gibbs</code>, which converts code resembling academic pseudocode into a functioning sampler. Moreover, by leveraging the features offered by <a href="https://github.com/TuringLang/AbstractMCMC.jl">AbstractMCMC</a> and <a href="https://github.com/TuringLang/MCMCChains.jl">MCMCChains</a>, TinyGibbs supports parallel sampling and the diagnosis of MCMC chains.</p>
-<p>For more details and to give it a try, visit the <a href="https://github.com/enweg/TinyGibbs.jl">GitHub repository</a>. Any feedback is greatly appreciated.</p>
 
 
 
