@@ -20,8 +20,6 @@ website:
         href: research.qmd
       - text: Software
         href: software.qmd
-      - text: Blog
-        href: blog.qmd
       - text: More
         menu:
           - text: CV
