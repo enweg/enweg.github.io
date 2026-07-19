@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-05f531b8b859d8566992f4681be84225.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-26b0ec8a8a16b1742071746b6878eb0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8585ceaf512601dddb21daaeee8ffaa3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -130,6 +130,53 @@ ul.task-list li input[type="checkbox"] {
 
 
 </main> <!-- /main -->
+<script>
+  // Mobile nav dismissal. Bootstrap's collapse plugin opens and closes the menu
+  // but never closes it on an outside tap, on Escape, or when the viewport grows
+  // past the expand breakpoint — all three are expected of a menu today. Purely
+  // additive: without this script the hamburger still opens and closes normally.
+  //
+  // Everything routes through toggler.click() rather than the Collapse API so
+  // Quarto's own inline onclick (which parks headroom.js while the menu is open)
+  // keeps firing on close exactly as it does on open.
+  (function () {
+    const toggler = document.querySelector(".navbar .navbar-toggler");
+    const panel = document.querySelector(".navbar .navbar-collapse");
+    if (!toggler || !panel) return;
+
+    const isOpen = () => toggler.getAttribute("aria-expanded") === "true";
+    const close = () => { if (isOpen()) toggler.click(); };
+
+    // Bubble phase, so the click that opened the menu is still inside the
+    // toggler when this runs and is excluded below.
+    document.addEventListener("click", function (e) {
+      if (!isOpen()) return;
+      if (panel.contains(e.target) || toggler.contains(e.target)) return;
+      close();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && isOpen()) {
+        close();
+        toggler.focus();   // return focus to what the visitor was operating
+      }
+    });
+
+    // Past the breakpoint the links are laid out inline again; leaving the menu
+    // flagged open would spring the sheet back open on the next resize down (and
+    // strand the toggler as an X). Reads `expanded.matches` rather than the
+    // event's, so both listeners below can share the one handler.
+    const expanded = window.matchMedia("(min-width: 992px)");
+    const syncToViewport = function () { if (expanded.matches) close(); };
+
+    // Safari <14 has no addEventListener on MediaQueryList, only addListener.
+    if (expanded.addEventListener) {
+      expanded.addEventListener("change", syncToViewport);
+    } else if (expanded.addListener) {
+      expanded.addListener(syncToViewport);
+    }
+  })();
+</script>
 <!-- Progressive-enhancement "read more" for research abstracts.
      Abstracts render in full (no-JS friendly); this collapses them to a few lines
      and adds an accessible toggle ONLY when the text actually overflows. Opt an
