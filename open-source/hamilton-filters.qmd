@@ -1,0 +1,7 @@
+---
+title: "HamiltonFilters.jl"
+description: "Lightweight Hamilton filter implementation for time series."
+link: "https://github.com/enweg/HamiltonFilters.jl"
+status: active
+order: 3
+---

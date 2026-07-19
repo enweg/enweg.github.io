@@ -1,0 +1,42 @@
+<!-- Progressive-enhancement "read more" for research abstracts.
+     Abstracts render in full (no-JS friendly); this collapses them to a few lines
+     and adds an accessible toggle ONLY when the text actually overflows. Opt an
+     item out with `showFullAbstract: true` (which omits `data-collapsible`). -->
+<script>
+(function () {
+  function init() {
+    var abstracts = document.querySelectorAll('.ri-desc[data-collapsible]');
+    abstracts.forEach(function (desc, i) {
+      desc.classList.add('is-clamped');
+      // If the clamped text doesn't overflow, it's short enough — show it in full.
+      if (desc.scrollHeight <= desc.clientHeight + 2) {
+        desc.classList.remove('is-clamped');
+        return;
+      }
+      desc.classList.add('has-toggle');
+      if (!desc.id) desc.id = 'abstract-' + (i + 1);
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ri-more';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', desc.id);
+      btn.innerHTML =
+        '<span class="ri-more-label">Read more</span>' +
+        '<span class="ri-more-chev" aria-hidden="true">▾</span>';
+      desc.insertAdjacentElement('afterend', btn);
+
+      btn.addEventListener('click', function () {
+        var clamped = desc.classList.toggle('is-clamped');
+        btn.setAttribute('aria-expanded', String(!clamped));
+        btn.querySelector('.ri-more-label').textContent = clamped ? 'Read more' : 'Show less';
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

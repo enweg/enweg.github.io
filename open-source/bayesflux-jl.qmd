@@ -1,0 +1,7 @@
+---
+title: "BayesFlux.jl"
+description: "Bayesian neural network extension to Flux.jl (from master's thesis)."
+link: "https://github.com/enweg/BayesFlux.jl"
+status: archived
+order: 1
+---

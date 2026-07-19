@@ -1,0 +1,8 @@
+---
+title: "bigtime"
+description: "Structured lasso-penalized estimation for large VAR / VARX / VARMA models."
+link: "https://doi.org/10.32614/CRAN.package.bigtime"
+status: active
+role: "contributor"
+order: 5
+---

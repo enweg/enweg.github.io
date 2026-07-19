@@ -1,7 +1,13 @@
 {
   "listingMap": {
-    "software-old.qmd": [
-      "software"
+    "open-source.qmd": [
+      "open-source/*.qmd",
+      "teaching/*.qmd"
+    ],
+    "research.qmd": [
+      "research/working-papers/*.qmd",
+      "research/publications/*.qmd",
+      "research/work-in-progress/*.qmd"
     ]
   }
 }

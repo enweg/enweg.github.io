@@ -1,26 +1,121 @@
 ---
-title: "Enrico Wegner"
-subtitle: "Econometrician | Macroeconomist"
-image: assets/profile-img.jpeg
-about:
-  template: trestles
-  links:
-    - icon: linkedin
-      text: Let's Connect
-      href: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
-    - icon: github
-      text: Let's Collaborate
-      href: https://github.com/enweg
+pagetitle: "Enrico Wegner — Econometrician & Macroeconomist"
+description: "PhD Candidate in Econometrics at Maastricht University. Macroeconometrics, time series econometrics, and the Transmission Channel Analysis framework."
+toc: false
 ---
 
-## About
+::: {.hero}
+::: {.hero-photo}
+![](assets/profile.jpg){fig-alt="Portrait of Enrico Wegner"}
+:::
+::: {.hero-text}
+::: {.badge-jobmarket}
+<span class="dot"></span> On the 2026 / 2027 Job Market
+:::
+# Enrico Wegner
+[PhD Candidate in Econometrics · Maastricht University (SBE)]{.hero-role}
 
-I am a **PhD student at Maastricht University**, specialising in macroeconometrics and empirical macroeconomics. My research focuses on **causal inference** and the development of [**new methods**](https://arxiv.org/abs/2405.18987) to better understand how macroeconomic policies are transmitted through the economy.
+My primary research fields are **macroeconometrics** and **time series econometrics**. I also work on causal inference and policy evaluation, Bayesian econometrics, and macroeconomics.
 
-From July to September 2025, I was also a **PhD intern at the Bank of England**, where I contributed to research and policy projects regarding the transmission of monetary policy.
+In my dissertation, I develop new methods for analysing how policy transmits through the economy, both in general-equilibrium models and empirically. These methods decompose a policy's total effect into the contributions of specific **transmission channels**. I break this work down [at three levels of depth](#three-levels) further down the page.
 
-Prior to my PhD, I interned and subsequently worked as an **external consultant at the OECD**, within the **Trade and Productivity Statistics Division**. During this time, I worked on the estimation of **international transport and insurance costs**, the construction of **merchandise trade price indices**, and contributed to the development of the [**OECD AIS Vessel Tracking Dashboard**](https://www.oecd.org/en/data/dashboards/monitoring-maritime-trade-the-oecd-ais-vessel-tracking-dashboard.html).
+Previously a PhD intern in the Monetary Analysis Division at the **Bank of England**, and a consultant at the **OECD**.
 
-I am open to **collaborations**, **research discussions**, and **opportunities** related to macroeconomic policy analysis and forecasting. I will be on the 2026/27 job market for positions starting in 2027 and welcome opportunities to connect.
+::: {.hero-actions}
+[View research →](research.qmd){.btn-accent}
+[Download CV](assets/cv-enrico-wegner.pdf){.btn-outline}
+<span class="hero-socials"><a class="social-icon" href="https://github.com/enweg" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a class="social-icon" href="https://www.linkedin.com/in/enrico-wegner-2bb8a717b/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="social-icon" href="https://orcid.org/0009-0003-3537-9858" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg></a><a class="social-icon" href="https://scholar.google.com/citations?user=5vjXTtAAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a></span>
+:::
+:::
+:::
 
-[Download my full CV](assets/CV_Enrico_Wegner.pdf){.cv-btn}
+<!-- Upcoming talks. Hidden by default; a small script (see _partials/talks.html)
+     drops any talk whose `data-until` date has passed, sorts the rest, and reveals
+     this block only if at least one upcoming talk remains. To add a talk, copy one
+     `.talk` block below. `data-date` = start (ISO, for ordering); `data-until` =
+     last day it should show (ISO; omit for single-day events). To link an event,
+     make its name a link: [Name](https://…){.talk-name}. See README. -->
+::: {.upcoming-talks}
+[Upcoming Talks]{.talks-eyebrow}
+
+::: {.talk data-date="2026-08-17" data-until="2026-08-21"}
+[EEA-ESEM Congress](https://eea-esem-congresses.org/sessions/monetary-policy-transmission){.talk-name}
+[17–21 August 2026]{.talk-when}
+:::
+
+::: {.talk data-date="2026-08-25"}
+[Virtual Israel Macro Seminar (VIMM)](https://www.vimacro.org/enrico-wegner-transmission-channel-analysis-dynamic-models){.talk-name}
+[25 August 2026]{.talk-when}
+:::
+
+::: {.talk data-date="2026-07-26" data-until="2026-07-31"}
+[3rd Frankfurt Summer School]{.talk-name}
+[26-31 July 2026]{.talk-when}
+:::
+
+:::
+
+::: {.stripe-top}
+{{< include _partials/jmp-card.qmd >}}
+:::
+
+::: {#three-levels .callout-levels}
+::: {.cl-head}
+::: {.cl-headtext}
+[My PhD research, explained on 3 levels]{.cl-title}
+[Below I explain my research on three levels: one for a general audience, one for undergraduate economics students, and one for the technical graduate reader. Research communication matters a lot to me, but explaining technical work clearly is hard. If any part could be clearer, I'd welcome your [feedback](mailto:e.wegner@maastrichtuniversity.nl).]{.cl-intro}
+:::
+<!-- [first draft]{.tag-draft} -->
+:::
+
+::: {.panel-tabset .level-tabs}
+
+## General Audience
+
+[General Audience]{.level-label}
+
+Imagine four friends: Alice, Bob, Claire, and David. Alice finds ten euros on the street and excitedly tells Bob. Two weeks later David congratulates her on the hundred euros she found. Alice knows which story he means, but she cannot work out how her ten euros became a hundred.
+
+Here is what happened. Bob told Claire and David the story over coffee. Over the next two weeks, the three friends retold it many times. Being human and excited for their friend, each time they exaggerated the number a little. It never increased all at once, but after enough retellings, ten euros had become a hundred.
+
+Alice can see the final result, but she wants to know exactly how the change occurred. The story went back and forth among Bob, Claire, and David so many times that no single person is responsible. Each influenced the others, and each contributed to the final version of the story. Alice wants to untangle these different paths of influence: who influenced whom, and by how much.
+
+In macroeconomics the same problem exists. Say a central bank lowers interest rates, and a few weeks later people are spending more. Policymakers can see that the change caused an increase in spending, just as Alice could see that her story changed. But they also want to understand how that change happened.
+
+Like the three friends who changed the story, there’s not one reason for this change. Lower interest rates could increase spending because loans are cheaper so people can borrow more money. They might also weaken the currency, making exports more competitive and boosting economic activity. These different routes through which a policy affects the economy are known as transmission channels.
+
+This is important for policymakers to understand. Each of these channels contribute to the effect of the policy. If most of the increase in economic activity occurred through borrowing rather than exports, for example, that information could influence how policymakers think about their next decision.
+
+In my research I develop methods that define these transmission channels precisely and measure how much influence each one has. Earlier work mostly looked at the simpler case where influence moves in one direction. More like a conversation in which David changes the story without anyone else changing it back. But real conversations don’t work that way. Claire influences David, and David influences Claire in return. My methods are built for exactly this case, where everything can affect everything else. Why does this matter for the economy? Because the economy works the same way. Consumption, the exchange rate, and total economic activity all influence each other. 
+
+## Undergraduate
+
+[Undergraduate]{.level-label}
+
+Think of a standard IS-LM model with a horizontal LM curve, that is, the central bank sets the interest rate directly. The model lets us investigate the effect of monetary policy. If the central bank decreases the interest rate, the LM curve shifts down and along the IS curve, so a lower interest rate leads to higher aggregate output.
+
+We can trace the effects of this policy through the goods market. For simplicity, think of a closed economy, so that output is simply consumption plus investment; we ignore fiscal policy for now. In the standard IS-LM model, only investment depends on the interest rate. But both consumption and investment depend on aggregate income, which in this model equals aggregate output. A narrative account of the policy might thus conclude that the lower interest rate raises investment, and so raises aggregate output and therefore income. This increase in income leads to further increases in consumption and investment, and repeating this feedback infinitely many times gives the total outcome that the IS-LM model predicts.
+
+What the narrative account gets wrong is that the IS-LM model is not an action-reaction model. Consumers do not wait until firms have made their investment decisions and then decide their own consumption. Instead, the model assumes that all agents, consumers, firms, and the central bank, know everything. A consumer therefore does not wait for firms: he immediately knows the final effect of the policy and instantly adjusts his consumption to be consistent with this final output. Firms adjust their investment in the same way. That's a general characteristic of general-equilibrium models, of which the IS-LM model is one: they do not allow for action-reaction analysis.
+
+Nonetheless, we may wonder whether two economies that show the same total effect of monetary policy also work in the same way, whether they have the same mechanisms. In other words, we would like to look into the black box of general equilibrium. My research works on both a conceptual and a methodological level. Conceptually, I ask how to define these mechanisms, which I call transmission channels, in general-equilibrium models, where no causal action-reaction can be established. Methodologically, I develop methods that open the black box and let us analyze these transmission channels in models like the IS-LM model, but also empirically. My methods thus let us answer whether two economies with the same total effect also work in the same way.
+
+## Graduate
+
+[Graduate]{.level-label}
+
+Standard macroeconomic and macroeconometric methods, such as DSGE models, SVARs, and local projections, are well suited to analysing the effects of policies, including monetary policy. These effects are usually traced out in impulse response functions (IRFs). However, IRFs capture only the total causal effects; they say nothing about the mechanisms behind them.
+
+To analyse these mechanisms, researchers have traditionally relied on qualitative discussion that eyeballs the IRFs, on counterfactual analysis, or, more recently, on the HANK-style direct-indirect decompositions introduced in [Kaplan et al. (2018)](https://www.aeaweb.org/articles?id=10.1257/aer.20160042) and [Auclert (2019)](https://www.aeaweb.org/articles?id=10.1257/aer.20160137). Qualitative discussion has the natural shortcoming that it cannot speak to the quantitative importance of a channel. Counterfactual analysis is conceptually oriented towards comparing two equilibria, rather than analysing the dynamics within a single one. HANK-style decompositions are limited to theoretical, microfounded models. Thus, while each method has its merits, none is individually satisfactory. My research therefore focuses on extending the toolkit for analysing these mechanisms, which I refer to as transmission channels.
+
+The development of such methods is complicated further by the nature of general-equilibrium models. The ideal method would be mediation analysis, which traces a chain of causal effects. But this requires that causal links between variables can be established, and in general-equilibrium models, on which most modern macroeconomics is built, such links generally cannot be ([Dogra, 2024](https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr1093.pdf)), because these models are not action-reaction models: all variables are determined simultaneously. Every agent knows everything, so a consumer does not react to any other agent; rather, after an exogenous shock, the consumer instantaneously adjusts consumption to be consistent with the new general-equilibrium output. Consumption is thus not pinned down by the Euler equation alone but depends on all other equations in the model, since the consumer has full information about it. Because the variables are pinned down jointly rather than in sequence, there is no causal ordering for mediation analysis to trace. This also explains why partial-equilibrium reasoning, which argues via one equation at a time, can be misleading ([Dogra, 2024](https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr1093.pdf)).
+
+Since strict causal mediation analysis is infeasible in general-equilibrium settings, my research also asks how we can get conceptually as close to this ideal as possible. The idea I propose is to trace the total effect through a set of conditional predictions triggered by a structural shock. In effect, I take the position of a researcher who asks: given the total effect on one variable, what would I predict the effect on a second variable to be, and, knowing that, what would I then predict for a third? I show that any IRF can be decomposed into such chains of conditional predictions, which I formally define as transmission channels.
+
+Methodologically, I show that this idea, tracing chains of conditional predictions triggered by a structural shock, can be recast as paths through a directed acyclic graph (DAG). Specifically, a large class of macroeconomic models, both microfounded and empirical, can be represented as a DAG in which the paths from a shock to an outcome correspond to transmission channels. A transmission channel can thus be understood as a collection of paths through the DAG. I further show that, under mild assumptions, these channels can be quantified using only a single identified structural shock. I call this method **Transmission Channel Analysis**.
+
+:::
+:::
+
+::: {.page-tail}
+:::

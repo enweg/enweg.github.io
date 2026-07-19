@@ -1,0 +1,5 @@
+# Applies to every per-item stub under research/.
+# These render as minimal detail pages (accepted trade-off, Plan.md §8-G);
+# keep them out of site search and give them no table of contents.
+search: false
+toc: false

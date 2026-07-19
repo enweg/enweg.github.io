@@ -1,0 +1,15 @@
+::: {.jmp-card}
+::: {.jmp-body}
+[Job Market Paper]{.jmp-eyebrow}
+[Transmission Channel Analysis in Dynamic Models]{.jmp-title}
+[with Lenard Lieb, Stephan Smeekes, and Ines Wilms]{.jmp-authors}
+<!-- [We propose a framework for the analysis of transmission channels in a large class of dynamic models, formulated equivalently using graph theory and potential outcomes. The method decomposes total effects captured by impulse response functions into the effects flowing along transmission channels, providing a quantitative assessment of each channel's strength — and requires no additional identification assumptions beyond identification of the structural shock.]{.jmp-abstract} -->
+[We propose a framework for analysing transmission channels in a large class of dynamic models. We formulate our approach both using graph theory and potential outcomes, which we show to be equivalent. Our method, labelled Transmission Channel Analysis (TCA), allows for the decomposition of total effects captured by impulse response functions into the effects flowing through transmission channels, thereby providing a quantitative assessment of the strength of various well-defined channels. We establish that this requires no additional identification assumptions beyond the identification of the structural shock whose effects the researcher wants to decompose. Additionally, we prove that impulse response functions are sufficient statistics for the computation of transmission effects. We demonstrate the empirical relevance of TCA for policy evaluation by decomposing the effects of policy shocks arising from a variety of popular macroeconomic models.]{.jmp-abstract}
+
+::: {.jmp-links}
+[arXiv:2405.18987](https://arxiv.org/abs/2405.18987){.btn-accent .mono}
+[Replication code](https://github.com/enweg/tca-replication-material){.btn-outline}
+[Software (Julia + MATLAB)](https://enweg.github.io/tca-website/){.btn-outline}
+:::
+:::
+:::

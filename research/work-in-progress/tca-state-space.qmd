@@ -1,0 +1,5 @@
+---
+title: "Transmission Channel Analysis in Linear State-Space Models"
+authors: "with Tobias Hartl"
+date: "2024-06-01"
+---

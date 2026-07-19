@@ -1,0 +1,7 @@
+---
+title: "FredMDQD.jl"
+description: "Simplifies working with FRED-MD / QD data in Julia."
+link: "https://github.com/enweg/FredMDQD.jl"
+status: active
+order: 4
+---

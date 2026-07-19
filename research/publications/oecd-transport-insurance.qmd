@@ -1,0 +1,10 @@
+---
+title: "Recent Trends in Transport and Insurance Costs and Estimates at Disaggregated Product Level"
+authors: "Miao & Wegner"
+venue: "OECD Statistics Working Papers No. 2022/02"
+group: "OECD Statistics Working Papers"
+compact: true
+date: "2022-02-18"
+doi: "10.1787/b5dbab02-en"
+description: "This paper updates the OECD International Transport and Insurance Cost (ITIC) of Merchandise Trade database, which covers more than 180 countries and partners, and over 1000 products from 1995 to 2020. Transport and insurance costs, also known as CIF-FOB margins, are estimated using a gravity model. A cross-validation procedure is used to evaluate model performance. In addition to describing the methodology, the paper highlights that transport and insurance costs are declining as a fraction of trade value, but this reduction has been flattening out in more recent years. However, an alternative measure, the explicit CIF-FOB margins per kilogramme imported, suggests that transport and insurance costs have been actually rising since 2002. Both CIF-FOB margins and cost per kilogramme imported show increases in 2020 when compared to 2019. This is robust to corrections for compositional changes. The methodology is used to produce the International Transport and Insurance Costs of Merchandise Trade data base and the data is made publically available on .Stat under the International Trade and Balance of Payments heading."
+---

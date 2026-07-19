@@ -1,0 +1,45 @@
+---
+pagetitle: "Open Source — Enrico Wegner"
+description: "Software is an integral part of my research. Releasing my methods as code makes them transparent and reproducible, and lets applied researchers and policy analysts use them without reimplementing everything from scratch. Below are the tools I have built or contributed to, most of them Julia packages for econometrics and time series. A few older ones are archived: they generally still work, but I no longer actively maintain them. I also keep my teaching material open: notes and code from courses I've taught, listed after the software."
+toc: false
+listing:
+  - id: active
+    contents: open-source/*.qmd
+    template: ejs/package-card.ejs
+    include:
+      status: active
+    sort: "order"
+  - id: archived
+    contents: open-source/*.qmd
+    template: ejs/package-card.ejs
+    include:
+      status: archived
+    sort: "order"
+  - id: teaching
+    contents: teaching/*.qmd
+    template: ejs/package-card.ejs
+    sort: "order"
+---
+
+::: {.page-head}
+# Open Source
+[Software is an integral part of my research. Releasing my methods as code makes them transparent and reproducible, and lets applied researchers and policy analysts use them without reimplementing everything from scratch. Below are the tools I have built or contributed to, most of them Julia packages for econometrics and time series. A few older ones are archived: they generally still work, but I no longer actively maintain them. I also keep my teaching material open: notes and code from courses I've taught, listed after the software.]{.lead}
+:::
+
+## Software {.section-head}
+
+::: {#active}
+:::
+
+### Archived {.subgroup-head}
+
+::: {#archived}
+:::
+
+## Teaching Material {.section-head}
+
+::: {#teaching}
+:::
+
+::: {.page-tail}
+:::

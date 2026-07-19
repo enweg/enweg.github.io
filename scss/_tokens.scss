@@ -1,0 +1,99 @@
+/*-- scss:defaults --*/
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  DESIGN TOKENS — the single source of truth for colour and type.
+//
+//  Nothing downstream (components, tabset, motion) references a raw hex value;
+//  everything flows: raw palette  →  semantic alias  →  component rule.
+//
+//  Quarto 1.9.x does NOT expose _brand.yml palette entries as SCSS variables to
+//  a custom theme, so the named palette lives here instead (see Plan.md §6.1).
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ── 1. Raw palette (named swatches) ─────────────────────────────────────────
+$paper:          #faf9f6;   // page background (warm off-white)
+$ink:            #1c1b18;   // primary text, headings
+$ink-soft:       #3f3e39;   // body paragraph text
+$muted:          #6b6a63;   // secondary text (author lines, captions)
+$muted-2:        #8a887f;   // tertiary text (mono nav subtitle, small meta)
+$muted-3:        #9a988e;   // faintest text (placeholders, tags)
+$surface:        #ffffff;   // cards, JMP centerpiece, callout inner box
+$sunken:         #f4f3ef;   // footer, archived cards
+$photo-bg:       #eceae4;   // portrait placeholder
+$archived-ink:   #4a4943;   // archived-card title text
+
+// Accent themes — three named swatches. Switch the whole site by pointing
+// $accent / $accent-tint (below) at a different pair.
+$forest:         #2c5545;   $forest-tint:   #eef2ef;
+$navy:           #22364f;   $navy-tint:     #eceff4;
+$burgundy:       #6b2233;   $burgundy-tint: #f5ebed;
+
+// One-off embargo badge palette (amber).
+$embargo-fg:     #8a5a1a;
+$embargo-bg:     #faf1e0;
+$embargo-border: #ecd9b6;
+
+// Hairline / border scale (design uses rgba black at these alphas).
+$border-soft:    rgba(0, 0, 0, .08);
+$border-nav:     rgba(0, 0, 0, .09);
+$border:         rgba(0, 0, 0, .10);
+$border-mid:     rgba(0, 0, 0, .12);
+$border-strong:  rgba(0, 0, 0, .16);
+$border-dashed:  rgba(0, 0, 0, .22);
+
+// ── 2. Semantic aliases (intent names) ──────────────────────────────────────
+// ►► CHANGE THE SITE ACCENT HERE: swap $forest → $navy → $burgundy (and tint).
+$accent:         $forest;
+$accent-tint:    $forest-tint;
+
+$text-strong:    $ink;
+$text-body:      $ink-soft;
+$text-muted:     $muted;
+$text-faint:     $muted-3;
+$card-surface:   $surface;
+$surface-sunken: $sunken;
+
+// ── 3. Typography ───────────────────────────────────────────────────────────
+$font-sans: "Libre Franklin", system-ui, -apple-system, sans-serif;
+$font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+// ── 4. Shape, elevation, motion ─────────────────────────────────────────────
+$radius-pill:      999px;
+$radius-card:      16px;
+$radius-card-sm:   12px;
+$radius-jmpcard:   14px;
+$radius-callout-box: 11px;
+$radius-btn:       9px;
+$radius-btn-sm:    8px;
+$radius-btn-xs:    7px;
+$radius-tag:       5px;
+
+$shadow-photo:         0 1px 2px rgba(0,0,0,.08), 0 18px 40px -22px rgba(0,0,0,.35);
+$shadow-jmp:           0 1px 2px rgba(0,0,0,.05), 0 30px 60px -40px rgba(0,0,0,.4);
+$shadow-jmpcard:       0 1px 2px rgba(0,0,0,.05), 0 24px 50px -38px rgba(0,0,0,.4);
+$shadow-oscard:        0 1px 2px rgba(0,0,0,.04);
+$shadow-oscard-hover:  0 12px 28px -18px rgba(0,0,0,.4);
+
+$content-max:      1080px;   // mirrors grid.body-width in _quarto.yml
+$container-pad:    32px;
+$container-pad-sm: 20px;
+$nav-height:       66px;
+
+// ── 5. Bootstrap / Quarto variable wiring ───────────────────────────────────
+// Feed the tokens into Bootstrap so built-in Quarto chrome inherits the theme.
+$body-bg:                $paper;
+$body-color:            $text-body;
+$primary:               $accent;
+$link-color:            $accent;
+$link-decoration:       none;
+$link-hover-decoration: underline;
+
+$font-family-sans-serif: $font-sans;
+$font-family-monospace:  $font-mono;
+$headings-color:         $text-strong;
+$headings-font-weight:   700;
+
+$navbar-bg:  rgba($paper, .86);
+
+// Selection colour (design mixes accent into paper).
+$selection-bg: mix($accent, $paper, 22%);

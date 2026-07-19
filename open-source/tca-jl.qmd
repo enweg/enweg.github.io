@@ -1,0 +1,7 @@
+---
+title: "TransmissionChannelAnalysis.jl"
+description: "Julia package for transmission channel analysis (TCA)."
+link: "https://github.com/enweg/TransmissionChannelAnalysis.jl"
+status: active
+order: 1
+---

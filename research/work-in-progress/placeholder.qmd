@@ -1,0 +1,7 @@
+---
+title: "＋ Additional project — placeholder"
+description: "Reserved for a forthcoming paper (e.g. TCA extensions or BVAR curriculum work)."
+placeholder: true
+date: "2000-01-01"
+draft: true
+---

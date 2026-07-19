@@ -1,0 +1,6 @@
+---
+title: "Probability Theory (EBC1024)"
+description: "Introductory R programming notes for the undergraduate probability course at Maastricht University."
+link: "https://github.com/enweg/EBC1024-Probability-Theory"
+order: 1
+---

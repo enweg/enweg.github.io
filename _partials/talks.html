@@ -1,0 +1,38 @@
+<!-- Upcoming-talks filter. The `.upcoming-talks` block is hidden by default; this
+     removes any talk whose `data-until` (falling back to `data-date`) is before
+     today on the visitor's own clock, sorts the rest chronologically, and reveals
+     the block only if at least one upcoming talk remains. ISO date strings compare
+     chronologically, so no Date parsing (and no timezone surprises) is needed. -->
+<script>
+(function () {
+  function init() {
+    var section = document.querySelector('.upcoming-talks');
+    if (!section) return;
+    var talks = Array.prototype.slice.call(section.querySelectorAll('.talk'));
+    if (!talks.length) return;
+
+    var n = new Date();
+    var today = n.getFullYear() + '-' +
+      String(n.getMonth() + 1).padStart(2, '0') + '-' +
+      String(n.getDate()).padStart(2, '0');
+
+    var cutoff = function (t) { return t.getAttribute('data-until') || t.getAttribute('data-date') || ''; };
+    var start  = function (t) { return t.getAttribute('data-date') || t.getAttribute('data-until') || ''; };
+
+    var upcoming = talks.filter(function (t) { return cutoff(t) >= today; });
+    talks.forEach(function (t) { if (upcoming.indexOf(t) === -1) t.remove(); });
+    if (!upcoming.length) return;   // nothing in the future → stay hidden
+
+    upcoming.sort(function (a, b) { return start(a) < start(b) ? -1 : start(a) > start(b) ? 1 : 0; });
+    var parent = upcoming[0].parentNode;
+    upcoming.forEach(function (t) { parent.appendChild(t); });   // re-order in place
+
+    section.classList.add('is-visible');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

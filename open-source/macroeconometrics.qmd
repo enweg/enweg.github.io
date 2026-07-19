@@ -1,0 +1,7 @@
+---
+title: "MacroEconometrics.jl"
+description: "Early collection of macroeconometric utility functions."
+link: "https://github.com/enweg/MacroEconometrics.jl"
+status: archived
+order: 4
+---

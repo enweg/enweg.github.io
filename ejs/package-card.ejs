@@ -1,0 +1,20 @@
+<%
+// Long code identifiers (TransmissionChannelAnalysis.jl) have no spaces, so on a
+// narrow screen they can only break mid-word. Insert <wbr> break opportunities at
+// camelCase humps and before . _ - so they wrap at meaningful points instead
+// ("TransmissionChannel / Analysis.jl"). <wbr> adds no character, so copy-paste of
+// the name is unaffected. The title is HTML-escaped first, then emitted raw.
+function esc(s) {
+  return String(s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+function softBreaks(s) {
+  return esc(s)
+    .replace(/([a-z0-9])([A-Z])/g, "$1<wbr>$2")
+    .replace(/([._-])/g, "<wbr>$1");
+}
+for (const item of items) {
+%>
+<a class="pkg-card<%= item.status === "archived" ? " archived" : "" %>" href="<%= item.link %>" target="_blank" rel="noopener"><span class="pkg-head"><span class="pkg-name"><%= softBreaks(item.title) %></span><% if (item.role) { %><span class="pkg-badge"><%= item.role %></span><% } %></span><span class="pkg-desc"><%= item.description %></span></a>
+<% } %>

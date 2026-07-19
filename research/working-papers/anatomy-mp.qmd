@@ -1,0 +1,7 @@
+---
+title: "The Anatomy of Monetary Policy Transmission: Which channels matter?"
+authors: "with Kristina Bluwstein and Michael McLeay · Bank of England"
+date: "2026-07-01"
+embargo: true
+description: "Understanding how monetary policy transmits through the financial system to the real economy and inflation is central to the design, calibration, and evaluation of monetary policy. We study the transmission channels of UK monetary policy using a medium-sized Bayesian VAR identified with an external instrument and apply a novel technique, Transmission Channel Analysis (TCA) based on directed acyclic graphs, to formally define and decompose transmission channels in a dynamic and robust way. Empirically, we find that the bulk of UK monetary policy transmission operates through financial-market and expectations channels. Second-round (feedback) effects become important for output and prices at longer horizons, but are less relevant for consumption. A more granular decomposition shows that housing-related wealth and cash-flow channels account for most of the transmission to real activity and prices; equity wealth and expectations channels are meaningful, while the exchange-rate channel plays a limited role for aggregate consumer prices over the estimation period."
+---

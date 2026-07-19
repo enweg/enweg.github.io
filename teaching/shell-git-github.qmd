@@ -1,0 +1,6 @@
+---
+title: "Shell, Git & GitHub"
+description: "Exercise-driven materials for the command line, version control with Git, and collaboration on GitHub."
+link: "https://github.com/enweg/shell-git-github-class"
+order: 4
+---

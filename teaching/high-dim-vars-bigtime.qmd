@@ -1,0 +1,6 @@
+---
+title: "High-Dimensional VARs with bigtime"
+description: "A hands-on notebook on estimating sparse, high-dimensional VARs with the bigtime R package."
+link: "https://github.com/enweg/SnT_BigTime"
+order: 3
+---

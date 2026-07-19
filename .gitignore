@@ -1,6 +1,4 @@
-/.quarto/**
 /_site/
-**/.DS_Store
-/posts/drafts/
-
 /.quarto/
+
+**/*.quarto_ipynb

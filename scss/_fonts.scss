@@ -1,0 +1,51 @@
+/*-- scss:rules --*/
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  Self-hosted fonts (privacy: no request to Google's servers).
+//
+//  Files live in assets/fonts/ and are copied to the site via `resources` in
+//  _quarto.yml. Quarto resolves url() in theme SCSS relative to the PROJECT
+//  ROOT, then copies each font into the build and rewrites the URL for us.
+//  Subsets cover latin + latin-ext (needed for names like "Baştürk").
+//
+//  If a file is ever missing, the browser silently falls back to the
+//  system-ui / monospace stacks declared in scss/_tokens.scss.
+// ═══════════════════════════════════════════════════════════════════════════
+
+$font-path: "assets/fonts";
+
+// ── Libre Franklin (300–800) ────────────────────────────────────────────────
+@font-face {
+  font-family: "Libre Franklin"; font-style: normal; font-weight: 300;
+  font-display: swap; src: url("#{$font-path}/LibreFranklin-300.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Libre Franklin"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url("#{$font-path}/LibreFranklin-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Libre Franklin"; font-style: normal; font-weight: 500;
+  font-display: swap; src: url("#{$font-path}/LibreFranklin-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Libre Franklin"; font-style: normal; font-weight: 600;
+  font-display: swap; src: url("#{$font-path}/LibreFranklin-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Libre Franklin"; font-style: normal; font-weight: 700;
+  font-display: swap; src: url("#{$font-path}/LibreFranklin-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Libre Franklin"; font-style: normal; font-weight: 800;
+  font-display: swap; src: url("#{$font-path}/LibreFranklin-800.woff2") format("woff2");
+}
+
+// ── IBM Plex Mono (400, 500) ────────────────────────────────────────────────
+@font-face {
+  font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url("#{$font-path}/IBMPlexMono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500;
+  font-display: swap; src: url("#{$font-path}/IBMPlexMono-500.woff2") format("woff2");
+}

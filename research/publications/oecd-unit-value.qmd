@@ -1,0 +1,10 @@
+---
+title: "Using Unit Value Indices as Proxies for International Merchandise Trade Prices"
+authors: "Miao & Wegner"
+venue: "OECD Statistics Working Papers No. 2022/01"
+group: "OECD Statistics Working Papers"
+compact: true
+date: "2022-02-17"
+doi: "10.1787/27a5abd7-en"
+description: "In light of the need for detailed and timely internationally comparable trade price indices, this paper describes a multi-tiered methodology to mitigate many of the empirical challenges associated with using customs data, to provide more robust estimates of unit value indices (UVIs) by country and product. UVIs are available for both exports and imports, by reporting country and the CPA 2-digit level of classification. Although the approach cannot capture changes in the quality of products nor compositional changes happening at a lower than HS 6-digit classification, the results indicate that at higher levels of aggregation (SITC 1-digit level), estimated UVIs closely follow price changes obtained from other sources. This is observed both for products with significant and rapid quality changes, such as hi-tech products, and for products with a low rate of quality changes, such as commodities, other primary and low-tech goods. Furthermore, products where little quality change occurs over time show similarity between UVIs and price changes from other sources at lower levels of disaggregation. The methodology is used to produce the Merchandise Trade Price Index and the data is made publically available on .Stat under the International Trade and Balance of Payments heading."
+---

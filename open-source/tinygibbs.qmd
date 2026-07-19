@@ -1,0 +1,7 @@
+---
+title: "TinyGibbs.jl"
+description: "Small Gibbs sampler using the AbstractMCMC interface."
+link: "https://github.com/enweg/TinyGibbs.jl"
+status: archived
+order: 3
+---

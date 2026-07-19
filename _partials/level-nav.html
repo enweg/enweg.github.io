@@ -1,0 +1,43 @@
+<!-- "Continue to <next level>" affordance for the 3-levels callout (home page).
+     Generated from the tabset itself, so the labels stay in sync automatically and
+     there's nothing to hand-maintain in the content. Activates the next tab and
+     scrolls back up to the start of the text. -->
+<script>
+(function () {
+  function init() {
+    var tabset = document.querySelector('.panel-tabset.level-tabs');
+    if (!tabset) return;
+    var links = Array.prototype.slice.call(tabset.querySelectorAll('.nav-tabs .nav-link'));
+    var panes = Array.prototype.slice.call(tabset.querySelectorAll('.tab-content > .tab-pane'));
+    if (links.length < 2 || panes.length < 2) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    panes.forEach(function (pane, i) {
+      if (i >= panes.length - 1) return;          // last level: no "continue"
+      var nextLink = links[i + 1];
+      if (!nextLink) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'level-continue';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'level-continue-btn';
+      btn.innerHTML = 'Continue to <strong></strong> ' +
+        '<span class="level-continue-arrow" aria-hidden="true">→</span>';
+      btn.querySelector('strong').textContent = nextLink.textContent.trim();
+      wrap.appendChild(btn);
+      pane.appendChild(wrap);
+
+      btn.addEventListener('click', function () {
+        nextLink.click();                          // Bootstrap activates the next tab
+        tabset.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

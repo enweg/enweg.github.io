@@ -1,0 +1,6 @@
+---
+title: "Introduction to VAR Models"
+description: "An interactive app for building intuition about vector autoregressive (VAR) models through experimentation."
+link: "https://github.com/enweg/SnT_VARS"
+order: 2
+---
