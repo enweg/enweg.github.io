@@ -1,11 +1,5 @@
 {
   "listingMap": {
-    "software.qmd": [
-      "software"
-    ],
-    "blog.qmd": [
-      "posts"
-    ],
     "software-old.qmd": [
       "software"
     ]
