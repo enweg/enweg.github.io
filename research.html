@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="This page provides an overview of my research conducted during my PhD and my time at the OECD. Some of these papers also build on work from my master’s thesis, which focused on Bayesian Neural Networks.">
+<meta name="description" content="My main fields are macroeconometrics and time series econometrics, with applications to monetary and fiscal policy; most of my current work sits here, including the job market paper below. My research spans a few other areas too: during my master’s I built a Bayesian neural network package, which we later used to quantify uncertainty in financial portfolios, and at the OECD I worked on measuring international trade, from transport and insurance costs to price indices.">
 
-<title>Research – Enrico Wegner</title>
+<title>Research — Enrico Wegner – Enrico Wegner</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,17 +29,19 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
+<link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-05f531b8b859d8566992f4681be84225.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-64daa3a02a5d4cfaaf6a1140655e5ce1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a3919a13ae3add052fc156f50ba640db.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -55,58 +57,180 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-working-papers .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="styles.css">
+    const options = {
+      valueNames: ['listing-project','listing-lang','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-search','listing-toc','listing-title','listing-authors','listing-date','listing-embargo','listing-description','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-search","listing-toc","listing-title","listing-authors","listing-date","listing-embargo","listing-description","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-working-papers'] = new List('listing-working-papers', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-publications .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-lang','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-search','listing-toc','listing-title','listing-authors','listing-venue','listing-date','listing-doi','listing-description','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-search","listing-toc","listing-title","listing-authors","listing-venue","listing-date","listing-doi","listing-description","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-publications'] = new List('listing-publications', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-publications-oecd .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-lang','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-search','listing-toc','listing-title','listing-authors','listing-venue','listing-group','listing-compact','listing-date','listing-doi','listing-description','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-search","listing-toc","listing-title","listing-authors","listing-venue","listing-group","listing-compact","listing-date","listing-doi","listing-description","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-publications-oecd'] = new List('listing-publications-oecd', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-wip .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-lang','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-search','listing-toc','listing-title','listing-authors','listing-date','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-search","listing-toc","listing-title","listing-authors","listing-date","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-wip'] = new List('listing-wip', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Enrico Wegner</span>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Enrico Wegner</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./research.html" aria-current="page"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./software.html"> 
-<span class="menu-text">Software</span></a>
+    <a class="nav-link" href="./open-source.html"> 
+<span class="menu-text">Open Source</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">More</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more">    
-        <li>
-    <a class="dropdown-item" href="./assets/CV_Enrico_Wegner.pdf"><i class="bi bi-person" role="img">
-</i> 
- <span class="dropdown-text">CV</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://github.com/enweg"><i class="bi bi-github" role="img">
-</i> 
- <span class="dropdown-text">GitHub</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://www.linkedin.com/in/enrico-wegner-2bb8a717b/"><i class="bi bi-linkedin" role="img">
-</i> 
- <span class="dropdown-text">LinkedIn</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -115,94 +239,243 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Research</h1>
-                  <div>
-        <div class="description">
-          This page provides an overview of my research conducted during my PhD and my time at the OECD. Some of these papers also build on work from my master’s thesis, which focused on Bayesian Neural Networks.
-        </div>
-      </div>
-                </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
-
-<section id="working-papers" class="level2">
-<h2 class="anchored" data-anchor-id="working-papers">Working Papers</h2>
-<section id="transmission-channel-analysis-in-dynamic-models" class="level3">
-<h3 class="anchored" data-anchor-id="transmission-channel-analysis-in-dynamic-models"><a href="https://arxiv.org/abs/2405.18987">Transmission Channel Analysis in Dynamic Models</a></h3>
-<p><strong>2025 (first edition 2024)</strong></p>
-<p>We propose a framework for analysing transmission channels in a large class of dynamic models. We formulate our approach both using graph theory and potential outcomes, which we show to be equivalent. Our method, labelled Transmission Channel Analysis (TCA), allows for the decomposition of total effects captured by impulse response functions into the effects flowing through transmission channels, thereby providing a quantitative assessment of the strength of various well-defined channels. We establish that this requires no additional identification assumptions beyond the identification of the structural shock whose effects the researcher wants to decompose. Additionally, we prove that impulse response functions are sufficient statistics for the computation of transmission effects. We demonstrate the empirical relevance of TCA for policy evaluation by decomposing the effects of policy shocks arising from a variety of popular macroeconomic models.</p>
-<ul>
-<li>Paper: <a href="https://arxiv.org/abs/2405.18987">arxiv</a></li>
-<li>Replication codes: <a href="https://github.com/enweg/tca-replication-material">GitHub</a></li>
-<li>Related code: <a href="https://enweg.github.io/tca-website">TransmissionChannelAnalysis.jl</a></li>
-</ul>
+<section id="research" class="level1 page-head">
+<h1>Research</h1>
+<p><span class="lead">My main fields are macroeconometrics and time series econometrics, with applications to monetary and fiscal policy; most of my current work sits here, including the job market paper below. My research spans a few other areas too: during my master’s I built a Bayesian neural network package, which we later used to quantify uncertainty in financial portfolios, and at the OECD I worked on measuring international trade, from transport and insurance costs to price indices.</span></p>
+</section>
+<div class="stripe-left">
+<div class="jmp-card">
+<div class="jmp-body">
+<p><span class="jmp-eyebrow">Job Market Paper</span> <span class="jmp-title">Transmission Channel Analysis in Dynamic Models</span> <span class="jmp-authors">with Lenard Lieb, Stephan Smeekes, and Ines Wilms</span> <!-- [We propose a framework for the analysis of transmission channels in a large class of dynamic models, formulated equivalently using graph theory and potential outcomes. The method decomposes total effects captured by impulse response functions into the effects flowing along transmission channels, providing a quantitative assessment of each channel's strength — and requires no additional identification assumptions beyond identification of the structural shock.]{.jmp-abstract} --> <span class="jmp-abstract">We propose a framework for analysing transmission channels in a large class of dynamic models. We formulate our approach both using graph theory and potential outcomes, which we show to be equivalent. Our method, labelled Transmission Channel Analysis (TCA), allows for the decomposition of total effects captured by impulse response functions into the effects flowing through transmission channels, thereby providing a quantitative assessment of the strength of various well-defined channels. We establish that this requires no additional identification assumptions beyond the identification of the structural shock whose effects the researcher wants to decompose. Additionally, we prove that impulse response functions are sufficient statistics for the computation of transmission effects. We demonstrate the empirical relevance of TCA for policy evaluation by decomposing the effects of policy shocks arising from a variety of popular macroeconomic models.</span></p>
+<div class="jmp-links">
+<p><a href="https://arxiv.org/abs/2405.18987" class="btn-accent mono">arXiv:2405.18987</a> <a href="https://github.com/enweg/tca-replication-material" class="btn-outline">Replication code</a> <a href="https://enweg.github.io/tca-website/" class="btn-outline">Software (Julia + MATLAB)</a></p>
+</div>
+</div>
+</div>
+</div>
+<section id="working-papers" class="level2 section-head">
+<h2 class="section-head" data-anchor-id="working-papers">Working Papers</h2>
+<div id="listing-working-papers" class="quarto-listing quarto-listing-container-custom">
+<div class="research-item">
+<h3 class="ri-title">
+The Anatomy of Monetary Policy Transmission: Which channels matter?
+</h3>
+<p class="ri-meta">
+with Kristina Bluwstein and Michael McLeay · Bank of England
+</p>
+<p class="ri-desc" data-collapsible="">
+Understanding how monetary policy transmits through the financial system to the real economy and inflation is central to the design, calibration, and evaluation of monetary policy. We study the transmission channels of UK monetary policy using a medium-sized Bayesian VAR identified with an external instrument and apply a novel technique, Transmission Channel Analysis (TCA) based on directed acyclic graphs, to formally define and decompose transmission channels in a dynamic and robust way. Empirically, we find that the bulk of UK monetary policy transmission operates through financial-market and expectations channels. Second-round (feedback) effects become important for output and prices at longer horizons, but are less relevant for consumption. A more granular decomposition shows that housing-related wealth and cash-flow channels account for most of the transmission to real activity and prices; equity wealth and expectations channels are meaningful, while the exchange-rate channel plays a limited role for aggregate consumer prices over the estimation period.
+</p>
+<span class="embargo-badge">Under policy embargo — available upon request</span>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+<section id="publications" class="level2 section-head">
+<h2 class="section-head" data-anchor-id="publications">Publications</h2>
+<div id="listing-publications" class="quarto-listing quarto-listing-container-custom">
+<div class="research-item">
+<h3 class="ri-title">
+Quantifying Uncertainty of Portfolios using Bayesian Neural Networks
+</h3>
+<p class="ri-meta">
+Esener, Wegner, Almeida, Baştürk &amp; Rodrigues · <em>IJCNN 2024</em>
+</p>
+<p class="ri-desc" data-collapsible="">
+Quantifying the uncertainty of a financial portfolio is important for investors and regulatory agencies. Reporting such uncertainty accurately is challenging due to time-dependent market dynamics, non-linearities in the return and risk properties of a portfolio, and due to the unobserved nature of the market risk. We propose Bayesian Neural Network (BNN) models, namely Recurrent Neural Network (RNN) and Long Short Term Memory (LSTM) models, to estimate the time-varying return distribution of an asset portfolio. The proposed models estimate the density of returns and incorporate parameter uncertainty through Bayesian inference. The uncertainty and any financial risk metric of interest can directly be obtained from the estimated density. Furthermore, through the BNN input-output design, proposed BNNs incorporate potential non-linear effects of each asset in the portfolio on the obtained density estimates. The proposed method is applicable to assess the uncertainty of any portfolio where the portfolio weight optimization is separated from risk assessment. We analyze the risk of a daily, equally weighted portfolio of 29 ETFs and a risk-free asset for a long time span with differing market environments between 09/06/2005 and 10/09/2020. We study the effects of different inference methods on the obtained results. The proposed models improve portfolio risk estimates compared to the benchmark. The performances of the proposed models depend on BNN design and the inference method. RNN models lead to relatively more stable results compared to LSTMs. Furthermore, the results of models with a relatively higher number of parameters depend heavily on the estimation method.
+</p>
+<a class="ri-doi" href="https://doi.org/10.1109/IJCNN60899.2024.10650382" target="_blank" rel="noopener">DOI: 10.1109/IJCNN60899.2024.10650382 →</a>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<section id="oecd-statistics-working-papers" class="level5 subgroup-head">
+<h5 class="subgroup-head">OECD Statistics Working Papers</h5>
+<div id="listing-publications-oecd" class="quarto-listing quarto-listing-container-custom">
+<div class="research-item compact">
+<h3 class="ri-title" data-anchor-id="oecd-statistics-working-papers">
+Recent Trends in Transport and Insurance Costs and Estimates at Disaggregated Product Level
+</h3>
+<p class="ri-meta">
+Miao &amp; Wegner · <em>OECD Statistics Working Papers No.&nbsp;2022/02</em>
+</p>
+<p class="ri-desc" data-collapsible="">
+This paper updates the OECD International Transport and Insurance Cost (ITIC) of Merchandise Trade database, which covers more than 180 countries and partners, and over 1000 products from 1995 to 2020. Transport and insurance costs, also known as CIF-FOB margins, are estimated using a gravity model. A cross-validation procedure is used to evaluate model performance. In addition to describing the methodology, the paper highlights that transport and insurance costs are declining as a fraction of trade value, but this reduction has been flattening out in more recent years. However, an alternative measure, the explicit CIF-FOB margins per kilogramme imported, suggests that transport and insurance costs have been actually rising since 2002. Both CIF-FOB margins and cost per kilogramme imported show increases in 2020 when compared to 2019. This is robust to corrections for compositional changes. The methodology is used to produce the International Transport and Insurance Costs of Merchandise Trade data base and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.
+</p>
+<a class="ri-doi" href="https://doi.org/10.1787/b5dbab02-en" target="_blank" rel="noopener">DOI: 10.1787/b5dbab02-en →</a>
+</div>
+<div class="research-item compact">
+<h3 class="ri-title">
+Using Unit Value Indices as Proxies for International Merchandise Trade Prices
+</h3>
+<p class="ri-meta">
+Miao &amp; Wegner · <em>OECD Statistics Working Papers No.&nbsp;2022/01</em>
+</p>
+<p class="ri-desc" data-collapsible="">
+In light of the need for detailed and timely internationally comparable trade price indices, this paper describes a multi-tiered methodology to mitigate many of the empirical challenges associated with using customs data, to provide more robust estimates of unit value indices (UVIs) by country and product. UVIs are available for both exports and imports, by reporting country and the CPA 2-digit level of classification. Although the approach cannot capture changes in the quality of products nor compositional changes happening at a lower than HS 6-digit classification, the results indicate that at higher levels of aggregation (SITC 1-digit level), estimated UVIs closely follow price changes obtained from other sources. This is observed both for products with significant and rapid quality changes, such as hi-tech products, and for products with a low rate of quality changes, such as commodities, other primary and low-tech goods. Furthermore, products where little quality change occurs over time show similarity between UVIs and price changes from other sources at lower levels of disaggregation. The methodology is used to produce the Merchandise Trade Price Index and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.
+</p>
+<a class="ri-doi" href="https://doi.org/10.1787/27a5abd7-en" target="_blank" rel="noopener">DOI: 10.1787/27a5abd7-en →</a>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
 </section>
 </section>
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">Publications</h2>
-<section id="quantifying-uncertainty-of-portfolios-using-bayesian-neural-networks" class="level3">
-<h3 class="anchored" data-anchor-id="quantifying-uncertainty-of-portfolios-using-bayesian-neural-networks"><a href="https://doi.org/10.1109/IJCNN60899.2024.10650382">Quantifying Uncertainty of Portfolios using Bayesian Neural Networks</a></h3>
-<p>International Joint Conference on Neural Networks (IJCNN)<br><strong>2024</strong></p>
-<p>Quantifying the uncertainty of a financial portfolio is important for investors and regulatory agencies. Reporting such uncertainty accurately is challenging due to time-dependent market dynamics, non-linearities in the return and risk properties of a portfolio, and due to the unobserved nature of the market risk. We propose Bayesian Neural Network (BNN) models, namely Recurrent Neural Network (RNN) and Long Short Term Memory (LSTM) models, to estimate the time-varying return distribution of an asset portfolio. The proposed models estimate the density of returns and incorporate parameter uncertainty through Bayesian inference. The uncertainty and any financial risk metric of interest can directly be obtained from the estimated density. Furthermore, through the BNN input-output design, proposed BNNs incorporate potential non-linear effects of each asset in the portfolio on the obtained density estimates. The proposed method is applicable to assess the uncertainty of any portfolio where the portfolio weight optimization is separated from risk assessment. We analyze the risk of a daily, equally weighted portfolio of 29 ETFs and a risk-free asset for a long time span with differing market environments between 09/06/2005 and 10/09/2020. We study the effects of different inference methods on the obtained results. The proposed models improve portfolio risk estimates compared to the benchmark. The performances of the proposed models depend on BNN design and the inference method. RNN models lead to relatively more stable results compared to LSTMs. Furthermore, the results of models with a relatively higher number of parameters depend heavily on the estimation method.</p>
-<ul>
-<li>Paper: <a href="https://doi.org/10.1109/IJCNN60899.2024.10650382">https://doi.org/10.1109/IJCNN60899.2024.10650382</a></li>
-</ul>
-</section>
-</section>
-<section id="oecd-working-papers" class="level2">
-<h2 class="anchored" data-anchor-id="oecd-working-papers">OECD Working Papers</h2>
-<section id="recent-trends-in-transport-and-insurance-costs-and-estimates-at-disaggregated-product-level" class="level3">
-<h3 class="anchored" data-anchor-id="recent-trends-in-transport-and-insurance-costs-and-estimates-at-disaggregated-product-level"><a href="https://doi.org/10.1787/b5dbab02-en">Recent Trends in Transport and Insurance Costs and Estimates at Disaggregated Product Level</a></h3>
-<p><strong>2022</strong></p>
-<p>This paper updates the OECD International Transport and Insurance Cost (ITIC) of Merchandise Trade database, which covers more than 180 countries and partners, and over 1000 products from 1995 to 2020. Transport and insurance costs, also known as CIF-FOB margins, are estimated using a gravity model. A cross-validation procedure is used to evaluate model performance. In addition to describing the methodology, the paper highlights that transport and insurance costs are declining as a fraction of trade value, but this reduction has been flattening out in more recent years. However, an alternative measure, the explicit CIF-FOB margins per kilogramme imported, suggests that transport and insurance costs have been actually rising since 2002. Both CIF-FOB margins and cost per kilogramme imported show increases in 2020 when compared to 2019. This is robust to corrections for compositional changes. The methodology is used to produce the International Transport and Insurance Costs of Merchandise Trade data base and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.</p>
-<ul>
-<li>Paper: <a href="https://doi.org/10.1787/b5dbab02-en">OECD iLibrary</a></li>
-</ul>
-</section>
-<section id="using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices" class="level3">
-<h3 class="anchored" data-anchor-id="using-unit-value-indices-as-proxies-for-international-merchandise-trade-prices"><a href="https://doi.org/10.1787/27a5abd7-en">Using Unit Value Indices as Proxies for International Merchandise Trade Prices</a></h3>
-<p><strong>2022</strong></p>
-<p>In light of the need for detailed and timely internationally comparable trade price indices, this paper describes a multi-tiered methodology to mitigate many of the empirical challenges associated with using customs data, to provide more robust estimates of unit value indices (UVIs) by country and product. UVIs are available for both exports and imports, by reporting country and the CPA 2-digit level of classification. Although the approach cannot capture changes in the quality of products nor compositional changes happening at a lower than HS 6-digit classification, the results indicate that at higher levels of aggregation (SITC 1-digit level), estimated UVIs closely follow price changes obtained from other sources. This is observed both for products with significant and rapid quality changes, such as hi-tech products, and for products with a low rate of quality changes, such as commodities, other primary and low-tech goods. Furthermore, products where little quality change occurs over time show similarity between UVIs and price changes from other sources at lower levels of disaggregation. The methodology is used to produce the Merchandise Trade Price Index and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.</p>
-<ul>
-<li>Paper: <a href="https://doi.org/10.1787/27a5abd7-en">OECD iLibrary</a></li>
-</ul>
+<section id="work-in-progress" class="level2 section-head">
+<h2 class="section-head" data-anchor-id="work-in-progress">Work in Progress</h2>
+<div id="listing-wip" class="quarto-listing quarto-listing-container-custom">
+<div class="research-item">
+<h3 class="ri-title">
+Transmission Channel Analysis in Linear State-Space Models
+</h3>
+<p class="ri-meta">
+with Tobias Hartl
+</p>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<div class="page-tail">
+
+</div>
 
 
-</section>
+
 </section>
 
 </main> <!-- /main -->
+<!-- Progressive-enhancement "read more" for research abstracts.
+     Abstracts render in full (no-JS friendly); this collapses them to a few lines
+     and adds an accessible toggle ONLY when the text actually overflows. Opt an
+     item out with `showFullAbstract: true` (which omits `data-collapsible`). -->
+<script>
+(function () {
+  function init() {
+    var abstracts = document.querySelectorAll('.ri-desc[data-collapsible]');
+    abstracts.forEach(function (desc, i) {
+      desc.classList.add('is-clamped');
+      // If the clamped text doesn't overflow, it's short enough — show it in full.
+      if (desc.scrollHeight <= desc.clientHeight + 2) {
+        desc.classList.remove('is-clamped');
+        return;
+      }
+      desc.classList.add('has-toggle');
+      if (!desc.id) desc.id = 'abstract-' + (i + 1);
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ri-more';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', desc.id);
+      btn.innerHTML =
+        '<span class="ri-more-label">Read more</span>' +
+        '<span class="ri-more-chev" aria-hidden="true">▾</span>';
+      desc.insertAdjacentElement('afterend', btn);
+
+      btn.addEventListener('click', function () {
+        var clamped = desc.classList.toggle('is-clamped');
+        btn.setAttribute('aria-expanded', String(!clamped));
+        btn.querySelector('.ri-more-label').textContent = clamped ? 'Read more' : 'Show less';
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<!-- "Continue to <next level>" affordance for the 3-levels callout (home page).
+     Generated from the tabset itself, so the labels stay in sync automatically and
+     there's nothing to hand-maintain in the content. Activates the next tab and
+     scrolls back up to the start of the text. -->
+<script>
+(function () {
+  function init() {
+    var tabset = document.querySelector('.panel-tabset.level-tabs');
+    if (!tabset) return;
+    var links = Array.prototype.slice.call(tabset.querySelectorAll('.nav-tabs .nav-link'));
+    var panes = Array.prototype.slice.call(tabset.querySelectorAll('.tab-content > .tab-pane'));
+    if (links.length < 2 || panes.length < 2) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    panes.forEach(function (pane, i) {
+      if (i >= panes.length - 1) return;          // last level: no "continue"
+      var nextLink = links[i + 1];
+      if (!nextLink) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'level-continue';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'level-continue-btn';
+      btn.innerHTML = 'Continue to <strong></strong> ' +
+        '<span class="level-continue-arrow" aria-hidden="true">→</span>';
+      btn.querySelector('strong').textContent = nextLink.textContent.trim();
+      wrap.appendChild(btn);
+      pane.appendChild(wrap);
+
+      btn.addEventListener('click', function () {
+        nextLink.click();                          // Bootstrap activates the next tab
+        tabset.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<!-- Upcoming-talks filter. The `.upcoming-talks` block is hidden by default; this
+     removes any talk whose `data-until` (falling back to `data-date`) is before
+     today on the visitor's own clock, sorts the rest chronologically, and reveals
+     the block only if at least one upcoming talk remains. ISO date strings compare
+     chronologically, so no Date parsing (and no timezone surprises) is needed. -->
+<script>
+(function () {
+  function init() {
+    var section = document.querySelector('.upcoming-talks');
+    if (!section) return;
+    var talks = Array.prototype.slice.call(section.querySelectorAll('.talk'));
+    if (!talks.length) return;
+
+    var n = new Date();
+    var today = n.getFullYear() + '-' +
+      String(n.getMonth() + 1).padStart(2, '0') + '-' +
+      String(n.getDate()).padStart(2, '0');
+
+    var cutoff = function (t) { return t.getAttribute('data-until') || t.getAttribute('data-date') || ''; };
+    var start  = function (t) { return t.getAttribute('data-date') || t.getAttribute('data-until') || ''; };
+
+    var upcoming = talks.filter(function (t) { return cutoff(t) >= today; });
+    talks.forEach(function (t) { if (upcoming.indexOf(t) === -1) t.remove(); });
+    if (!upcoming.length) return;   // nothing in the future → stay hidden
+
+    upcoming.sort(function (a, b) { return start(a) < start(b) ? -1 : start(a) > start(b) ? 1 : 0; });
+    var parent = upcoming[0].parentNode;
+    upcoming.forEach(function (t) { parent.appendChild(t); });   // re-order in place
+
+    section.classList.add('is-visible');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -267,7 +540,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/enweg\.github\.io");
+        var filterRegex = new RegExp("https:\/\/enweg\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -281,6 +554,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -598,14 +876,14 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>Enrico Wegner · School of Business and Economics, Maastricht University</p>
+</div>   
     <div class="nav-footer-center">
-<p>Copyright 2025, Enrico Wegner</p>
-</div>
-    <div class="nav-footer-right">
       &nbsp;
     </div>
+    <div class="nav-footer-right">
+<p><a class="footer-mail" href="mailto:e.wegner@maastrichtuniversity.nl">e.wegner@maastrichtuniversity.nl</a><span class="footer-socials"><a class="social-icon" href="https://github.com/enweg" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a><a class="social-icon" href="https://www.linkedin.com/in/enrico-wegner-2bb8a717b/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a><a class="social-icon" href="https://orcid.org/0009-0003-3537-9858" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"></path></svg></a><a class="social-icon" href="https://scholar.google.com/citations?user=5vjXTtAAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"></path></svg></a></span></p>
+</div>
   </div>
 </footer>
 

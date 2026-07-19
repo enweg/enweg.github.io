@@ -1,12 +1,30 @@
 [
   {
-    "listing": "/software-old.html",
+    "listing": "/research.html",
     "items": [
-      "/software/TransmissionChannelAnalysis/index.html",
-      "/software/FredMDQD/index.html",
-      "/software/TinyGibbs/index.html",
-      "/software/BayesFluxJulia/index.html",
-      "/software/SnT/index.html"
+      "/research/working-papers/anatomy-mp.html",
+      "/research/publications/bnn-portfolios.html",
+      "/research/publications/oecd-transport-insurance.html",
+      "/research/publications/oecd-unit-value.html",
+      "/research/work-in-progress/tca-state-space.html"
+    ]
+  },
+  {
+    "listing": "/open-source.html",
+    "items": [
+      "/open-source/tca-jl.html",
+      "/open-source/tca-matlab.html",
+      "/open-source/hamilton-filters.html",
+      "/open-source/fredmdqd.html",
+      "/open-source/bigtime.html",
+      "/open-source/bayesflux-jl.html",
+      "/open-source/bayesfluxr.html",
+      "/open-source/tinygibbs.html",
+      "/open-source/macroeconometrics.html",
+      "/teaching/probability-theory.html",
+      "/teaching/intro-vars.html",
+      "/teaching/high-dim-vars-bigtime.html",
+      "/teaching/shell-git-github.html"
     ]
   }
 ]
