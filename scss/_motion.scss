@@ -32,4 +32,14 @@
   #quarto-content > main.content { animation: none; }
   .ri-more-chev { transition: none; }
   .level-continue-arrow { transition: none; }
+
+  // The mobile nav sheet appears/disappears instantly. `visibility` keeps its
+  // 0s step so the panel still leaves the tab order when closed.
+  .navbar .navbar-collapse {
+    transform: none;
+    transition: opacity 0s, visibility 0s;
+  }
+  .navbar .navbar-toggler-icon,
+  .navbar .navbar-toggler-icon::before,
+  .navbar .navbar-toggler-icon::after { transition: none; }
 }

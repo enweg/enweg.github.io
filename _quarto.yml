@@ -54,6 +54,7 @@ format:
     link-external-newwindow: true
     link-external-icon: false
     include-after-body:
+      - _partials/nav-menu.html     # mobile menu: close on outside tap / Escape / resize
       - _partials/read-more.html    # "read more" abstract toggle (research page)
       - _partials/level-nav.html    # "continue to next level" for the 3-levels callout (home)
       - _partials/talks.html        # filter/reveal upcoming talks (home)

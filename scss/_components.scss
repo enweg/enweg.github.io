@@ -2,7 +2,7 @@
 
 // ═══════════════════════════════════════════════════════════════════════════
 //  COMPONENTS — every rule references a token from _tokens.scss, never a hex.
-//  Sections: base · navbar · footer · buttons · hero · JMP card · section
+//  Sections: base · navbar · mobile menu · footer · buttons · hero · JMP card · section
 //  headers · research items · 3-levels callout · open-source cards · responsive
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -87,6 +87,134 @@ body { overflow-wrap: break-word; }
     &.active {
       color: $accent;
       background: $accent-tint;
+    }
+  }
+}
+
+// ── Navbar: mobile menu ─────────────────────────────────────────────────────
+// Below the expand breakpoint the links fold behind the hamburger. Two things
+// here deliberately depart from stock Bootstrap:
+//
+//  1. The panel is an absolutely positioned sheet *under* the bar, not a wrapped
+//     flex line *inside* it. As a flex line it made the container two lines tall,
+//     which killed the stretch that was vertically centring the brand — so
+//     opening the menu visibly yanked "Enrico Wegner" up by ~15px. Out of flow,
+//     the bar's height is constant and nothing can move. (`.navbar` is already
+//     `position: sticky`, so it is the containing block; `left/right: 0` makes
+//     the sheet span the full width rather than the padded container.)
+//
+//  2. Bootstrap animates `height`, which relayouts the page every frame — costly
+//     on a bar that is sticky *and* backdrop-filtered. We pin the height (the
+//     `!important` beats the inline height its JS writes) and animate opacity +
+//     transform instead, which the compositor handles on its own.
+//
+// State is read off the toggler's `aria-expanded` rather than Bootstrap's
+// `.show`: `aria-expanded` flips at the *start* of both transitions, whereas
+// `.show` only lands once opening has finished, too late to animate an entry.
+// The toggler precedes the panel in Quarto's markup, so `~` reaches it.
+@media (max-width: $nav-collapse-max) {
+  .navbar {
+    // With the sheet open, bar and sheet should read as one solid surface rather
+    // than a translucent strip sitting on an opaque one. Progressive enhancement:
+    // where `:has()` is unsupported the bar just stays translucent, which is fine.
+    &:has(.navbar-toggler[aria-expanded="true"]) { background: $paper; }
+
+    .navbar-collapse {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: block !important;   // beat `.collapse { display: none }`
+      height: auto !important;     // beat the inline height Bootstrap animates
+      overflow: visible !important;
+
+      padding: 8px $container-pad-sm 12px;
+      // Opaque, unlike the bar's translucent $navbar-bg: this sheet covers page
+      // content (the portrait, on Home) and menu text has to stay readable over
+      // it. Even at 97% the photo ghosted through, so no translucency here — the
+      // border and shadow below are what separate it from the page.
+      background: $paper;
+      border-bottom: 1px solid $border-nav;
+      box-shadow: 0 22px 34px -28px rgba(0, 0, 0, .5);
+
+      opacity: 0;
+      transform: translateY(-10px);
+      visibility: hidden;          // also drops the links out of the tab order
+      transition:
+        opacity .18s ease,
+        transform .24s $ease-out,
+        visibility 0s linear .24s;
+    }
+
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse {
+      opacity: 1;
+      transform: none;
+      visibility: visible;
+      transition-delay: 0s;        // reveal immediately, hide only after the fade
+    }
+
+    // Full-width rows with a ≥44px tap target, not the desktop pill sizing.
+    .navbar-nav { width: 100%; gap: 2px; }
+    .navbar-nav .nav-link {
+      padding: 12px 14px !important;
+      font-size: 15.5px;
+      border-radius: $radius-btn-sm;
+    }
+
+    .navbar-toggler {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 0;
+      border-radius: $radius-btn-sm;
+      background: transparent;
+      transition: background-color .15s ease;
+      &:hover { background: $accent-tint; }
+      &:focus { box-shadow: none; }   // Bootstrap's focus ring on every tap
+      &:focus-visible { outline: 2px solid $accent; outline-offset: 2px; }
+    }
+
+    // Hamburger → X. The middle bar is the span itself and the outer two are its
+    // pseudo-elements, so no extra markup is needed (Quarto owns the HTML). The
+    // bars travel to the centre first, then rotate — hence the staggered delays.
+    .navbar-toggler-icon {
+      position: relative;
+      width: 20px;
+      height: 2px;
+      background-image: none;      // drop Bootstrap's baked-in SVG
+      background-color: $text-strong;
+      border-radius: 2px;
+      transition: background-color .1s ease .12s;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: $text-strong;
+        border-radius: inherit;
+        transition: top .12s ease .14s, transform .18s $ease-out;
+      }
+      &::before { top: -6px; }
+      &::after  { top: 6px; }
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+      background-color: transparent;
+      transition-delay: 0s;
+
+      &::before,
+      &::after {
+        top: 0;
+        transform: rotate(45deg);
+        transition: top .12s ease, transform .18s $ease-out .12s;
+      }
+      &::after { transform: rotate(-45deg); }
     }
   }
 }

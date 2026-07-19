@@ -74,10 +74,16 @@ $shadow-jmpcard:       0 1px 2px rgba(0,0,0,.05), 0 24px 50px -38px rgba(0,0,0,.
 $shadow-oscard:        0 1px 2px rgba(0,0,0,.04);
 $shadow-oscard-hover:  0 12px 28px -18px rgba(0,0,0,.4);
 
+// Decelerating curve for UI that enters the screen (mobile nav sheet, toggler).
+$ease-out: cubic-bezier(.22, .61, .36, 1);
+
 $content-max:      1080px;   // mirrors grid.body-width in _quarto.yml
 $container-pad:    32px;
 $container-pad-sm: 20px;
 $nav-height:       66px;
+// Below this width Quarto's `navbar-expand-lg` folds the links into the
+// hamburger. Kept in sync with Bootstrap's `lg` breakpoint (992px).
+$nav-collapse-max: 991.98px;
 
 // ── 5. Bootstrap / Quarto variable wiring ───────────────────────────────────
 // Feed the tokens into Bootstrap so built-in Quarto chrome inherits the theme.
