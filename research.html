@@ -201,6 +201,82 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<!-- Structured data (Schema.org) describing Enrico Wegner as an entity.
+     Included site-wide via `include-in-header` in _quarto.yml. Helps AI/search
+     systems associate the person with Transmission Channel Analysis. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Enrico Wegner",
+  "givenName": "Enrico",
+  "familyName": "Wegner",
+  "url": "https://enweg.github.io/",
+  "image": "https://enweg.github.io/assets/profile.jpg",
+  "jobTitle": "PhD Candidate in Econometrics",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Maastricht University, School of Business and Economics"
+  },
+  "knowsAbout": [
+    "Macroeconometrics",
+    "Time series econometrics",
+    "Transmission Channel Analysis",
+    "Monetary policy transmission",
+    "Impulse response functions",
+    "Structural vector autoregressions",
+    "Bayesian econometrics",
+    "Causal inference and policy evaluation"
+  ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ORCID",
+    "value": "0009-0003-3537-9858",
+    "url": "https://orcid.org/0009-0003-3537-9858"
+  },
+  "sameAs": [
+    "https://orcid.org/0009-0003-3537-9858",
+    "https://scholar.google.com/citations?user=5vjXTtAAAAAJ",
+    "https://github.com/enweg",
+    "https://www.linkedin.com/in/enrico-wegner-2bb8a717b/"
+  ]
+}
+</script>
+<!-- Structured data (Schema.org) for the Transmission Channel Analysis job
+     market paper. Included on the research page via page-level
+     `include-in-header`. Ties the TCA method + IRF decomposition to Enrico
+     Wegner as author. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "Transmission Channel Analysis in Dynamic Models",
+  "headline": "Transmission Channel Analysis in Dynamic Models",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Enrico Wegner",
+      "url": "https://enweg.github.io/",
+      "sameAs": "https://orcid.org/0009-0003-3537-9858"
+    },
+    { "@type": "Person", "name": "Lenard Lieb" },
+    { "@type": "Person", "name": "Stephan Smeekes" },
+    { "@type": "Person", "name": "Ines Wilms" }
+  ],
+  "abstract": "We propose a framework for analysing transmission channels in a large class of dynamic models, formulated equivalently using graph theory and potential outcomes. Transmission Channel Analysis (TCA) decomposes the total effects captured by impulse response functions into the effects flowing through well-defined transmission channels, providing a quantitative assessment of each channel's strength, and requires no additional identification assumptions beyond identification of the structural shock.",
+  "url": "https://arxiv.org/abs/2405.18987",
+  "sameAs": "https://arxiv.org/abs/2405.18987",
+  "identifier": "arXiv:2405.18987",
+  "about": [
+    "Transmission Channel Analysis",
+    "Transmission channels",
+    "Impulse response functions",
+    "Monetary policy transmission",
+    "Structural vector autoregressions",
+    "Directed acyclic graphs"
+  ]
+}
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -650,7 +726,7 @@ In light of the need for detailed and timely internationally comparable trade pr
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/enweg\.github\.io\/");
+        var filterRegex = new RegExp("https:\/\/enweg\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

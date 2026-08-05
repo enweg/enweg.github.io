@@ -59,6 +59,47 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Structured data (Schema.org) describing Enrico Wegner as an entity.
+     Included site-wide via `include-in-header` in _quarto.yml. Helps AI/search
+     systems associate the person with Transmission Channel Analysis. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Enrico Wegner",
+  "givenName": "Enrico",
+  "familyName": "Wegner",
+  "url": "https://enweg.github.io/",
+  "image": "https://enweg.github.io/assets/profile.jpg",
+  "jobTitle": "PhD Candidate in Econometrics",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Maastricht University, School of Business and Economics"
+  },
+  "knowsAbout": [
+    "Macroeconometrics",
+    "Time series econometrics",
+    "Transmission Channel Analysis",
+    "Monetary policy transmission",
+    "Impulse response functions",
+    "Structural vector autoregressions",
+    "Bayesian econometrics",
+    "Causal inference and policy evaluation"
+  ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ORCID",
+    "value": "0009-0003-3537-9858",
+    "url": "https://orcid.org/0009-0003-3537-9858"
+  },
+  "sameAs": [
+    "https://orcid.org/0009-0003-3537-9858",
+    "https://scholar.google.com/citations?user=5vjXTtAAAAAJ",
+    "https://github.com/enweg",
+    "https://www.linkedin.com/in/enrico-wegner-2bb8a717b/"
+  ]
+}
+</script>
 
 
 </head>
@@ -402,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/enweg\.github\.io\/");
+        var filterRegex = new RegExp("https:\/\/enweg\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
