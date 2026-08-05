@@ -2,6 +2,8 @@
 pagetitle: "Research — Enrico Wegner"
 description: "My main fields are macroeconometrics and time series econometrics, with applications to monetary and fiscal policy; most of my current work sits here, including the job market paper below. My research spans a few other areas too: during my master's I built a Bayesian neural network package, which we later used to quantify uncertainty in financial portfolios, and at the OECD I worked on measuring international trade, from transport and insurance costs to price indices."
 toc: false
+include-in-header:
+  - _partials/jsonld-tca.html # Schema.org ScholarlyArticle for the TCA paper (research page only)
 listing:
   # PhD thesis chapters — pulled from the working-paper and work-in-progress
   # folders by the `phd: true` flag, so a thesis chapter is authored as an

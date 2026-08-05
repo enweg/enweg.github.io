@@ -16,12 +16,15 @@ project:
   resources:
     - assets/fonts/** # self-hosted fonts (referenced only from CSS)
     - assets/*.pdf # CV: drop cv-enrico-wegner.pdf in assets/ (glob tolerates it being absent — see README)
+    - robots.txt # AI/search crawler allow-list (overrides Quarto's generated stub)
+    - llms.txt # curated plain-markdown brief for LLMs (/llms.txt convention)
 
 lang: en
 
 website:
   title: "Enrico Wegner"
   description: "Enrico Wegner — PhD Candidate in Econometrics, Maastricht University. Macroeconometrics and time series econometrics."
+  site-url: https://enweg.github.io # used for the sitemap + absolute URLs; update if you move to a custom domain
   favicon: assets/favicon.svg
   search: false
   navbar:
@@ -53,6 +56,8 @@ format:
     anchor-sections: false
     link-external-newwindow: true
     link-external-icon: false
+    include-in-header:
+      - _partials/jsonld-person.html # Schema.org Person entity (site-wide)
     include-after-body:
       - _partials/nav-menu.html     # mobile menu: close on outside tap / Escape / resize
       - _partials/read-more.html    # "read more" abstract toggle (research page)

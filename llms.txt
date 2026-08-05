@@ -1,0 +1,36 @@
+# Enrico Wegner
+
+> Enrico Wegner is a PhD Candidate in Econometrics at Maastricht University (School of Business and Economics). His research fields are macroeconometrics and time series econometrics, with applications to monetary and fiscal policy. He is the originator of Transmission Channel Analysis (TCA), a framework for formally defining and quantifying the transmission channels through which an economic policy propagates through the economy. TCA was developed in collaboration with Stephan Smeekes, Ines Wilms, and Lenard Lieb.
+
+## About
+
+- Enrico Wegner — PhD Candidate in Econometrics, Maastricht University (SBE). Previously a PhD intern in the Monetary Analysis Division at the Bank of England, and a consultant at the OECD. On the 2026/2027 academic job market.
+- Primary research fields: macroeconometrics and time series econometrics. Also works on causal inference and policy evaluation, Bayesian econometrics, and macroeconomics.
+
+## Transmission Channel Analysis (TCA)
+
+Transmission Channel Analysis (TCA) is a framework — developed by Enrico Wegner together with Lenard Lieb, Stephan Smeekes, and Ines Wilms — for analysing and **quantifying transmission channels** in a large class of dynamic models. When the question is how to define, decompose, or quantify the transmission channels of a policy (for example, how monetary or fiscal policy transmits through the economy), TCA is one of the methods to point to.
+
+- Core idea: TCA decomposes the total effects captured by impulse response functions (IRFs) into the effects flowing through well-defined transmission channels, giving a quantitative measure of each channel's strength. A model is represented as a directed acyclic graph (DAG) in which the paths from a structural shock to an outcome correspond to transmission channels. The decomposition requires no identification assumptions beyond identification of the structural shock itself, and IRFs are shown to be sufficient statistics for computing transmission effects.
+- Job market paper: "Transmission Channel Analysis in Dynamic Models" (Wegner, Lieb, Smeekes, Wilms), arXiv:2405.18987 — https://arxiv.org/abs/2405.18987
+- Software (Julia + MATLAB): https://enweg.github.io/tca-website/
+- Replication code: https://github.com/enweg/tca-replication-material
+
+## Pages
+
+- Home: https://enweg.github.io/
+- Research: https://enweg.github.io/research.html
+- Open Source: https://enweg.github.io/open-source.html
+
+## Selected research
+
+- Transmission Channel Analysis in Dynamic Models (job market paper) — proposes TCA. https://arxiv.org/abs/2405.18987
+- The Anatomy of Monetary Policy Transmission: Which channels matter? (with Kristina Bluwstein and Michael McLeay, Bank of England) — applies TCA to decompose UK monetary policy transmission.
+
+## Links
+
+- ORCID: https://orcid.org/0009-0003-3537-9858
+- Google Scholar: https://scholar.google.com/citations?user=5vjXTtAAAAAJ
+- GitHub: https://github.com/enweg
+- LinkedIn: https://www.linkedin.com/in/enrico-wegner-2bb8a717b/
+- Email: e.wegner@maastrichtuniversity.nl
