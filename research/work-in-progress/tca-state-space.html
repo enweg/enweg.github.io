@@ -2,21 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2024-06-01">
+<meta name="description" content="How does an impulse, say a forward guidance shock, propagate through a dynamic economic system? Transmission channel analysis (TCA), developed by Wegner et al.&nbsp;(2025), traces the path a shock takes. We generalise TCA to state-space models, allowing for systems with fewer or more shocks than observed variables. This extends TCA to non-invertible processes and, in particular, to all linearised DSGE models, including those with news shocks. We show that the large directed acyclic graph implied by the state-space representation reduces to a much smaller set of variables that remains sufficient to define channels. We apply the framework to the forward guidance puzzle in a small-scale New Keynesian model, decomposing the response into inflation-expectations, output-expectations, and output channels. Cognitive discounting by households weakens the output-expectations channel, whereas cognitive discounting by firms strengthens it and eventually reverses the sign of the inflation-expectations channel. Thus, TCA shows quantitatively how rational expectations and behavioural models resolve the forward guidance puzzle.">
 
 <title>Transmission Channel Analysis without Invertibility – Enrico Wegner</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -36,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-05f531b8b859d8566992f4681be84225.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dbfa1c06c9dab028694aef6f608f9035.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8585ceaf512601dddb21daaeee8ffaa3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c2270fc1ce4b7ca7b6002fdf5437c656.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -107,6 +111,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">Transmission Channel Analysis without Invertibility</h1>
 </div>
 
+<div>
+  <div class="description">
+    How does an impulse, say a forward guidance shock, propagate through a dynamic economic system? Transmission channel analysis (TCA), developed by Wegner et al.&nbsp;(2025), traces the path a shock takes. We generalise TCA to state-space models, allowing for systems with fewer or more shocks than observed variables. This extends TCA to non-invertible processes and, in particular, to all linearised DSGE models, including those with news shocks. We show that the large directed acyclic graph implied by the state-space representation reduces to a much smaller set of variables that remains sufficient to define channels. We apply the framework to the forward guidance puzzle in a small-scale New Keynesian model, decomposing the response into inflation-expectations, output-expectations, and output channels. Cognitive discounting by households weakens the output-expectations channel, whereas cognitive discounting by firms strengthens it and eventually reverses the sign of the inflation-expectations channel. Thus, TCA shows quantitatively how rational expectations and behavioural models resolve the forward guidance puzzle.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -217,6 +226,26 @@ ul.task-list li input[type="checkbox"] {
         btn.setAttribute('aria-expanded', String(!clamped));
         btn.querySelector('.ri-more-label').textContent = clamped ? 'Read more' : 'Show less';
       });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<!-- Optional research sections. A `.research-section.is-optional` block (Working
+     Papers, Work in Progress) is hidden by default and revealed here only when its
+     listing actually rendered at least one item — so an empty section never shows a
+     lone heading. The content stays in the DOM (CSS just sets display:none), so it
+     remains present for crawlers/"view source"; only the visual reveal is JS-gated,
+     the same progressive-enhancement approach as the upcoming-talks card. -->
+<script>
+(function () {
+  function init() {
+    document.querySelectorAll('.research-section.is-optional').forEach(function (sec) {
+      if (sec.querySelector('.research-item')) sec.classList.add('is-populated');
     });
   }
   if (document.readyState === 'loading') {

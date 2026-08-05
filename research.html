@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-05f531b8b859d8566992f4681be84225.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dbfa1c06c9dab028694aef6f608f9035.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8585ceaf512601dddb21daaeee8ffaa3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c2270fc1ce4b7ca7b6002fdf5437c656.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -60,6 +63,34 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-phd-papers .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-lang','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-search','listing-toc','listing-title','listing-authors','listing-date','listing-phd','listing-embargo','listing-description','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-venue',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-search","listing-toc","listing-title","listing-authors","listing-date","listing-phd","listing-embargo","listing-description","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-venue"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-phd-papers'] = new List('listing-phd-papers', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
     const listingTargetEl = window.document.querySelector('#listing-working-papers .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
@@ -67,9 +98,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-lang','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-search','listing-toc','listing-title','listing-authors','listing-date','listing-embargo','listing-description','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-search","listing-toc","listing-title","listing-authors","listing-date","listing-embargo","listing-description","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -151,9 +182,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-lang','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-search','listing-toc','listing-title','listing-authors','listing-date','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-search","listing-toc","listing-title","listing-authors","listing-date","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -172,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -253,6 +284,8 @@ window.Quarto = {
 <h1>Research</h1>
 <p><span class="lead">My main fields are macroeconometrics and time series econometrics, with applications to monetary and fiscal policy; most of my current work sits here, including the job market paper below. My research spans a few other areas too: during my master’s I built a Bayesian neural network package, which we later used to quantify uncertainty in financial portfolios, and at the OECD I worked on measuring international trade, from transport and insurance costs to price indices.</span></p>
 </section>
+<section id="phd-research" class="level2 section-head">
+<h2 class="section-head" data-anchor-id="phd-research">PhD Research</h2>
 <div class="stripe-left">
 <div class="jmp-card">
 <div class="jmp-body">
@@ -263,11 +296,11 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="working-papers" class="level2 section-head">
-<h2 class="section-head" data-anchor-id="working-papers">Working Papers</h2>
-<div id="listing-working-papers" class="quarto-listing quarto-listing-container-custom">
+<section id="further-thesis-chapters" class="level5 subgroup-head">
+<h5 class="subgroup-head">Further Thesis Chapters</h5>
+<div id="listing-phd-papers" class="quarto-listing quarto-listing-container-custom">
 <div class="research-item">
-<h3 class="ri-title">
+<h3 class="ri-title" data-anchor-id="further-thesis-chapters">
 The Anatomy of Monetary Policy Transmission: Which channels matter?
 </h3>
 <p class="ri-meta">
@@ -278,6 +311,30 @@ Understanding how monetary policy transmits through the financial system to the 
 </p>
 <span class="embargo-badge">Under policy embargo — available upon request</span>
 </div>
+<div class="research-item">
+<h3 class="ri-title">
+Transmission Channel Analysis without Invertibility
+</h3>
+<p class="ri-meta">
+with Tobias Hartl · <em>Work in progress</em>
+</p>
+<p class="ri-desc" data-collapsible="">
+How does an impulse, say a forward guidance shock, propagate through a dynamic economic system? Transmission channel analysis (TCA), developed by Wegner et al.&nbsp;(2025), traces the path a shock takes. We generalise TCA to state-space models, allowing for systems with fewer or more shocks than observed variables. This extends TCA to non-invertible processes and, in particular, to all linearised DSGE models, including those with news shocks. We show that the large directed acyclic graph implied by the state-space representation reduces to a much smaller set of variables that remains sufficient to define channels. We apply the framework to the forward guidance puzzle in a small-scale New Keynesian model, decomposing the response into inflation-expectations, output-expectations, and output channels. Cognitive discounting by households weakens the output-expectations channel, whereas cognitive discounting by firms strengthens it and eventually reverses the sign of the inflation-expectations channel. Thus, TCA shows quantitatively how rational expectations and behavioural models resolve the forward guidance puzzle.
+</p>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+</section>
+<section id="working-papers" class="level2 section-head research-section is-optional">
+<h2 class="section-head" data-anchor-id="working-papers">Working Papers</h2>
+<div id="listing-working-papers" class="quarto-listing quarto-listing-container-custom">
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+<section id="work-in-progress" class="level2 section-head research-section is-optional">
+<h2 class="section-head" data-anchor-id="work-in-progress">Work in Progress</h2>
+<div id="listing-wip" class="quarto-listing quarto-listing-container-custom">
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
@@ -298,11 +355,12 @@ Quantifying the uncertainty of a financial portfolio is important for investors 
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
-<section id="oecd-statistics-working-papers" class="level5 subgroup-head">
-<h5 class="subgroup-head">OECD Statistics Working Papers</h5>
+</section>
+<section id="policy-and-statistical-reports" class="level2 section-head">
+<h2 class="section-head" data-anchor-id="policy-and-statistical-reports">Policy and Statistical Reports</h2>
 <div id="listing-publications-oecd" class="quarto-listing quarto-listing-container-custom">
 <div class="research-item compact">
-<h3 class="ri-title" data-anchor-id="oecd-statistics-working-papers">
+<h3 class="ri-title">
 Recent Trends in Transport and Insurance Costs and Estimates at Disaggregated Product Level
 </h3>
 <p class="ri-meta">
@@ -324,21 +382,6 @@ Miao &amp; Wegner · <em>OECD Statistics Working Papers No.&nbsp;2022/01</em>
 In light of the need for detailed and timely internationally comparable trade price indices, this paper describes a multi-tiered methodology to mitigate many of the empirical challenges associated with using customs data, to provide more robust estimates of unit value indices (UVIs) by country and product. UVIs are available for both exports and imports, by reporting country and the CPA 2-digit level of classification. Although the approach cannot capture changes in the quality of products nor compositional changes happening at a lower than HS 6-digit classification, the results indicate that at higher levels of aggregation (SITC 1-digit level), estimated UVIs closely follow price changes obtained from other sources. This is observed both for products with significant and rapid quality changes, such as hi-tech products, and for products with a low rate of quality changes, such as commodities, other primary and low-tech goods. Furthermore, products where little quality change occurs over time show similarity between UVIs and price changes from other sources at lower levels of disaggregation. The methodology is used to produce the Merchandise Trade Price Index and the data is made publically available on .Stat under the International Trade and Balance of Payments heading.
 </p>
 <a class="ri-doi" href="https://doi.org/10.1787/27a5abd7-en" target="_blank" rel="noopener">DOI: 10.1787/27a5abd7-en →</a>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</section>
-</section>
-<section id="work-in-progress" class="level2 section-head">
-<h2 class="section-head" data-anchor-id="work-in-progress">Work in Progress</h2>
-<div id="listing-wip" class="quarto-listing quarto-listing-container-custom">
-<div class="research-item">
-<h3 class="ri-title">
-Transmission Channel Analysis without Invertibility
-</h3>
-<p class="ri-meta">
-with Tobias Hartl
-</p>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
@@ -431,6 +474,26 @@ with Tobias Hartl
         btn.setAttribute('aria-expanded', String(!clamped));
         btn.querySelector('.ri-more-label').textContent = clamped ? 'Read more' : 'Show less';
       });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<!-- Optional research sections. A `.research-section.is-optional` block (Working
+     Papers, Work in Progress) is hidden by default and revealed here only when its
+     listing actually rendered at least one item — so an empty section never shows a
+     lone heading. The content stays in the DOM (CSS just sets display:none), so it
+     remains present for crawlers/"view source"; only the visual reveal is JS-gated,
+     the same progressive-enhancement approach as the upcoming-talks card. -->
+<script>
+(function () {
+  function init() {
+    document.querySelectorAll('.research-section.is-optional').forEach(function (sec) {
+      if (sec.querySelector('.research-item')) sec.classList.add('is-populated');
     });
   }
   if (document.readyState === 'loading') {
