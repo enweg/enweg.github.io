@@ -1,5 +1,8 @@
 ---
 title: "Transmission Channel Analysis without Invertibility"
 authors: "with Tobias Hartl"
+venue: "Work in progress"
 date: "2024-06-01"
+phd: true
+description: "How does an impulse, say a forward guidance shock, propagate through a dynamic economic system? Transmission channel analysis (TCA), developed by Wegner et al. (2025), traces the path a shock takes. We generalise TCA to state-space models, allowing for systems with fewer or more shocks than observed variables. This extends TCA to non-invertible processes and, in particular, to all linearised DSGE models, including those with news shocks. We show that the large directed acyclic graph implied by the state-space representation reduces to a much smaller set of variables that remains sufficient to define channels. We apply the framework to the forward guidance puzzle in a small-scale New Keynesian model, decomposing the response into inflation-expectations, output-expectations, and output channels. Cognitive discounting by households weakens the output-expectations channel, whereas cognitive discounting by firms strengthens it and eventually reverses the sign of the inflation-expectations channel. Thus, TCA shows quantitatively how rational expectations and behavioural models resolve the forward guidance puzzle."
 ---

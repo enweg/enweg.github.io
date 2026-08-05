@@ -6,8 +6,8 @@
     ],
     "research.qmd": [
       "research/working-papers/*.qmd",
-      "research/publications/*.qmd",
-      "research/work-in-progress/*.qmd"
+      "research/work-in-progress/*.qmd",
+      "research/publications/*.qmd"
     ]
   }
 }

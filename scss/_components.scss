@@ -602,6 +602,13 @@ a.talk-name {
   .ri-desc  { color: $muted-3; font-style: italic; }
 }
 
+// Optional research sections (Working Papers, Work in Progress): shown only when
+// they actually contain items, so an empty section never leaves a lone heading.
+// Hidden by default; the optional-sections partial adds `.is-populated` when a
+// listing rendered ≥1 item. See _partials/optional-sections.html.
+.research-section.is-optional { display: none; }
+.research-section.is-optional.is-populated { display: block; }
+
 // ── 3-levels callout ─────────────────────────────────────────────────────────
 .callout-levels {
   scroll-margin-top: $nav-height + 18px;   // clear the sticky navbar on #three-levels jumps

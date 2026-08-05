@@ -1,0 +1,20 @@
+<!-- Optional research sections. A `.research-section.is-optional` block (Working
+     Papers, Work in Progress) is hidden by default and revealed here only when its
+     listing actually rendered at least one item — so an empty section never shows a
+     lone heading. The content stays in the DOM (CSS just sets display:none), so it
+     remains present for crawlers/"view source"; only the visual reveal is JS-gated,
+     the same progressive-enhancement approach as the upcoming-talks card. -->
+<script>
+(function () {
+  function init() {
+    document.querySelectorAll('.research-section.is-optional').forEach(function (sec) {
+      if (sec.querySelector('.research-item')) sec.classList.add('is-populated');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

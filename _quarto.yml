@@ -56,6 +56,7 @@ format:
     include-after-body:
       - _partials/nav-menu.html     # mobile menu: close on outside tap / Escape / resize
       - _partials/read-more.html    # "read more" abstract toggle (research page)
+      - _partials/optional-sections.html  # reveal Working Papers / Work in Progress only when non-empty (research)
       - _partials/level-nav.html    # "continue to next level" for the 3-levels callout (home)
       - _partials/talks.html        # filter/reveal upcoming talks (home)
     grid:

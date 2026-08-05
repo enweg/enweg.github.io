@@ -87,16 +87,47 @@ doi: "10.1109/XXXX"                       # renders a "DOI: … →" link
 description: "A full abstract, as long as you like."   # optional; long ones get a "Read more"
 showFullAbstract: true                    # optional — always show the full abstract (see below)
 embargo: true                             # shows the amber "under embargo" badge instead of a DOI
-compact: true                             # smaller card (used for the OECD sub-group)
+compact: true                             # smaller card (used for the OECD / policy reports)
 placeholder: true                         # dimmed "coming soon" style
-group: "OECD Statistics Working Papers"   # groups an item under the OECD sub-heading
+phd: true                                 # thesis chapter → PhD Research section (see below)
+group: "OECD Statistics Working Papers"   # policy/statistical report (see below)
 draft: true                               # hide this paper from its section (see below)
 ---
 ```
 
-The **OECD sub-group** on the Research page is its own listing filtered by
-`group: "OECD*"`; give an item that `group` value to place it there (and it's
-automatically excluded from the main Publications list).
+### How the Research page is laid out
+
+The page (`research.qmd`) reads top to bottom as:
+
+1. **PhD Research** — the Job Market Paper card (from
+   [`_partials/jmp-card.qmd`](_partials/jmp-card.qmd)), then **Further Thesis
+   Chapters** — every stub flagged `phd: true`, with its abstract.
+2. **Working Papers** *(only shown if any exist)*
+3. **Work in Progress** *(only shown if any exist)*
+4. **Publications**
+5. **Policy and Statistical Reports** — the OECD papers.
+
+**Marking a thesis chapter — `phd: true`.** A chapter of the PhD is still authored
+as an ordinary stub in `research/working-papers/` or `research/work-in-progress/`;
+add `phd: true` and it moves up into the **PhD Research** section (under *Further
+Thesis Chapters*) **and** is removed from the Working Papers / Work in Progress
+section it would otherwise sit in. So each PhD paper appears once, in the PhD
+section — nothing to duplicate or cross-link. Give it a `description` so its
+abstract shows there.
+
+**Working Papers / Work in Progress appear only when non-empty.** These two
+sections (heading included) are hidden whenever they have no items — e.g. when
+every working paper is a `phd: true` thesis chapter. They reveal automatically as
+soon as a non-PhD stub is added to the matching folder. (Mechanism: the heading +
+listing are wrapped in a `.research-section.is-optional` block that's hidden in CSS
+and revealed by [`_partials/optional-sections.html`](_partials/optional-sections.html)
+only when its listing rendered at least one item — the same progressive-enhancement
+pattern as the upcoming-talks card.)
+
+**Policy and Statistical Reports — `group: "OECD*"`.** This section is its own
+listing filtered by `group`; give an item a `group` value (e.g. `"OECD Statistics
+Working Papers"`) to place it there — and it's automatically excluded from the main
+Publications list.
 
 **Long abstracts / "Read more"** — by default a long `description` is clamped to a
 few lines with a **Read more / Show less** toggle, keeping the page compact. Short
