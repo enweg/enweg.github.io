@@ -18,6 +18,7 @@ project:
     - assets/*.pdf # CV: drop cv-enrico-wegner.pdf in assets/ (glob tolerates it being absent — see README)
     - robots.txt # AI/search crawler allow-list (overrides Quarto's generated stub)
     - llms.txt # curated plain-markdown brief for LLMs (/llms.txt convention)
+    - CNAME # custom domain name
 
 lang: en
 
