@@ -24,7 +24,7 @@ lang: en
 website:
   title: "Enrico Wegner"
   description: "Enrico Wegner — PhD Candidate in Econometrics, Maastricht University. Macroeconometrics and time series econometrics."
-  site-url: https://enweg.github.io # used for the sitemap + absolute URLs; update if you move to a custom domain
+  site-url: https://enricowegner.com # used for the sitemap + absolute URLs; update if you move to a custom domain
   favicon: assets/favicon.svg
   search: false
   navbar:
@@ -59,11 +59,11 @@ format:
     include-in-header:
       - _partials/jsonld-person.html # Schema.org Person entity (site-wide)
     include-after-body:
-      - _partials/nav-menu.html     # mobile menu: close on outside tap / Escape / resize
-      - _partials/read-more.html    # "read more" abstract toggle (research page)
-      - _partials/optional-sections.html  # reveal Working Papers / Work in Progress only when non-empty (research)
-      - _partials/level-nav.html    # "continue to next level" for the 3-levels callout (home)
-      - _partials/talks.html        # filter/reveal upcoming talks (home)
+      - _partials/nav-menu.html # mobile menu: close on outside tap / Escape / resize
+      - _partials/read-more.html # "read more" abstract toggle (research page)
+      - _partials/optional-sections.html # reveal Working Papers / Work in Progress only when non-empty (research)
+      - _partials/level-nav.html # "continue to next level" for the 3-levels callout (home)
+      - _partials/talks.html # filter/reveal upcoming talks (home)
     grid:
       body-width: 1080px
     page-layout: article
